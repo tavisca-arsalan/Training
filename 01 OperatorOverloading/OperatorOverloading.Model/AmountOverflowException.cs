@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace OperatorOverloading.Model
 {
-    public class AmountException:Exception
+     [Serializable]
+    public class AmountOverflowException:Exception
     {
-        public string EMessage { get; set; }
-        public AmountException(string msg) 
-        {
-            EMessage = msg;       
+          
+        public AmountOverflowException(string msg) : base(msg)
+        {  
         }
 
     }

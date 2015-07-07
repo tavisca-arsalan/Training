@@ -24,14 +24,10 @@ namespace OperatorOverloading.Model
         {
             double amount;
             string currency;
-            if (m1.Currency.Equals(m2.Currency))
+            if (!string.IsNullOrEmpty(m1.Currency) && !string.IsNullOrEmpty(m2.Currency) && string.Equals(m1.Currency,m2.Currency,StringComparison.OrdinalIgnoreCase))
             {
-                if (m1.Amount==double.MaxValue || m1.Amount < 0 || m2.Amount==double.MaxValue || m2.Amount < 0)
-                {
-                    throw new AmountException("You entered too large value for amount");
-                }
-
-                currency = m1.Currency;
+               
+                currency =m1.Currency.ToUpper();
                 amount = m1.Amount + m2.Amount;
 
                 if (m1.Amount<=(double.MaxValue-m2.Amount))
@@ -40,12 +36,12 @@ namespace OperatorOverloading.Model
                 }
                 else 
                 {
-                    throw new AmountException("Total amount generated was out of range");
+                    throw new AmountOverflowException("Total amount generated was out of range");
                 }
             }
             else 
             {
-                throw new CurrencyException("Currency mismatch!!");
+                throw new CurrencyMismatchException("Currency mismatch!!");
             }
      
         }

@@ -39,8 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AmountException.cs" />
-    <Compile Include="CurrencyException.cs" />
+    <Compile Include="AmountOverflowException.cs" />
+    <Compile Include="CurrencyMismatchException.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

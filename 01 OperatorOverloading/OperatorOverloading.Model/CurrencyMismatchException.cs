@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace OperatorOverloading.Model
 {
-    public class CurrencyException:Exception
+    [Serializable]
+    public class CurrencyMismatchException:Exception
     {
-        public string EMessage { get; set; }
-        public CurrencyException(string msg) 
+        
+        public CurrencyMismatchException(string msg) :base(msg)
         {
-            EMessage = msg;       
         }
        
     }

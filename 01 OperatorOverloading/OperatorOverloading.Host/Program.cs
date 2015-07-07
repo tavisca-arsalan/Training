@@ -16,7 +16,7 @@ namespace OperatorOverloading.Host
 
             //Take the input from user for first money object
             Console.WriteLine("Enter amount for first money object:");
-            while(!double.TryParse(Console.ReadLine(), out  temporaryAmount))
+            while (!double.TryParse(Console.ReadLine(), out  temporaryAmount))
             {
                 Console.WriteLine("Please enter proper amount for first money object:");
             }
@@ -41,12 +41,12 @@ namespace OperatorOverloading.Host
                 Console.WriteLine("Third money object is:");
                 Console.WriteLine("Total amount: {0} {1}", moneyThree.Amount, moneyThree.Currency);
             }
-            catch (CurrencyException e) {
-                Console.WriteLine(e.EMessage);
+            catch (CurrencyMismatchException e) {
+                Console.WriteLine(e.Message);
             }
-            catch (AmountException e)
+            catch (AmountOverflowException e)
             {
-                Console.WriteLine(e.EMessage);
+                Console.WriteLine(e.Message);
             }
             
            
