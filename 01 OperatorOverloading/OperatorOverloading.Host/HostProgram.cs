@@ -17,14 +17,14 @@ namespace OperatorOverloading.Host
             //Take the input from user for first money object
             Console.WriteLine("Enter amount for first money object:");
             temporaryAmount = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Enter currency for first money object:");
+            Console.WriteLine("Enter currency(in upper case) for first money object:");
             temporaryCurrency = Convert.ToString(Console.ReadLine());
             Money moneyOne = new Money(temporaryAmount, temporaryCurrency);
 
             //Take the input from user for second money object
             Console.WriteLine("Enter amount for second money object:");
             temporaryAmount = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Enter currency for first money object:");
+            Console.WriteLine("Enter currency(in upper case) for first money object:");
             temporaryCurrency = Convert.ToString(Console.ReadLine());
             Money moneyTwo = new Money(temporaryAmount, temporaryCurrency);
             Money moneyThree = new Money();
@@ -41,7 +41,7 @@ namespace OperatorOverloading.Host
             {
                 Console.WriteLine(e.EMessage);
             }
-            //Relocate the code written below
+            
            
             Console.ReadKey();
         }
