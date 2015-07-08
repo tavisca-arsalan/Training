@@ -38,9 +38,8 @@ namespace OperatorOverloading.Host
                 temporaryCurrency = Console.ReadLine();
                 Money moneyTwo = new Money(temporaryAmount, temporaryCurrency);
 
-
                 Money moneyThree = moneyOne + moneyTwo;
-                Console.WriteLine("Third money object is:");
+                Console.WriteLine("Third money object(sum of the two that you just entered) is:");
                 Console.WriteLine("Total amount: {0} {1}", moneyThree.Amount, moneyThree.Currency);
             }
             catch (Exception e)
