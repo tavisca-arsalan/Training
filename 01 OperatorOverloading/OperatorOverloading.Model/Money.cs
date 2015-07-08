@@ -47,7 +47,7 @@ namespace OperatorOverloading.Model
                 currency =m1.Currency.ToUpper();
                 amount = m1.Amount + m2.Amount;
 
-                if (double.IsInfinity(amount)==false)
+                if (double.IsPositiveInfinity(amount)==false)
                 {
                     return (new Money(amount, currency));
                 }

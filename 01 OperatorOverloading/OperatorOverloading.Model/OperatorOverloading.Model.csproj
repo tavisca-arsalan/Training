@@ -40,9 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Messages.Designer.cs">
+      <DependentUpon>Messages.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
     <Compile Include="Money.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
