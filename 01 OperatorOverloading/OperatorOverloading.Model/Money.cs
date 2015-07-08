@@ -8,13 +8,29 @@ namespace OperatorOverloading.Model
 {
     public class Money
     {
-        public double Amount { get; set; }
-        public string Currency { get; set; }
-
-        public Money()
-        {
-           
+        private double amount;
+        private string currency;
+        public double Amount {
+            get { return amount; }
+            set {amount = value;}
         }
+
+
+        public string Currency {
+            get { return currency; }
+            set {
+                if (string.IsNullOrWhiteSpace(value) == false)
+                {
+                    currency = value;
+                }
+                else
+                {
+                    throw new NullReferenceException(Messages.NullValueForCurrency);   
+                }
+               }
+        }
+
+       
         public Money(double amount, string currency)
         {
             Amount = amount;
@@ -24,24 +40,24 @@ namespace OperatorOverloading.Model
         {
             double amount;
             string currency;
-            if (!string.IsNullOrEmpty(m1.Currency) && !string.IsNullOrEmpty(m2.Currency) && string.Equals(m1.Currency,m2.Currency,StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(m1.Currency,m2.Currency,StringComparison.OrdinalIgnoreCase))
             {
                
                 currency =m1.Currency.ToUpper();
                 amount = m1.Amount + m2.Amount;
 
-                if (m1.Amount<=(double.MaxValue-m2.Amount))
+                if (double.IsInfinity(amount)==false)
                 {
                     return (new Money(amount, currency));
                 }
                 else 
                 {
-                    throw new AmountOverflowException("Total amount generated was out of range");
+                    throw new AmountOverflowException(Messages.SumOverflow);
                 }
             }
             else 
             {
-                throw new CurrencyMismatchException("Currency mismatch!!");
+                throw new CurrencyMismatchException(Messages.CurrencyMismatch);
             }
      
         }

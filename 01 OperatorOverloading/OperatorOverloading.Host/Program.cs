@@ -15,31 +15,31 @@ namespace OperatorOverloading.Host
             string temporaryCurrency;
 
             //Take the input from user for first money object
+            try{
+
             Console.WriteLine("Enter amount for first money object:");
-            while (!double.TryParse(Console.ReadLine(), out  temporaryAmount))
+            while (double.TryParse(Console.ReadLine(), out  temporaryAmount)==false)
             {
                 Console.WriteLine("Please enter proper amount for first money object:");
             }
             Console.WriteLine("Enter currency(in upper case) for first money object:");
             temporaryCurrency = Console.ReadLine();
             Money moneyOne = new Money(temporaryAmount, temporaryCurrency);
-
-            //Take the input from user for second money object
+           
+             //Take the input from user for second money object
             Console.WriteLine("Enter amount for second money object:");
-            while (!double.TryParse(Console.ReadLine(), out  temporaryAmount))
+            while (double.TryParse(Console.ReadLine(), out  temporaryAmount)==false)
             {
                 Console.WriteLine("Please enter proper amount for second money object:");
             }
-            Console.WriteLine("Enter currency(in upper case) for first money object:");
+            Console.WriteLine("Enter currency(in upper case) for second money object:");
             temporaryCurrency = Console.ReadLine();
             Money moneyTwo = new Money(temporaryAmount, temporaryCurrency);
-            Money moneyThree = new Money();
-
-            try
-            {
-                moneyThree = moneyOne + moneyTwo;
-                Console.WriteLine("Third money object is:");
-                Console.WriteLine("Total amount: {0} {1}", moneyThree.Amount, moneyThree.Currency);
+           
+          
+            Money moneyThree = moneyOne + moneyTwo;
+            Console.WriteLine("Third money object is:");
+            Console.WriteLine("Total amount: {0} {1}", moneyThree.Amount, moneyThree.Currency);
             }
             catch (CurrencyMismatchException e) {
                 Console.WriteLine(e.Message);
@@ -48,7 +48,10 @@ namespace OperatorOverloading.Host
             {
                 Console.WriteLine(e.Message);
             }
-            
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message);
+            }
            
             Console.ReadKey();
         }

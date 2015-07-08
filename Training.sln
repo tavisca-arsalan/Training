@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading.Host", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading.Model", "01 OperatorOverloading\OperatorOverloading.Model\OperatorOverloading.Model.csproj", "{688BB8E2-618E-4216-8D05-ABF80D0D8D36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading.CurrencyConversion", "01 OperatorOverloading\OperatorOverloading.CurrencyConversion\OperatorOverloading.CurrencyConversion.csproj", "{AA28E2AB-2D45-45BD-BBE9-20FB1720EF18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading.Parser", "01 OperatorOverloading\OperatorOverloading.Parser\OperatorOverloading.Parser.csproj", "{6BD312D6-9512-4CC5-9108-CE2714AA1769}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{688BB8E2-618E-4216-8D05-ABF80D0D8D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{688BB8E2-618E-4216-8D05-ABF80D0D8D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{688BB8E2-618E-4216-8D05-ABF80D0D8D36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA28E2AB-2D45-45BD-BBE9-20FB1720EF18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA28E2AB-2D45-45BD-BBE9-20FB1720EF18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA28E2AB-2D45-45BD-BBE9-20FB1720EF18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA28E2AB-2D45-45BD-BBE9-20FB1720EF18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BD312D6-9512-4CC5-9108-CE2714AA1769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BD312D6-9512-4CC5-9108-CE2714AA1769}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BD312D6-9512-4CC5-9108-CE2714AA1769}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BD312D6-9512-4CC5-9108-CE2714AA1769}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -28,5 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{DAC36807-4E5B-447E-AD22-90BF078E6C36} = {0170EB13-9B9C-43F4-88E8-D2126B14C99C}
 		{688BB8E2-618E-4216-8D05-ABF80D0D8D36} = {0170EB13-9B9C-43F4-88E8-D2126B14C99C}
+		{AA28E2AB-2D45-45BD-BBE9-20FB1720EF18} = {0170EB13-9B9C-43F4-88E8-D2126B14C99C}
+		{6BD312D6-9512-4CC5-9108-CE2714AA1769} = {0170EB13-9B9C-43F4-88E8-D2126B14C99C}
 	EndGlobalSection
 EndGlobal
