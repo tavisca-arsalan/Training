@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading.Currenc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading.Parser", "01 OperatorOverloading\OperatorOverloading.Parser\OperatorOverloading.Parser.csproj", "{6BD312D6-9512-4CC5-9108-CE2714AA1769}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading.CustomExceptions", "01 OperatorOverloading\OperatorOverloading.CustomExceptions\OperatorOverloading.CustomExceptions.csproj", "{65A9FD62-D841-46FB-8365-6C9D47A6ED26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{6BD312D6-9512-4CC5-9108-CE2714AA1769}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BD312D6-9512-4CC5-9108-CE2714AA1769}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BD312D6-9512-4CC5-9108-CE2714AA1769}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65A9FD62-D841-46FB-8365-6C9D47A6ED26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65A9FD62-D841-46FB-8365-6C9D47A6ED26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65A9FD62-D841-46FB-8365-6C9D47A6ED26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65A9FD62-D841-46FB-8365-6C9D47A6ED26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,5 +48,6 @@ Global
 		{688BB8E2-618E-4216-8D05-ABF80D0D8D36} = {0170EB13-9B9C-43F4-88E8-D2126B14C99C}
 		{AA28E2AB-2D45-45BD-BBE9-20FB1720EF18} = {0170EB13-9B9C-43F4-88E8-D2126B14C99C}
 		{6BD312D6-9512-4CC5-9108-CE2714AA1769} = {0170EB13-9B9C-43F4-88E8-D2126B14C99C}
+		{65A9FD62-D841-46FB-8365-6C9D47A6ED26} = {0170EB13-9B9C-43F4-88E8-D2126B14C99C}
 	EndGlobalSection
 EndGlobal
