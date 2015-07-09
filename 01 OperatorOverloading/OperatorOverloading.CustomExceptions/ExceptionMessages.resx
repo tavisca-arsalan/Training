@@ -124,6 +124,6 @@
     <value>Currency field left empty!!</value>
   </data>
   <data name="SumOverflow" xml:space="preserve">
-    <value>Total amount generated was out of range!!</value>
+    <value>SumOverflow</value>
   </data>
 </root>

@@ -26,7 +26,7 @@ namespace OperatorOverloading.Model
                 }
                 else
                 {
-                    throw new NullReferenceException(Messages.NullValueForCurrency);   
+                    throw new NullReferenceException(ExceptionMessages.NullValueForCurrency);   
                 }
                }
         }
@@ -53,12 +53,12 @@ namespace OperatorOverloading.Model
                 }
                 else 
                 {
-                    throw new AmountOverflowException(Messages.SumOverflow);
+                    throw new AmountOverflowException(ExceptionMessages.SumOverflow);
                 }
             }
             else 
             {
-                throw new CurrencyMismatchException(Messages.CurrencyMismatch);
+                throw new CurrencyMismatchException(ExceptionMessages.CurrencyMismatch);
             }
      
         }

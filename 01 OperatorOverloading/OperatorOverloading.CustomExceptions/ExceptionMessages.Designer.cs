@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OperatorOverloading.Model {
+namespace OperatorOverloading.CustomExceptions {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace OperatorOverloading.Model {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Messages {
+    public class ExceptionMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Messages() {
+        internal ExceptionMessages() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace OperatorOverloading.Model {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OperatorOverloading.Model.Messages", typeof(Messages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OperatorOverloading.CustomExceptions.ExceptionMessages", typeof(ExceptionMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,7 +63,7 @@ namespace OperatorOverloading.Model {
         /// <summary>
         ///   Looks up a localized string similar to Currency Mismatch!!.
         /// </summary>
-        internal static string CurrencyMismatch {
+        public static string CurrencyMismatch {
             get {
                 return ResourceManager.GetString("CurrencyMismatch", resourceCulture);
             }
@@ -72,16 +72,16 @@ namespace OperatorOverloading.Model {
         /// <summary>
         ///   Looks up a localized string similar to Currency field left empty!!.
         /// </summary>
-        internal static string NullValueForCurrency {
+        public static string NullValueForCurrency {
             get {
                 return ResourceManager.GetString("NullValueForCurrency", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total amount generated was out of range!!.
+        ///   Looks up a localized string similar to SumOverflow.
         /// </summary>
-        internal static string SumOverflow {
+        public static string SumOverflow {
             get {
                 return ResourceManager.GetString("SumOverflow", resourceCulture);
             }
