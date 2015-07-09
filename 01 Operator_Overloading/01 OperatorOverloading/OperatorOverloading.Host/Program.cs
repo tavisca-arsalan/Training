@@ -14,6 +14,8 @@ namespace OperatorOverloading.Host
         {
             double temporaryAmount;
             string temporaryCurrency;
+            Money moneyOne = null;
+            Money moneyTwo = null;
 
             //Take the input from user for first money object
             try
@@ -24,20 +26,44 @@ namespace OperatorOverloading.Host
                 {
                     Console.WriteLine("Please enter proper amount for first money object:");
                 }
-                Console.WriteLine("Enter currency for first money object:");
-                temporaryCurrency = Console.ReadLine();
-                Money moneyOne = new Money(temporaryAmount, temporaryCurrency);
 
+                while (true)
+                {
+                    try
+                    {
+                        Console.WriteLine("Enter currency for first money object:");
+                        temporaryCurrency = Console.ReadLine();
+                        moneyOne = new Money(temporaryAmount, temporaryCurrency);
+                        break;
+                    }
+                    catch (NullReferenceException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        continue;
+                    }
+                }
                 //Take the input from user for second money object
                 Console.WriteLine("Enter amount for second money object:");
                 while (double.TryParse(Console.ReadLine(), out  temporaryAmount) == false)
                 {
                     Console.WriteLine("Please enter proper amount for second money object:");
                 }
-                Console.WriteLine("Enter currency for second money object:");
-                temporaryCurrency = Console.ReadLine();
-                Money moneyTwo = new Money(temporaryAmount, temporaryCurrency);
 
+                while (true)
+                {
+                    try
+                    {
+                        Console.WriteLine("Enter currency for second money object:");
+                        temporaryCurrency = Console.ReadLine();
+                        moneyTwo = new Money(temporaryAmount, temporaryCurrency);
+                        break;
+                    }
+                    catch (NullReferenceException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        continue;
+                    }
+                }
                 Money moneyThree = moneyOne + moneyTwo;
                 Console.WriteLine("Third money object(sum of the two that you just entered) is:");
                 Console.WriteLine("Total amount: {0} {1}", moneyThree.Amount, moneyThree.Currency);
