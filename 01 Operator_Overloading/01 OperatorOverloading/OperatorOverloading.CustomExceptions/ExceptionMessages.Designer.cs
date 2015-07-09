@@ -22,7 +22,7 @@ namespace OperatorOverloading.CustomExceptions {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ExceptionMessages {
+    internal class ExceptionMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -63,25 +63,34 @@ namespace OperatorOverloading.CustomExceptions {
         /// <summary>
         ///   Looks up a localized string similar to Currency Mismatch!!.
         /// </summary>
-        public static string CurrencyMismatch {
+        internal static string CurrencyMismatch {
             get {
                 return ResourceManager.GetString("CurrencyMismatch", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Currency field left empty!!.
+        ///   Looks up a localized string similar to Currency field Invalid!!.
         /// </summary>
-        public static string NullValueForCurrency {
+        internal static string ImproperValueForCurrency {
             get {
-                return ResourceManager.GetString("NullValueForCurrency", resourceCulture);
+                return ResourceManager.GetString("ImproperValueForCurrency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You entered a null Money Object..
+        /// </summary>
+        internal static string NullObjectPassed {
+            get {
+                return ResourceManager.GetString("NullObjectPassed", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to SumOverflow.
         /// </summary>
-        public static string SumOverflow {
+        internal static string SumOverflow {
             get {
                 return ResourceManager.GetString("SumOverflow", resourceCulture);
             }

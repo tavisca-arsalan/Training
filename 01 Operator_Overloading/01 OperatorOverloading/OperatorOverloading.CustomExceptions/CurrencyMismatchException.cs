@@ -14,6 +14,10 @@ namespace OperatorOverloading.CustomExceptions
         {
         }
 
+        public CurrencyMismatchException( string msg, Exception inner ) : base( msg, inner )
+        { 
+        }
+
         protected CurrencyMismatchException(System.Runtime.Serialization.SerializationInfo info,
         System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
        

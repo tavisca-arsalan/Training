@@ -120,8 +120,11 @@
   <data name="CurrencyMismatch" xml:space="preserve">
     <value>Currency Mismatch!!</value>
   </data>
-  <data name="NullValueForCurrency" xml:space="preserve">
-    <value>Currency field left empty!!</value>
+  <data name="ImproperValueForCurrency" xml:space="preserve">
+    <value>Currency field Invalid!!</value>
+  </data>
+  <data name="NullObjectPassed" xml:space="preserve">
+    <value>You entered a null Money Object.</value>
   </data>
   <data name="SumOverflow" xml:space="preserve">
     <value>SumOverflow</value>
