@@ -9,13 +9,13 @@ namespace OperatorOverloading.DBL
 {
    public class JsonParser
     {
-        readonly static string SOURCE = "source";
-        private static string  _sourceCurrency= "USD";
+        const string SOURCE = "source";
+        private static string  _sourceCurrency;
        
-
         public static Dictionary<string, double> ParseJson(string jsonString,string sourceCurrency) 
         {
             Dictionary<String, double> rateDictionary = new Dictionary<String, double>();
+            _sourceCurrency = sourceCurrency;
             string[] blocks = jsonString.Split('{', '}');
             string[] sourceFinder = blocks[1].Split(',');
             string[] keyValue;

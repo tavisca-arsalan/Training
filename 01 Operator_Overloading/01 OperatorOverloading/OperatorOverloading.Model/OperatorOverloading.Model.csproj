@@ -43,17 +43,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Temp\01 Operator_Overloading\01 OperatorOverloading\OperatorOverloading.DBL\OperatorOverloading.DBL.csproj">
-      <Project>{5ad3bd3e-091d-4719-8a1a-a93558d56d61}</Project>
-      <Name>OperatorOverloading.DBL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\Temp\01 Operator_Overloading\01 OperatorOverloading\OperatorOverloading.Parse\OperatorOverloading.Interfaces.csproj">
-      <Project>{1e671dd9-fd5c-4bcf-94b6-3f44f70a0ddd}</Project>
-      <Name>OperatorOverloading.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OperatorOverloading.CustomExceptions\OperatorOverloading.CustomExceptions.csproj">
       <Project>{65a9fd62-d841-46fb-8365-6c9d47a6ed26}</Project>
       <Name>OperatorOverloading.CustomExceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OperatorOverloading.DBL\OperatorOverloading.DBL.csproj">
+      <Project>{5ad3bd3e-091d-4719-8a1a-a93558d56d61}</Project>
+      <Name>OperatorOverloading.DBL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OperatorOverloading.Parse\OperatorOverloading.Interfaces.csproj">
+      <Project>{1e671dd9-fd5c-4bcf-94b6-3f44f70a0ddd}</Project>
+      <Name>OperatorOverloading.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

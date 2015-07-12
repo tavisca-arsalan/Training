@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,7 +49,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OperatorOverloading.Model\OperatorOverloading.Model.csproj">
+    <ProjectReference Include="..\..\..\..\Training00\01 Operator_Overloading\01 OperatorOverloading\OperatorOverloading.Model\OperatorOverloading.Model.csproj">
       <Project>{688bb8e2-618e-4216-8d05-abf80d0d8d36}</Project>
       <Name>OperatorOverloading.Model</Name>
     </ProjectReference>
