@@ -25,7 +25,7 @@ namespace WebServer
         {
             IProcessor requestProcessor = null;
             string extension = GetExtensionFromUrl(url);
-            Console.WriteLine("ye aaya extension:  " +extension);
+           
             if (_knownExtensions.Contains(extension))
             {
 
@@ -48,7 +48,7 @@ namespace WebServer
                         requestProcessor = new TextRequestHandler(clientSocket, contentPath);
                         break;
                     default :
-                        requestProcessor= new InternalErrorHandler(clientSocket);
+                        requestProcessor= new NotFoundErrorHandler(clientSocket);
                         break;
                 }
             }
@@ -59,5 +59,9 @@ namespace WebServer
             return requestProcessor;
         }
 
+        private string GetExtensionFromUrl(string url)
+        {
+            return url.Substring(url.LastIndexOf('.'));
+        }
     }
 }
