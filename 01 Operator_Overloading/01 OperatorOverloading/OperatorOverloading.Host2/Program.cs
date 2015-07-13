@@ -9,7 +9,6 @@ namespace OperatorOverloading.Host2
 {
     class Program
     {
-      
         static void Main(string[] args)
         {
             double temporaryAmount;
@@ -17,7 +16,6 @@ namespace OperatorOverloading.Host2
             Money moneyOne = null;
             try
             {
-
                 Console.WriteLine("Enter amount for first money object:");
                 while (double.TryParse(Console.ReadLine(), out  temporaryAmount) == false)
                 {
@@ -33,7 +31,7 @@ namespace OperatorOverloading.Host2
                         moneyOne = new Money(temporaryAmount, temporaryCurrency);
                         break;
                     }
-                    catch (NullReferenceException e)
+                    catch (Exception e)
                     {
                         Console.WriteLine(e.Message);
                         continue;
@@ -48,7 +46,6 @@ namespace OperatorOverloading.Host2
             {
                 Console.WriteLine(e.Message);
             }
-
             Console.ReadKey();
         }
     }

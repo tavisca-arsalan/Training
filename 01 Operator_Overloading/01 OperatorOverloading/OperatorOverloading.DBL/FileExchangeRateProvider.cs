@@ -13,15 +13,15 @@ namespace OperatorOverloading.DBL
     {
        
      //   public string Path = "C:/Users/arsalang/Desktop/json.txt";
-        public string Path = ConfigurationManager.AppSettings["Path"];
-        public static Dictionary<string, double> Dictionary = new Dictionary<string, double>();
+        private string _path = ConfigurationManager.AppSettings["Path"];
+        private Dictionary<string, double> _exchangeRates = new Dictionary<string, double>();
 
         public double GetExchangeRate(string sourceCurrency,string targetCurrency)
         {
             double rate;
-            string jsonString = File.ReadAllText(Path);
-            Dictionary = JsonParser.ParseJson(jsonString,sourceCurrency.ToUpper());
-            if (Dictionary.TryGetValue(targetCurrency, out rate) == false)
+            string jsonString = File.ReadAllText(_path);
+            _exchangeRates = JsonParser.ParseJson(jsonString,sourceCurrency.ToUpper());
+            if (_exchangeRates.TryGetValue(targetCurrency, out rate) == false)
             {
                 throw new Exception("Currency " + targetCurrency + " not found in currency list.");
             }
