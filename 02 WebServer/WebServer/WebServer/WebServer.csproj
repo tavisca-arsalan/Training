@@ -42,10 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InternalErrorHandler.cs" />
+    <Compile Include="HomePageHandler.cs" />
+    <Compile Include="UnsupportedMediaTypeErrorHandler.cs" />
     <Compile Include="NotFoundErrorHandler.cs" />
+    <Compile Include="ResponseSender.cs" />
     <Compile Include="TextRequestHandler.cs" />
-    <Compile Include="CreateResponse.cs" />
     <Compile Include="Dispatcher.cs" />
     <Compile Include="FileHandler.cs" />
     <Compile Include="IProcessor.cs" />

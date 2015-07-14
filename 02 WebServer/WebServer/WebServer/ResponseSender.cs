@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -8,19 +7,10 @@ using System.Threading.Tasks;
 
 namespace WebServer
 {
-    class InternalErrorHandler:IProcessor
+    public class ResponseSender
     {
-        RegistryKey registryKey = Registry.ClassesRoot;
-        private Socket _clientSocket = null;
-        private Encoding _charEncoder = Encoding.UTF8;
-       
-        
-        public InternalErrorHandler(Socket clientSocket)
-        {
-            _clientSocket = clientSocket;
-        }
-
-        private void SendResponse(Socket clientSocket, byte[] byteContent, string responseCode, string contentType)
+        private static Encoding _charEncoder = Encoding.UTF8;
+        public static void SendResponse(Socket clientSocket, byte[] byteContent, string responseCode, string contentType)
         {
             try
             {
@@ -35,24 +25,13 @@ namespace WebServer
             }
         }
 
-        private byte[] CreateHeader(string responseCode, int contentLength, string contentType)
+        public static byte[] CreateHeader(string responseCode, int contentLength, string contentType)
         {
             return _charEncoder.GetBytes("HTTP/1.1 " + responseCode + "\r\n"
                                   + "Server: Simple Web Server\r\n"
                                   + "Content-Length: " + contentLength + "\r\n"
                                   + "Connection: close\r\n"
                                   + "Content-Type: " + contentType + "\r\n\r\n");
-        }
-
-        public void DoGet(string uri)
-        {
-            byte[] emptyByteArray = new byte[0];
-            SendResponse(_clientSocket, emptyByteArray, "500 Internal server error", "text/html");
-        }
-
-        public void DoPost()
-        {
-            throw new NotImplementedException();
         }
     }
 }

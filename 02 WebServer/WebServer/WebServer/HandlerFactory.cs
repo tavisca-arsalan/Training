@@ -25,10 +25,9 @@ namespace WebServer
         {
             IProcessor requestProcessor = null;
             string extension = GetExtensionFromUrl(url);
-           
+            
             if (_knownExtensions.Contains(extension))
             {
-
                 switch (extension)
                 {
 
@@ -54,7 +53,7 @@ namespace WebServer
             }
             else 
             {
-                requestProcessor = new InternalErrorHandler(clientSocket);
+                requestProcessor = new UnsupportedMediaTypeErrorHandler(clientSocket);
             }
             return requestProcessor;
         }

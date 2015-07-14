@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace WebServer
 {
-    class NotFoundErrorHandler:IProcessor
+    class UnsupportedMediaTypeErrorHandler:IProcessor
     {
         public RegistryKey RegistryKey = Registry.ClassesRoot;
         private Socket _clientSocket = null;
         private Encoding _charEncoder = Encoding.UTF8;
        
         
-        public NotFoundErrorHandler(Socket clientSocket)
+        public UnsupportedMediaTypeErrorHandler(Socket clientSocket)
         {
             _clientSocket = clientSocket;
         }
-       
 
+       
         public void DoGet(string uri)
         {
             byte[] emptyByteArray = new byte[0];
-            ResponseSender.SendResponse(_clientSocket, emptyByteArray, "404 Not Found", "text/html");
+            ResponseSender.SendResponse(_clientSocket, emptyByteArray, "415 Unsupprted Media Type", "text/html");
         }
 
         public void DoPost()

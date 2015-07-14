@@ -14,7 +14,7 @@ namespace WebServer
         public string HttpProtocolVersion;
 
 
-        public void Parser(string requestString)
+        public void Parse(string requestString)
         {
             try
             {

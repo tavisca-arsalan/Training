@@ -11,8 +11,8 @@ namespace WebServer
 {
     class Dispatcher
     {
-        private Socket _clientSocket=null; // use a queue later on
-        private static HandlerFactory handlerFactory = new HandlerFactory();
+        private Socket _clientSocket=null; 
+        private static HandlerFactory _handlerFactory = new HandlerFactory();
         public Dispatcher(Socket clientSocket)
         {
             _clientSocket = clientSocket; 
@@ -23,18 +23,15 @@ namespace WebServer
             string requestString = DecodeRequest(_clientSocket);
             if (string.IsNullOrWhiteSpace(requestString) == false)
             {
-                requestParser.Parser(requestString);
+                requestParser.Parse(requestString);
                 Console.WriteLine(requestParser.HttpUrl);
                 int dotIndex = requestParser.HttpUrl.LastIndexOf('.') + 1;
                 if (dotIndex > 0)
-                {
-                    
-                    var requestHandler = handlerFactory.CreateHandler(requestParser.HttpUrl,_clientSocket, ConfigurationManager.AppSettings["Path"]);
+                {  
+                    var requestHandler = _handlerFactory.CreateHandler(requestParser.HttpUrl,_clientSocket, ConfigurationManager.AppSettings["Path"]);
 
                     if (requestParser.HttpMethod.Equals("get", StringComparison.InvariantCultureIgnoreCase))
                     {
-
-                        //  var createResponse = new CreateResponse(_clientSocket, ConfigurationManager.AppSettings["Path"]);
                         requestHandler.DoGet(requestParser.HttpUrl);
                     }
                     else
@@ -43,11 +40,11 @@ namespace WebServer
                         Console.ReadLine();
                     }
                 }
-                else   //find default file as index .htm of index.html
+               else   //find default file as index .htm of index.html
                 {
-                    TextRequestHandler htmlRequestHandler = new TextRequestHandler(_clientSocket, ConfigurationManager.AppSettings["Path"]);
-                    htmlRequestHandler.DoGet(requestParser.HttpUrl);
-                }
+                    HomePageHandler homePageHandler = new HomePageHandler(_clientSocket, ConfigurationManager.AppSettings["Path"]);
+                    homePageHandler.DoGet(requestParser.HttpUrl);
+                }  
             }
             StopClientSocket(_clientSocket);  //closes the connection
         }
@@ -60,7 +57,7 @@ namespace WebServer
 
         private string DecodeRequest(Socket clientSocket)
         {
-            Encoding _charEncoder = Encoding.UTF8;
+            Encoding charEncoder = Encoding.UTF8;
             var receivedBufferlen = 0;
             var buffer = new byte[10240];
             try
@@ -69,10 +66,9 @@ namespace WebServer
             }
             catch (Exception)
             {
-                //Console.WriteLine("buffer full");
                 Console.ReadLine();
             }
-            return _charEncoder.GetString(buffer, 0, receivedBufferlen);
+            return charEncoder.GetString(buffer, 0, receivedBufferlen);
         }   
         
     }
