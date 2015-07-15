@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OperatorOverloading.CustomExceptions;
+using OperatorOverloading.DBL;
 
 namespace OperatorOverloading.Model
 {
@@ -22,7 +23,7 @@ namespace OperatorOverloading.Model
             set {
                 if (string.IsNullOrWhiteSpace(value) == false && value.Length==3)
                 {
-                    _currency = value;
+                    _currency = value.ToUpper();
                 }
                 else
                 {
@@ -50,6 +51,37 @@ namespace OperatorOverloading.Model
      
         }
 
+        public Money Convert(string targetCurrency)
+        {
+            double rate;
+            // currency value validation here:
+
+            if (string.IsNullOrWhiteSpace(targetCurrency) == true && targetCurrency.Length != 3)
+            {
+                CustomExceptions.ExceptionThrower.ThrowImproperValueForCurrency();
+            }
+            if (this.Currency.Equals("USD") == false && targetCurrency.ToUpper().Equals("USD") == false)
+            {
+                throw new Exception("Either of two currencies must be USD!!");
+            }
+            if (this.Currency.Equals("USD"))
+            {
+                FileExchangeRateProvider provideExchangeRate = new FileExchangeRateProvider();
+                rate = provideExchangeRate.GetExchangeRate(this.Currency, targetCurrency.ToUpper());
+                return new Money(this.Amount * rate, targetCurrency.ToUpper());
+            }
+            else
+            {
+                FileExchangeRateProvider provideExchangeRate = new FileExchangeRateProvider();
+                rate = provideExchangeRate.GetExchangeRate(targetCurrency.ToUpper(), this.Currency);
+                if (this.Amount == 0)
+                {
+                    return new Money(0, targetCurrency.ToUpper());
+                }
+
+                return new Money(this.Amount / rate, targetCurrency.ToUpper());
+            }
+        }
 
         private static void Validate(Money money1, Money money2)
         {
