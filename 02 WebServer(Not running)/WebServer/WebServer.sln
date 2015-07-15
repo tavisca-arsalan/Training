@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebServer", "WebServer\WebServer.csproj", "{303DD12C-31CD-4EFC-BFD3-37AD9B352CC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 WebServer", "02 WebServer", "{08BD2A3B-EFD5-4201-A726-DA2B81F237CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{915E554A-828D-4E3F-ADB4-132960E4A2A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Handlers", "Handlers\Handlers.csproj", "{30D1BA95-5752-43FA-ADB9-AD237036FAC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{303DD12C-31CD-4EFC-BFD3-37AD9B352CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{303DD12C-31CD-4EFC-BFD3-37AD9B352CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{303DD12C-31CD-4EFC-BFD3-37AD9B352CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{303DD12C-31CD-4EFC-BFD3-37AD9B352CC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{915E554A-828D-4E3F-ADB4-132960E4A2A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{915E554A-828D-4E3F-ADB4-132960E4A2A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{915E554A-828D-4E3F-ADB4-132960E4A2A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{915E554A-828D-4E3F-ADB4-132960E4A2A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30D1BA95-5752-43FA-ADB9-AD237036FAC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30D1BA95-5752-43FA-ADB9-AD237036FAC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30D1BA95-5752-43FA-ADB9-AD237036FAC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30D1BA95-5752-43FA-ADB9-AD237036FAC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{303DD12C-31CD-4EFC-BFD3-37AD9B352CC3} = {08BD2A3B-EFD5-4201-A726-DA2B81F237CE}
+		{915E554A-828D-4E3F-ADB4-132960E4A2A7} = {08BD2A3B-EFD5-4201-A726-DA2B81F237CE}
+		{30D1BA95-5752-43FA-ADB9-AD237036FAC2} = {08BD2A3B-EFD5-4201-A726-DA2B81F237CE}
+	EndGlobalSection
+EndGlobal

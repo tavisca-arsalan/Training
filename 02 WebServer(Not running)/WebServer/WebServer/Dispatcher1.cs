@@ -9,18 +9,19 @@ using System.Configuration;
 
 namespace WebServer
 {
-    class Dispatcher
+    /*
+    class Dispatcher1
     {
         private Socket _clientSocket=null; 
         private static HandlerFactory _handlerFactory = new HandlerFactory();
-        public Dispatcher(Socket clientSocket)
+        public Dispatcher1(Socket clientSocket)
         {
             _clientSocket = clientSocket; 
         }
         public void HandleClient()
         {
             var requestParser = new RequestParser();
-            string requestString = DecodeRequest(_clientSocket);
+            string requestString = DecodeRequest();
             if (string.IsNullOrWhiteSpace(requestString) == false)
             {
                 requestParser.Parse(requestString);
@@ -46,23 +47,23 @@ namespace WebServer
                     homePageHandler.DoGet(requestParser.HttpUrl);
                 }  
             }
-            StopClientSocket(_clientSocket);  //closes the connection
+            StopClientSocket();  //closes the connection
         }
 
-        public void StopClientSocket(Socket clientSocket)
+        public void StopClientSocket()
         {
-            if (clientSocket != null)
-                clientSocket.Close();
+            if (_clientSocket != null)
+                _clientSocket.Close();
         }
 
-        private string DecodeRequest(Socket clientSocket)
+        private string DecodeRequest()
         {
             Encoding charEncoder = Encoding.UTF8;
             var receivedBufferlen = 0;
             var buffer = new byte[10240];
             try
             {
-                receivedBufferlen = clientSocket.Receive(buffer);
+                receivedBufferlen =_clientSocket.Receive(buffer);
             }
             catch (Exception)
             {
@@ -71,5 +72,5 @@ namespace WebServer
             return charEncoder.GetString(buffer, 0, receivedBufferlen);
         }   
         
-    }
+    }*/
 }

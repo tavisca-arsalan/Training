@@ -42,7 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application.cs" />
     <Compile Include="HomePageHandler.cs" />
+    <Compile Include="IQueue.cs" />
+    <Compile Include="InProcQueue.cs" />
+    <Compile Include="Server.cs" />
     <Compile Include="UnsupportedMediaTypeErrorHandler.cs" />
     <Compile Include="NotFoundErrorHandler.cs" />
     <Compile Include="ResponseSender.cs" />

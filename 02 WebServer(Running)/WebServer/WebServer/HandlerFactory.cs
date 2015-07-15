@@ -5,20 +5,15 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
+using System.Configuration;
 namespace WebServer
 {
     class HandlerFactory
     {
-        private List<string> _knownExtensions = new List<string>();
-        public HandlerFactory()
+        private static List<string> _knownExtensions;
+        static HandlerFactory()
         {
-            _knownExtensions.Add(".html");
-            _knownExtensions.Add(".htm");
-            _knownExtensions.Add(".css");
-            _knownExtensions.Add(".js");
-            _knownExtensions.Add(".txt");
-            _knownExtensions.Add(".ico");
+            _knownExtensions = ConfigurationManager.AppSettings["known-extensions"].Split(',').ToList();
         }
         // This function was originally a virtual function
         public IProcessor CreateHandler(string url,Socket clientSocket, string contentPath)
@@ -31,19 +26,11 @@ namespace WebServer
                 switch (extension)
                 {
 
-                    case ".html":
-                        requestProcessor = new TextRequestHandler(clientSocket, contentPath);
-                        break;
-                    case ".htm":
-                        requestProcessor = new TextRequestHandler(clientSocket, contentPath);
-                        break;
-                    case ".css":
-                        requestProcessor = new TextRequestHandler(clientSocket, contentPath);
-                        break;
-                    case ".js":
-                        requestProcessor = new TextRequestHandler(clientSocket, contentPath);
-                        break;
-                    case ".txt":
+                    case "html":
+                    case "htm":                       
+                    case "css":
+                    case "js":
+                    case "txt":
                         requestProcessor = new TextRequestHandler(clientSocket, contentPath);
                         break;
                     default :
@@ -60,7 +47,7 @@ namespace WebServer
 
         private string GetExtensionFromUrl(string url)
         {
-            return url.Substring(url.LastIndexOf('.'));
+            return url.Substring(url.LastIndexOf('.')+1);
         }
     }
 }

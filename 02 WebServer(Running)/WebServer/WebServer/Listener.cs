@@ -33,18 +33,15 @@ namespace WebServer
             Debug.WriteLine("Waiting for conection...");
             while (_running)
             {
-                if (_listener.Pending())
-                {
-                   
-                    Socket clientSocket = _listener.AcceptSocket();
-                    Dispatcher dispatcher = new Dispatcher(clientSocket);
-                    Thread dispatcherThread = new Thread(new ThreadStart(dispatcher.HandleClient));
-                    dispatcherThread.Start();  
-                   //clientSocket.Close();
-                }
+                   // this._listener.Start();                    
+                    var socket = this._listener.AcceptSocket();
+                    if (socket.Connected == false) continue;
+                    Application.RequestQueue.Enqueue(socket);                
             }
-            _running = false;
-            _listener.Stop();
+        }
+        public void Stop()
+        {
+            this._listener.Stop();
         }
 
     }
