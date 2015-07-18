@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E42A6BA0-2A70-44CB-92C2-8CB0AD8E52BB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tavisca.EmployeeManagementService.Implementaion</RootNamespace>
+    <AssemblyName>Tavisca.EmployeeManagementService.Implementaion</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EMSGetImplementation.cs" />
+    <Compile Include="EMSPostImplementation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tavisca.EmployeeManagement.DataContract\Tavisca.EmployeeManagement.DataContract.csproj">
+      <Project>{df5168bf-291a-43a8-9c82-71e003aad3b9}</Project>
+      <Name>Tavisca.EmployeeManagement.DataContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tavisca.EmployeeManagement.Translator\Tavisca.EmployeeManagement.Translator.csproj">
+      <Project>{be8dd53e-c0e2-443b-ba8c-dc8234ae15e6}</Project>
+      <Name>Tavisca.EmployeeManagement.Translator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tavisca.EmployeeManegent.ServiceLibrary\Tavisca.EmployeeManagement.ServiceContract.csproj">
+      <Project>{15b3e0d2-6217-493a-a690-158c497f5318}</Project>
+      <Name>Tavisca.EmployeeManagement.ServiceContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tavisca.WCF.DAL\Tavisca.WCF.DAL.csproj">
+      <Project>{ea8b9492-0ec6-41db-a6fc-20e549aa853e}</Project>
+      <Name>Tavisca.WCF.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tavisca.Wcf.Model\Tavisca.WCF.Model.csproj">
+      <Project>{fcd4c0ba-bc13-4157-8461-af5ad60d3fb6}</Project>
+      <Name>Tavisca.WCF.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
