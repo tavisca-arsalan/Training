@@ -1,31 +1,38 @@
 ﻿String.prototype.Concat = function (stringTwo)
-{
-    var stringOne = this;
-    
-    var concatenatedString = [stringOne.length + stringTwo.length];
 
-    if (stringOne.length < stringTwo.length)
-    {
-        var limit = stringTwo.length;
-    }
-    else
-    {
-        var limit = stringOne.length;
-    }
+{   
    
-    for (var index = 0; index < limit; index++) {
-        if (index < stringOne.length)
-        {
-            concatenatedString[index] = stringOne.charAt(index);
-        }
-        if (index < stringTwo.length)
-            concatenatedString[index + stringTwo.length] = stringTwo.charAt(index);
-    }
 
-    concatenatedString = concatenatedString.join("");
-    // console.log(concatenatedString);
-    return concatenatedString;
-}
+        var firstString = this;
+        var concatenatedString;
+        
+        for (var i = 0; i < arguments.length; i++) {
+            var secondString = arguments[i];
+
+            concatenatedString = [firstString.length + secondString.length];
+            var temp = firstString.length;
+            if (temp < secondString.length)
+                temp = secondString.length;
+            for (var index = 0; index < temp; index++) {
+                if (index < firstString.length)
+                { concatenatedString[index] = firstString.charAt(index); }
+                if (index < secondString.length)
+                    concatenatedString[index + firstString.length] = secondString.charAt(index);
+            }
+            concatenatedString = concatenatedString.join("");
+                firstString = concatenatedString;
+            }
+        
+
+            
+            return concatenatedString;
+        }
+
+
+
+  
+    
+
 
 
 
