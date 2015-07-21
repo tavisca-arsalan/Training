@@ -1,5 +1,4 @@
-﻿String.prototype.customConcat = function (stringTwo)
-{   
+﻿String.prototype.customConcat = function (stringTwo){   
         var firstString = this;
         var concatenatedString;
         
@@ -21,16 +20,17 @@
             return concatenatedString;
         }
 
-String.prototype.Substring = function (startIndex, endIndex) {
-    if (startIndex < 0 || endIndex < 0) {
-        document.write("Invalid range specified for substring.");
-        return;
-    }
+String.prototype.customSubstring = function (startIndex, endIndex) {
     var substring = "";
-    for (var index = startIndex ; index < endIndex; index++)
-    {
-        substring = substring + (this[index]);
+    if (startIndex < 0 || endIndex < 0) {
+        return substring;
     }
-
+    if (endIndex > this.length) {
+        return this;
+     }
+       
+     for (var index = startIndex ; index < endIndex; index++) {
+         substring = substring + (this[index]);
+     }
     return substring;
 }
