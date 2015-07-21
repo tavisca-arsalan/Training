@@ -1,14 +1,10 @@
-﻿String.prototype.Concat = function (stringTwo)
-
+﻿String.prototype.customConcat = function (stringTwo)
 {   
-   
-
         var firstString = this;
         var concatenatedString;
         
         for (var i = 0; i < arguments.length; i++) {
             var secondString = arguments[i];
-
             concatenatedString = [firstString.length + secondString.length];
             var temp = firstString.length;
             if (temp < secondString.length)
@@ -20,21 +16,10 @@
                     concatenatedString[index + firstString.length] = secondString.charAt(index);
             }
             concatenatedString = concatenatedString.join("");
-                firstString = concatenatedString;
-            }
-        
-
-            
+            firstString = concatenatedString;
+            }            
             return concatenatedString;
         }
-
-
-
-  
-    
-
-
-
 
 String.prototype.Substring = function (startIndex, endIndex) {
     if (startIndex < 0 || endIndex < 0) {
