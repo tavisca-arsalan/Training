@@ -1,5 +1,5 @@
-﻿var painted;
-var content;
+﻿var marked;
+var boxes;
 var winningCombinations;
 var turn = 0;
 var currentBox;
@@ -9,26 +9,22 @@ var squaresFilled = 0;
 var w;
 var y;
 
-
 window.onload = function () {
 
-    painted = new Array();
-    content = new Array();
+    marked = new Array();
+    boxes = new Array();
     winningCombinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-
     for (var l = 0; l <= 8; l++) {
-        painted[l] = false;
-        content[l] = '';
+        marked[l] = false;
+        boxes[l] = '';
     }
 }
 
-//Game methods
 function boxClicked(boxNumber) {
-    currentBox = "box" + boxNumber;
-    c = document.getElementById(currentBox);
-    context = c.getContext("2d");
 
-    if (painted[boxNumber - 1] == false) {
+    currentBox = document.getElementById("box" + boxNumber);
+    context = currentBox.getContext("2d");
+    if (marked[boxNumber - 1] == false) {
         if (turn % 2 == 0) {
             context.beginPath();
             context.moveTo(10, 10);
@@ -37,7 +33,7 @@ function boxClicked(boxNumber) {
             context.lineTo(10, 40);
             context.stroke();
             context.closePath();
-            content[boxNumber - 1] = 'X';
+            boxes[boxNumber - 1] = 'X';
         }
 
         else {
@@ -45,13 +41,13 @@ function boxClicked(boxNumber) {
             context.arc(25, 25, 20, 0, Math.PI * 2, true);
             context.stroke();
             context.closePath();
-            content[boxNumber - 1] = 'O';
+            boxes[boxNumber - 1] = 'O';
         }
 
         turn++;
-        painted[boxNumber - 1] = true;
+        marked[boxNumber - 1] = true;
         squaresFilled++;
-        checkForWinners(content[boxNumber - 1]);
+        checkForWinners(boxes[boxNumber - 1]);
 
         if (squaresFilled == 9) {
             alert("DRAW!");
@@ -67,17 +63,15 @@ function boxClicked(boxNumber) {
 function checkForWinners(symbol) {
 
     for (var i = 0; i < winningCombinations.length; i++) {
-        if (content[winningCombinations[i][0]] == symbol && content[winningCombinations[i][1]] == symbol && content[winningCombinations[i][2]] == symbol) {
+        if (boxes[winningCombinations[i][0]] == symbol && boxes[winningCombinations[i][1]] == symbol && boxes[winningCombinations[i][2]] == symbol) {
             alert(symbol + " WON!");
             restartGame();
         }
     }
-
 }
 function restartGame() {
     y = confirm("PLAY AGAIN?");
     if (y == true) {
         location.reload(true);
     }
-
 }
