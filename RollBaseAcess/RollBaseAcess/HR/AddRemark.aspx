@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/1.View/Site.Master" AutoEventWireup="true" CodeBehind="AddRemark.aspx.cs" Inherits="RollBaseAcess._1.View.WebForm2" %>
 
-<%@ Register Src="~/1.View/HrNavTab.ascx" TagPrefix="uc1" TagName="HrNavTab" %>
+<%@ Register Src="~/HR/HrNavTab.ascx" TagPrefix="uc1" TagName="HrNavTab" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     

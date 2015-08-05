@@ -50,7 +50,7 @@ namespace RollBaseAcess._1.View
             employee.JoiningDate = DateTime.UtcNow;
             //Fix it.
             employee = employee.CreateEmployee();
-            Session["Fetched Employee Object"] = employee;
+            //Session["Fetched Employee Object"] = employee;
            
         }
     }

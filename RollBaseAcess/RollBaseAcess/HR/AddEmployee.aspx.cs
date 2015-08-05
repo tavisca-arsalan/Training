@@ -6,17 +6,17 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Tavisca.Model;
 
-
-namespace RollBaseAcess
+namespace RollBaseAcess._1.View
 {
-    public partial class WebForm2 : System.Web.UI.Page
+    public partial class WebForm3 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+       
+        protected void Button1_Click1(object sender, EventArgs e)
         {
             ClientEmployee employee = new ClientEmployee();
             employee.FirstName = TextBox1.Text;
@@ -27,23 +27,21 @@ namespace RollBaseAcess
             employee.JoiningDate = DateTime.UtcNow;
             //Fix it.
             employee = employee.CreateEmployee();
-            Session["Fetched Employee Object"] = employee;
-           
-        }
-
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBox6_TextChanged(object sender, EventArgs e)
-        {
-
+            if (employee == null)
+            {
+                Label6.Text = "Could not add employee.";
+                Label6.Visible = true;
+            }
+            else
+            {
+                //Session["Fetched Employee Object"] = employee;
+                TextBox1.Text = "";
+                TextBox2.Text = "";
+                TextBox3.Text = "";
+                TextBox4.Text = "";
+                TextBox5.Text = "";
+                Label6.Visible = true;
+            }
         }
     }
 }

@@ -15,10 +15,11 @@ namespace RollBaseAcess._1.View
        {
            if (Page.IsPostBack == false)
            {
-               ClientEmployee fetchedEmployee = (ClientEmployee)Session["Fetched_Employee_Object"];
-               if (fetchedEmployee == null || fetchedEmployee.Title.Equals("HR") == false)
+              
+               string role = (string)Session["employeeRole"];
+               if (role == null || string.Equals(role,"HR",StringComparison.OrdinalIgnoreCase) == false)
                {
-                   Response.Redirect("Login.aspx");
+                   Response.Redirect("~/1.View/Login.aspx");
                }
 
                employeeDictionary = Transporter.GetAllEmployees();

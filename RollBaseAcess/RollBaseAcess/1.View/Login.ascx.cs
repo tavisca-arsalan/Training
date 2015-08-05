@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Tavisca.Model;
@@ -24,6 +25,7 @@ namespace RollBaseAcess
             clientCredential.Password = TextBox2.Text;
             //Fix it.
             ClientEmployee employee = clientCredential.Authenticate();
+
             if (employee == null)
             {
                 // Invalid Credentials Provided
@@ -33,16 +35,29 @@ namespace RollBaseAcess
             }
             else
             {
-                Session["Fetched_Employee_Object"] = employee;
-                if (string.Equals(employee.Title,"HR",StringComparison.OrdinalIgnoreCase))
+                FormsAuthentication.SetAuthCookie(employee.Email.Trim(), false);
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, employee.Email.Trim(), DateTime.UtcNow, DateTime.UtcNow.AddMinutes(10), false, employee.Title.Trim().ToLower());
+                HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(ticket));
+                Response.Cookies.Add(cookie);
+                Session["employeeId"] = employee.Id.Trim();
+                Session["userName"] = employee.Email.Trim();
+                Session["employeeRole"] = employee.Title.Trim();
+          
+                String returnUrl;
+                if (Request.QueryString["ReturnUrl"] == null)
                 {
-                    Response.Redirect("AddRemark.aspx");
+                    if(string.Equals(employee.Title.Trim(),"hr",StringComparison.OrdinalIgnoreCase))
+                        returnUrl = "~/HR/AddRemark.aspx";
+                    else
+                        returnUrl = "~/1.View/EmployeeHomePage.aspx";
                 }
                 else
                 {
-                    Response.Redirect("EmployeeHomePage.aspx");
+                    returnUrl = Request.QueryString["ReturnUrl"];
                 }
+                Response.Redirect(returnUrl);
             }
+
         }
     }
 }

@@ -17,7 +17,7 @@ namespace RollBaseAcess._1.View
         protected void Button1_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("Login.aspx");
+            Response.Redirect("~/1.View/Login.aspx");
         }
 
        

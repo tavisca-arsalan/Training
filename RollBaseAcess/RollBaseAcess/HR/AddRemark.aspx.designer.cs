@@ -19,7 +19,7 @@ namespace RollBaseAcess._1.View {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RollBaseAcess._1.View.WebUserControl1 HrNavTab;
+        protected global::System.Web.UI.UserControl HrNavTab;
         
         /// <summary>
         /// Label6 control.

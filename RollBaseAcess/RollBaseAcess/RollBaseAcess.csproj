@@ -128,10 +128,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1.View\Login.aspx" />
-    <Content Include="1.View\HrHomeMultiView.aspx" />
-    <Content Include="1.View\HrNavTab.ascx" />
-    <Content Include="1.View\AddRemark.aspx" />
-    <Content Include="1.View\AddEmployee.aspx" />
+    <Content Include="HR\HrHomeMultiView.aspx" />
+    <Content Include="HR\HrNavTab.ascx" />
+    <Content Include="HR\AddRemark.aspx" />
+    <Content Include="HR\AddEmployee.aspx" />
     <Content Include="1.View\ChangePassword.aspx" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -189,6 +189,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
@@ -205,7 +207,7 @@
     <Content Include="1.View\Login.ascx" />
     <Content Include="packages.config" />
     <Content Include="1.View\EmployeeHomePage.aspx" />
-    <Content Include="1.View\HRhomePage.aspx" />
+    <Content Include="HR\HRhomePage.aspx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -262,32 +264,32 @@
     <Compile Include="1.View\Login.ascx.designer.cs">
       <DependentUpon>Login.ascx</DependentUpon>
     </Compile>
-    <Compile Include="1.View\HrHomeMultiView.aspx.cs">
+    <Compile Include="HR\HrHomeMultiView.aspx.cs">
       <DependentUpon>HrHomeMultiView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="1.View\HrHomeMultiView.aspx.designer.cs">
+    <Compile Include="HR\HrHomeMultiView.aspx.designer.cs">
       <DependentUpon>HrHomeMultiView.aspx</DependentUpon>
     </Compile>
-    <Compile Include="1.View\HrNavTab.ascx.cs">
+    <Compile Include="HR\HrNavTab.ascx.cs">
       <DependentUpon>HrNavTab.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="1.View\HrNavTab.ascx.designer.cs">
+    <Compile Include="HR\HrNavTab.ascx.designer.cs">
       <DependentUpon>HrNavTab.ascx</DependentUpon>
     </Compile>
-    <Compile Include="1.View\AddRemark.aspx.cs">
+    <Compile Include="HR\AddRemark.aspx.cs">
       <DependentUpon>AddRemark.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="1.View\AddRemark.aspx.designer.cs">
+    <Compile Include="HR\AddRemark.aspx.designer.cs">
       <DependentUpon>AddRemark.aspx</DependentUpon>
     </Compile>
-    <Compile Include="1.View\AddEmployee.aspx.cs">
+    <Compile Include="HR\AddEmployee.aspx.cs">
       <DependentUpon>AddEmployee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="1.View\AddEmployee.aspx.designer.cs">
+    <Compile Include="HR\AddEmployee.aspx.designer.cs">
       <DependentUpon>AddEmployee.aspx</DependentUpon>
     </Compile>
     <Compile Include="1.View\ChangePassword.aspx.cs">
@@ -296,6 +298,16 @@
     </Compile>
     <Compile Include="1.View\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="1.View\Site.Master.cs">
@@ -326,11 +338,11 @@
     <Compile Include="1.View\EmployeeHomePage.aspx.designer.cs">
       <DependentUpon>EmployeeHomePage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="1.View\HRhomePage.aspx.cs">
+    <Compile Include="HR\HRhomePage.aspx.cs">
       <DependentUpon>HRhomePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="1.View\HRhomePage.aspx.designer.cs">
+    <Compile Include="HR\HRhomePage.aspx.designer.cs">
       <DependentUpon>HRhomePage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -344,6 +356,7 @@
     <Content Include="1.View\Web.config" />
     <Content Include="1.View\Site.Master" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

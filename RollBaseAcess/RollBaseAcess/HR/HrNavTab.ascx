@@ -7,8 +7,8 @@
 
     <div class="container">
         <ul class="nav nav-tabs">
-            <li ><a href="http://localhost:50746/1.View/AddRemark.aspx">Add Remark</a></li>
-            <li><a href="http://localhost:50746/1.View/AddEmployee.aspx">Add Employee</a></li>
+            <li ><a href="http://localhost:50746/HR/AddRemark.aspx">Add Remark</a></li>
+            <li><a href="http://localhost:50746/HR/AddEmployee.aspx">Add Employee</a></li>
              <li><a href="http://localhost:50746/1.View/ChangePassword.aspx">Chanage Password</a></li>
             <li><a ><asp:Button ID="Button1" runat="server" Text="Logout" OnClick="Button1_Click" /></a></li>
         </ul>

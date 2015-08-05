@@ -11,15 +11,15 @@ namespace RollBaseAcess._1.View
 {
     public partial class WebForm4 : System.Web.UI.Page
     {
-        public ClientEmployee employee;
+        protected string employeeEmail; 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Fetched_Employee_Object"] == null)
-                Response.Redirect("Login.aspx");
+            if (Session["employeeId"] == null)
+                Response.Redirect("~/1.View/Login.aspx");
             else
             {
-                employee = (ClientEmployee)Session["Fetched_Employee_Object"];
-                TextBox1.Text = employee.Email;
+                employeeEmail = (string)Session["userName"];
+                TextBox1.Text = employeeEmail;
             }
         }
 
@@ -34,7 +34,7 @@ namespace RollBaseAcess._1.View
             clientCredentialModifier.EmailId = TextBox1.Text;
             clientCredentialModifier.OldPassword = TextBox2.Text;
             clientCredentialModifier.NewPassword = TextBox3.Text;
-            if (employee.Email.Equals(clientCredentialModifier.EmailId))
+            if (employeeEmail.Equals(clientCredentialModifier.EmailId))
             {
                 int result = clientCredentialModifier.ChangePassword();
 
@@ -50,7 +50,7 @@ namespace RollBaseAcess._1.View
                 {
                     Label6.Visible = true;
                     //TO DO: Make it stay for some time
-                    Response.Redirect("Login.aspx");
+                    Response.Redirect("~/1.View/Login.aspx");
 
                 }
             }

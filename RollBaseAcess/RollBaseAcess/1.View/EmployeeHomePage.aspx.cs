@@ -14,18 +14,23 @@ namespace RollBaseAcess
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        protected ClientEmployee fetchedEmployee=new ClientEmployee();
+        protected string fetchedEmployeeId;
+        protected string fetchedEmployeeRole;
+        protected string fetchedEmployeeEmail;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            fetchedEmployee = (ClientEmployee)Session["Fetched_Employee_Object"];
-            if (fetchedEmployee == null || fetchedEmployee.Title.Equals("HR"))
+            fetchedEmployeeId = (string)Session["employeeId"];
+            fetchedEmployeeRole = (string)Session["employeeRole"];
+            fetchedEmployeeEmail = (string)Session["userName"];
+            if (fetchedEmployeeRole== null || string.Equals(fetchedEmployeeRole,"HR",StringComparison.OrdinalIgnoreCase))
             {
-                Response.Redirect("Login.aspx");
+                Response.Redirect("~/1.View/Login.aspx");
             }
-            Label1.Text = "Hi," + fetchedEmployee.FirstName + ".View your reviews.";
+            Label1.Text = "Hi," + fetchedEmployeeEmail + ".View your reviews.";
             if (Page.IsPostBack == false)
             {
-                PagenatedRemarkListResponse  response=GetRemarks(fetchedEmployee.Id, 1);
+                PagenatedRemarkListResponse  response=GetRemarks(fetchedEmployeeId, 1);
                 if ( response.Status.StatusCode.Equals("200"))
                 {
                     GridView1.VirtualItemCount=response.TotalCount;
@@ -44,7 +49,7 @@ namespace RollBaseAcess
         {
             int pageNo = e.NewPageIndex;
             GridView1.PageIndex = pageNo;
-            PagenatedRemarkListResponse response = GetRemarks(fetchedEmployee.Id,pageNo + 1);
+            PagenatedRemarkListResponse response = GetRemarks(fetchedEmployeeId,pageNo + 1);
             GridView1.VirtualItemCount = response.TotalCount;
             GridView1.DataSource =response.Remarks;
             GridView1.DataBind();
@@ -52,7 +57,7 @@ namespace RollBaseAcess
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ChangePassword.aspx");
+            Response.Redirect("~/1.View/ChangePassword.aspx");
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
