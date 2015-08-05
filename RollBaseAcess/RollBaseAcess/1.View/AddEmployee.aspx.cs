@@ -27,13 +27,21 @@ namespace RollBaseAcess._1.View
             employee.JoiningDate = DateTime.UtcNow;
             //Fix it.
             employee = employee.CreateEmployee();
-            Session["Fetched Employee Object"] = employee;
-            TextBox1.Text = "";
-            TextBox2.Text = "";
-            TextBox3.Text = "";
-            TextBox4.Text = "";
-            TextBox5.Text = "";
-            Label6.Visible = true;
+            if (employee == null)
+            {
+                Label6.Text = "Could not add employee.";
+                Label6.Visible = true;
+            }
+            else
+            {
+                Session["Fetched Employee Object"] = employee;
+                TextBox1.Text = "";
+                TextBox2.Text = "";
+                TextBox3.Text = "";
+                TextBox4.Text = "";
+                TextBox5.Text = "";
+                Label6.Visible = true;
+            }
         }
     }
 }

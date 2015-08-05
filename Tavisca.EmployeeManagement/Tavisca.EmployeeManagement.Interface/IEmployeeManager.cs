@@ -15,6 +15,7 @@ namespace Tavisca.EmployeeManagement.Interface
 
         List<Remark> GetRemarksById(string employeeId, string pageNumber);
 
+        int GetRemarkCount(string employeeId);
 
     }
 }

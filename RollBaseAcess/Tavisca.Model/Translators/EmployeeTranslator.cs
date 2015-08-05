@@ -19,7 +19,7 @@ namespace Tavisca.Model.Translators
                 Email = clientEmployee.Email,
                 JoiningDate = clientEmployee.JoiningDate,
                 Phone = clientEmployee.Phone,
-                Remarks = clientEmployee.Remarks == null ? null : clientEmployee.Remarks.Select(remark => RemarkTranslator.ToDataContract(remark)).ToArray()
+                //Remarks = clientEmployee.Remarks == null ? null : clientEmployee.Remarks.Select(remark => RemarkTranslator.ToDataContract(remark)).ToArray()
             };
             return employee;
         }
@@ -35,7 +35,7 @@ namespace Tavisca.Model.Translators
                 Email = employee.Email,
                 JoiningDate = employee.JoiningDate,
                 Phone = employee.Phone,
-                Remarks = employee.Remarks == null ? null : employee.Remarks.Select(remark => RemarkTranslator.ToClientModel(remark)).ToList()
+               // Remarks = employee.Remarks == null ? null : employee.Remarks.Select(remark => RemarkTranslator.ToClientModel(remark)).ToList()
             };
             return clientEmployee;
         }

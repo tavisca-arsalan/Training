@@ -11,7 +11,7 @@
   <xs:element name="CreateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Tavisca.EmployeeManagement.DataContract" minOccurs="0" name="CreateResult" nillable="true" type="q2:Employee" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Tavisca.EmployeeManagement.DataContract" minOccurs="0" name="CreateResult" nillable="true" type="q2:EmployeeResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -26,7 +26,7 @@
   <xs:element name="AddRemarkResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Tavisca.EmployeeManagement.DataContract" minOccurs="0" name="AddRemarkResult" nillable="true" type="q4:Remark" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Tavisca.EmployeeManagement.DataContract" minOccurs="0" name="AddRemarkResult" nillable="true" type="q4:RemarkResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -40,7 +40,7 @@
   <xs:element name="CheckCredentialsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Tavisca.EmployeeManagement.DataContract" minOccurs="0" name="CheckCredentialsResult" nillable="true" type="q6:Employee" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Tavisca.EmployeeManagement.DataContract" minOccurs="0" name="CheckCredentialsResult" nillable="true" type="q6:EmployeeResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

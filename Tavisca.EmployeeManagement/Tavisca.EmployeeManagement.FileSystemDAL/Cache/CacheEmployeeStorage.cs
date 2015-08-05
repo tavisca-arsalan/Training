@@ -79,5 +79,12 @@ namespace Tavisca.EmployeeManagement.FileStorage
             var result = _innerStorage.GetRemarksById(employeeId, pageNumber);
             return result;
         }
+
+
+        public int GetRemarkCount(string employeeId)
+        {
+            var result = _innerStorage.GetRemarkCount(employeeId);
+            return result;
+        }
     }
 }

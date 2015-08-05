@@ -43,8 +43,14 @@
     <Compile Include="CredentialModifier.cs" />
     <Compile Include="Credentials.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeListResponse.cs" />
+    <Compile Include="EmployeeResponse.cs" />
+    <Compile Include="PagenatedRemarkListResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Remark.cs" />
+    <Compile Include="RemarkResponse.cs" />
+    <Compile Include="Result.cs" />
+    <Compile Include="Status.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

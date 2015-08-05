@@ -27,7 +27,10 @@ namespace Tavisca.EmployeeManagement.BusinessLogic
             return _storage.GetAll();
         }
 
-
+        public int GetRemarkCount(string employeeId)
+        {
+            return _storage.GetRemarkCount(employeeId);
+        }
 
 
         public List<Remark> GetRemarksById(string employeeId, string pageNumber)

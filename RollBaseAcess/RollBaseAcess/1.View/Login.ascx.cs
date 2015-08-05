@@ -34,7 +34,7 @@ namespace RollBaseAcess
             else
             {
                 Session["Fetched_Employee_Object"] = employee;
-                if (employee.Title.Equals("HR"))
+                if (string.Equals(employee.Title,"HR",StringComparison.OrdinalIgnoreCase))
                 {
                     Response.Redirect("AddRemark.aspx");
                 }

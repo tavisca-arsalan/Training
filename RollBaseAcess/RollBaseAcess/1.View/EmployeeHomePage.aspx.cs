@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Tavisca.Model;
 using Tavisca.Model.EmployeeManagementService;
+using Tavisca.Model.EmployeeService;
 
 namespace RollBaseAcess
 {
@@ -24,26 +25,28 @@ namespace RollBaseAcess
             Label1.Text = "Hi," + fetchedEmployee.FirstName + ".View your reviews.";
             if (Page.IsPostBack == false)
             {
-                
-                if (fetchedEmployee.Remarks[0].Text.Equals("") == false)
+                PagenatedRemarkListResponse  response=GetRemarks(fetchedEmployee.Id, 1);
+                if ( response.Status.StatusCode.Equals("200"))
                 {
-                    GridView1.VirtualItemCount = fetchedEmployee.Remarks.Count;
-                    GridView1.DataSource = GetRemarks(fetchedEmployee.Id, 1);
+                    GridView1.VirtualItemCount=response.TotalCount;
+                    GridView1.DataSource = response.Remarks;
                     GridView1.DataBind();
                 }
             }
         }
         
-        public List<Remark> GetRemarks(string employeeId, int pageNumber)
+        public PagenatedRemarkListResponse GetRemarks(string employeeId, int pageNumber)
         {
-            List<Remark> remarkList = Transporter.GetRemarksById(employeeId, pageNumber.ToString());
-            return remarkList;
+            return Transporter.GetRemarksById(employeeId, pageNumber.ToString()); ;
         }
+
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             int pageNo = e.NewPageIndex;
             GridView1.PageIndex = pageNo;
-            GridView1.DataSource = GetRemarks(fetchedEmployee.Id, pageNo+1);
+            PagenatedRemarkListResponse response = GetRemarks(fetchedEmployee.Id,pageNo + 1);
+            GridView1.VirtualItemCount = response.TotalCount;
+            GridView1.DataSource =response.Remarks;
             GridView1.DataBind();
         }
 

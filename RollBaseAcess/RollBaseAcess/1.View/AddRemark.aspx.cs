@@ -32,7 +32,17 @@ namespace RollBaseAcess._1.View
         protected void Button3_Click(object sender, EventArgs e)
         {
             ClientRemark remark = Transporter.AddRemark(DropDownList1.SelectedValue, TextBox6.Text);
-            TextBox6.Text = "";
+            if (remark == null)
+            {
+                Label7.Text = "Could not add the remark on server.";
+                Label7.Visible = true;
+            }
+            else
+            {
+                TextBox6.Text = "";
+                Label7.Text = "Remark Added";
+                Label7.Visible = true;
+            }
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)

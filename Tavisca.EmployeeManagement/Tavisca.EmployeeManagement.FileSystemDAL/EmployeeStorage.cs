@@ -46,8 +46,6 @@ namespace Tavisca.EmployeeManagement.FileStorage
                 con.Close();
 
                 return employee;
-
-
             }
             catch (Exception ex)
             {
@@ -186,12 +184,12 @@ namespace Tavisca.EmployeeManagement.FileStorage
                 Model.Employee employee = new Model.Employee();
                 SqlConnection connection = new SqlConnection("Data Source=Training9;Initial Catalog=Employee;Persist Security Info=True;User ID=sa;Password=test123!@#");
                 connection.Open();
-                SqlCommand cmd = new SqlCommand("select * from EmployeeDetails where Email='" + emailId + "'", connection);
+                SqlCommand cmd = new SqlCommand("select EmpId,Password from EmployeeDetails where Email='" + emailId + "'", connection);
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
 
-                    if (password.Equals(dr[7].ToString()) == false)
+                    if (password.Equals(dr[1].ToString()) == false)
                     {
                         //employee.Id = "invalid";
                         //employee.FirstName = "";
@@ -205,7 +203,7 @@ namespace Tavisca.EmployeeManagement.FileStorage
                         //employee.JoiningDate = DateTime.UtcNow;
                         //employee.Title = "";
                         //employee.Email = "";
-                        return employee;
+                       // return employee;
                     }
                        
                     else 
@@ -262,24 +260,63 @@ namespace Tavisca.EmployeeManagement.FileStorage
 
         public List<Model.Remark> GetRemarksById(string employeeId, string pageNumber)
         {
-            var remarks = new List<Model.Remark>();
-            SqlConnection connection = new SqlConnection("Data Source=Training9;Initial Catalog=Employee;Persist Security Info=True;User ID=sa;Password=test123!@#");
-            connection.Open();
-            SqlCommand cmd = new SqlCommand("GetRemarksByIdPagenated", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@Id", employeeId));
-            cmd.Parameters.Add(new SqlParameter("@PageNumber", pageNumber));
-            SqlDataReader remarksReader = cmd.ExecuteReader();
-
-            while (remarksReader.Read())
+            try
             {
-                Model.Remark remark = new Model.Remark();   
-                remark.Text = remarksReader[3].ToString();
-                remark.CreateTimeStamp =DateTime.Parse(remarksReader[4].ToString());
-                remarks.Add(remark);
+                var remarks = new List<Model.Remark>();
+                SqlConnection connection = new SqlConnection("Data Source=Training9;Initial Catalog=Employee;Persist Security Info=True;User ID=sa;Password=test123!@#");
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("GetRemarksByIdPagenated", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@Id", employeeId));
+                cmd.Parameters.Add(new SqlParameter("@PageNumber", pageNumber));
+                SqlDataReader remarksReader = cmd.ExecuteReader();
+
+                while (remarksReader.Read())
+                {
+                    Model.Remark remark = new Model.Remark();
+                    remark.Text = remarksReader[3].ToString();
+                    remark.CreateTimeStamp = DateTime.Parse(remarksReader[4].ToString());
+                    remarks.Add(remark);
+                }
+                connection.Close();
+                return remarks;
             }
-            connection.Close();
-            return remarks;
+            catch (Exception ex)
+            {
+                var rethrow = ExceptionPolicy.HandleException("data.policy", ex);
+                if (rethrow) throw;
+                return null;
+            }
+
+        }
+
+
+        public Int32 GetRemarkCount(string employeeId)
+        {
+            try
+            {
+                int count=0;
+                SqlConnection connection = new SqlConnection("Data Source=Training9;Initial Catalog=Employee;Persist Security Info=True;User ID=sa;Password=test123!@#");
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("CountRemark", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@Id", employeeId));
+                SqlDataReader remarksCountReader = cmd.ExecuteReader();
+
+                while (remarksCountReader.Read())
+                {
+                    count = Int32.Parse(remarksCountReader[0].ToString());
+                   
+                }
+                connection.Close();
+                return count;
+            }
+            catch (Exception ex)
+            {
+                var rethrow = ExceptionPolicy.HandleException("data.policy", ex);
+                if (rethrow) throw;
+                return -1;
+            }
         }
     }
 }

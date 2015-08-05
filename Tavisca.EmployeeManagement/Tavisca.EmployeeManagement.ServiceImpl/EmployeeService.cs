@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tavisca.EmployeeManagement.DataContract;
 using Tavisca.EmployeeManagement.EnterpriseLibrary;
 using Tavisca.EmployeeManagement.Interface;
 using Tavisca.EmployeeManagement.ServiceContract;
@@ -19,53 +20,91 @@ namespace Tavisca.EmployeeManagement.ServiceImpl
 
         IEmployeeManager _manager;
 
-        public DataContract.Employee Get(string employeeId)
+        public DataContract.EmployeeResponse Get(string employeeId)
         {
+            EmployeeResponse employeeResponse = new EmployeeResponse();
             try
             {
                 var result = _manager.Get(employeeId);
-                if (result == null) return null;
-                return result.ToDataContract();
+                    if (result == null)
+                    {
+                        employeeResponse.Employee = null;
+                        employeeResponse.Status.StatusCode = "500";
+                        employeeResponse.Status.Message = "Internal Server Error.Could not fetch the employee record.";
+                        return employeeResponse;
+                    }
+
+                employeeResponse.Employee = result.ToDataContract();
+                return employeeResponse;
             }
             catch (Exception ex)
             {
                 var rethrow = ExceptionPolicy.HandleException("service.policy", ex);
                 if (rethrow) throw;
-                return null;
+                employeeResponse.Employee = null;
+                employeeResponse.Status.StatusCode = "500";
+                employeeResponse.Status.Message = "Internal Server Error.Could not fetch the employee record.";
+                return employeeResponse;
             }
         }
 
-        public List<DataContract.Employee> GetAll()
+        public EmployeeListResponse GetAll()
         {
+            EmployeeListResponse employeeListResponse = new EmployeeListResponse();
             try
             {
                 var result = _manager.GetAll();
-                if (result == null) return null;
-                return result.Select(employee => employee.ToDataContract()).ToList();
+                if (result == null)
+                {
+                    employeeListResponse.EmployeeList = null;
+                    employeeListResponse.Status.StatusCode = "500";
+                    employeeListResponse.Status.Message = "Internal Server Error.Could not fetch the employee record.";
+                    return employeeListResponse;
+                }
+                employeeListResponse.EmployeeList= result.Select(employee => employee.ToDataContract()).ToList();
+                return employeeListResponse;
             }
             catch (Exception ex)
             {
                 var rethrow = ExceptionPolicy.HandleException("service.policy", ex);
                 if (rethrow) throw;
-                return null;
+                employeeListResponse.EmployeeList = null;
+                employeeListResponse.Status.StatusCode = "500";
+                employeeListResponse.Status.Message = "Internal Server Error.Could not fetch the employee record.";
+                return employeeListResponse;
             }
 
         }
 
 
-        public List<DataContract.Remark> GetRemarksById(string employeeId, string pageNumber)
+        public PagenatedRemarkListResponse GetRemarksById(string employeeId, string pageNumber)
         {
+            PagenatedRemarkListResponse pagenatedRemarks = new PagenatedRemarkListResponse();
             try
             {
                 var result = _manager.GetRemarksById(employeeId,pageNumber);
-                if (result == null) return null;
-                return result.Select(remark => remark.ToDataContract()).ToList();
+                int count = _manager.GetRemarkCount(employeeId);
+                if (result == null||count==-1)
+                {
+                    pagenatedRemarks.Remarks = null;
+                    pagenatedRemarks.TotalCount = 0;
+                    pagenatedRemarks.Status.StatusCode = "500";
+                    pagenatedRemarks.Status.Message = "Internal Server Error.Could not fetch the remark records.";
+                    return pagenatedRemarks;
+                }
+                pagenatedRemarks.Remarks = result.Select(remark => remark.ToDataContract()).ToList();
+                pagenatedRemarks.TotalCount = count;
+                return pagenatedRemarks;
             }
             catch (Exception ex)
             {
                 var rethrow = ExceptionPolicy.HandleException("service.policy", ex);
                 if (rethrow) throw;
-                return null;
+                pagenatedRemarks.Remarks = null;
+                pagenatedRemarks.TotalCount = 0;
+                pagenatedRemarks.Status.StatusCode = "500";
+                pagenatedRemarks.Status.Message = "Internal Server Error.Could not fetch the remark records.";
+                return pagenatedRemarks;
             }
         }
     }

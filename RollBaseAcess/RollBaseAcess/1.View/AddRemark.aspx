@@ -36,7 +36,8 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="Button3" runat="server" Font-Size="Small" Text="Add Remark" Width="104px" OnClick="Button3_Click" ValidationGroup="Add Remark" />
+                <asp:Button ID="Button3" runat="server" Font-Size="Small" Text="Add" Width="104px" OnClick="Button3_Click" ValidationGroup="Add Remark" />
+                <asp:Label ID="Label7" runat="server" Text="Label" Visible="False"></asp:Label>
             </td>
         </tr>
     </table>

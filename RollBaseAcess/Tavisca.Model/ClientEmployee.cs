@@ -34,8 +34,13 @@ namespace Tavisca.Model
             Employee employee = EmployeeTranslator.ToDataContract(this);
             string EmployeeManagementServiceUrl = ConfigurationManager.AppSettings["EmployeeManagementServiceUrl"];
             var client = new HttpClient();
-            var createdEmployee = client.UploadData<Employee, Employee>(EmployeeManagementServiceUrl + "employee", employee);
-            return EmployeeTranslator.ToClientModel(createdEmployee);
+            var createdEmployee = client.UploadData<Employee, EmployeeResponse>(EmployeeManagementServiceUrl + "employee", employee);
+            if (createdEmployee.Status.StatusCode.Equals("200"))
+            {
+                return EmployeeTranslator.ToClientModel(createdEmployee.Employee);
+            }
+            else
+                return null;
         }
     }
 }

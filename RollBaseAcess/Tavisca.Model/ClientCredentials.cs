@@ -22,8 +22,13 @@ namespace Tavisca.Model
                 Credentials credentials = CredentialTranslator.ToDataContract(this);
                 string EmployeeManagementServiceUrl = ConfigurationManager.AppSettings["EmployeeManagementServiceUrl"];
                 var client = new HttpClient();
-                var response = client.UploadData<Credentials, Employee>(EmployeeManagementServiceUrl + "login", credentials);
-                return EmployeeTranslator.ToClientModel(response);
+                var response = client.UploadData<Credentials, EmployeeResponse>(EmployeeManagementServiceUrl + "login", credentials);
+                if (response.Status.StatusCode.Equals("200"))
+                {
+                    return EmployeeTranslator.ToClientModel(response.Employee);
+                }
+                else
+                    return null;
             }
             catch (Exception)
             {

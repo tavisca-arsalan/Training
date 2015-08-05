@@ -54,6 +54,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\EmployeeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Translators\CredentialModifierTranslator.cs" />
     <Compile Include="Translators\CredentialTranslator.cs" />
     <Compile Include="Translators\EmployeeTranslator.cs" />
@@ -75,15 +80,35 @@
     <None Include="Service References\EmployeeManagementService\EmployeeManagementService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\EmployeeManagementService\Tavisca.Model.EmployeeManagementService.Employee.datasource">
+    <None Include="Service References\EmployeeManagementService\Tavisca.Model.EmployeeManagementService.EmployeeResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\EmployeeManagementService\Tavisca.Model.EmployeeManagementService.Remark.datasource">
+    <None Include="Service References\EmployeeManagementService\Tavisca.Model.EmployeeManagementService.RemarkResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EmployeeService\EmployeeService.wsdl" />
+    <None Include="Service References\EmployeeService\EmployeeService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EmployeeService\EmployeeService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EmployeeService\EmployeeService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EmployeeService\Tavisca.Model.EmployeeService.EmployeeListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EmployeeService\Tavisca.Model.EmployeeService.EmployeeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EmployeeService\Tavisca.Model.EmployeeService.PagenatedRemarkListResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\EmployeeManagementService\" />
+    <WCFMetadataStorage Include="Service References\EmployeeService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\EmployeeManagementService\EmployeeManagementService.disco" />
@@ -96,6 +121,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\EmployeeManagementService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EmployeeService\EmployeeService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EmployeeService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EmployeeService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EmployeeService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

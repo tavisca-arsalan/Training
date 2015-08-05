@@ -22,13 +22,22 @@ namespace Tavisca.EmployeeManagement.ServiceImpl
 
        
 
-        public DataContract.Employee Create(DataContract.Employee employee)
+        public DataContract.EmployeeResponse Create(DataContract.Employee employee)
         {
             try
             {
+                EmployeeResponse employeeResponse = new EmployeeResponse();
                 var result = _manager.Create(employee.ToDomainModel());
-                if (result == null) return null;
-                return result.ToDataContract();
+                if (result == null)
+                {
+                    employeeResponse.Employee = null;
+                    employeeResponse.Status.StatusCode = "500";
+                    employeeResponse.Status.Message = "Internal Server Error.Could not create the employee.";
+                 return employeeResponse; 
+                }
+                employeeResponse.Employee= result.ToDataContract();
+                return employeeResponse;
+
             }
             catch (Exception ex)
             {
@@ -38,13 +47,21 @@ namespace Tavisca.EmployeeManagement.ServiceImpl
             }
         }
 
-        public DataContract.Remark AddRemark(string employeeId, DataContract.Remark remark)
+        public DataContract.RemarkResponse AddRemark(string employeeId, DataContract.Remark remark)
         {
             try
             {
+                 RemarkResponse remarkResponse = new RemarkResponse();
                 var result = _manager.AddRemark(employeeId, remark.ToDomainModel());
-                if (result == null) return null;
-                return result.ToDataContract();
+                if (result == null)
+                {
+                    remarkResponse.Remark = null;
+                    remarkResponse.Status.StatusCode = "500";
+                    remarkResponse.Status.Message = "Internal Server Error.Could not add the remark.";
+                    return remarkResponse;
+                }
+                remarkResponse.Remark= result.ToDataContract();
+                return remarkResponse;
             }
             catch (Exception ex)
             {
@@ -54,11 +71,30 @@ namespace Tavisca.EmployeeManagement.ServiceImpl
             }
         }
 
-        public DataContract.Employee CheckCredentials(DataContract.Credentials credentials)
+        public DataContract.EmployeeResponse CheckCredentials(DataContract.Credentials credentials)
         {
-            var result = _manager.CheckCredentials(credentials.EmailId,credentials.Password);
-            if (result == null) return null;
-            return result.ToDataContract();
+            try
+            {
+                EmployeeResponse employeeResponse = new EmployeeResponse();
+                var result = _manager.CheckCredentials(credentials.EmailId, credentials.Password);
+                if (result == null)
+                {
+                    employeeResponse.Employee = null;
+                    employeeResponse.Status.StatusCode = "500";
+                    employeeResponse.Status.Message = "Authentication Failed.";
+                    return employeeResponse;
+                }
+
+                employeeResponse.Employee = result.ToDataContract();
+                return employeeResponse;
+            }
+            catch (Exception ex)
+            {
+                Exception newEx;
+                var rethrow = ExceptionPolicy.HandleException("service.policy", ex, out newEx);
+                throw newEx;
+            }
+
         }
 
         public string ModifyCredentials(CredentialModifier newCredentials)

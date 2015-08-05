@@ -22,5 +22,7 @@ namespace Tavisca.EmployeeManagement.Interface
         int ChangePassword(string emailId,string oldPassword,string newPassword);
 
         List<Remark> GetRemarksById(string employeeId, string pageNumber);
+     
+        int GetRemarkCount(string employeeId);
     }
 }

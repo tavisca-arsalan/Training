@@ -233,6 +233,160 @@ namespace Tavisca.Model.EmployeeManagementService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Result", Namespace="http://schemas.datacontract.org/2004/07/Tavisca.EmployeeManagement.DataContract")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Tavisca.Model.EmployeeManagementService.RemarkResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Tavisca.Model.EmployeeManagementService.EmployeeResponse))]
+    public partial class Result : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Tavisca.Model.EmployeeManagementService.Status StatusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Tavisca.Model.EmployeeManagementService.Status Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Status", Namespace="http://schemas.datacontract.org/2004/07/Tavisca.EmployeeManagement.DataContract")]
+    [System.SerializableAttribute()]
+    public partial class Status : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StatusCode {
+            get {
+                return this.StatusCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusCodeField, value) != true)) {
+                    this.StatusCodeField = value;
+                    this.RaisePropertyChanged("StatusCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RemarkResponse", Namespace="http://schemas.datacontract.org/2004/07/Tavisca.EmployeeManagement.DataContract")]
+    [System.SerializableAttribute()]
+    public partial class RemarkResponse : Tavisca.Model.EmployeeManagementService.Result {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Tavisca.Model.EmployeeManagementService.Remark RemarkField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Tavisca.Model.EmployeeManagementService.Remark Remark {
+            get {
+                return this.RemarkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RemarkField, value) != true)) {
+                    this.RemarkField = value;
+                    this.RaisePropertyChanged("Remark");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EmployeeResponse", Namespace="http://schemas.datacontract.org/2004/07/Tavisca.EmployeeManagement.DataContract")]
+    [System.SerializableAttribute()]
+    public partial class EmployeeResponse : Tavisca.Model.EmployeeManagementService.Result {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Tavisca.Model.EmployeeManagementService.Employee EmployeeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Tavisca.Model.EmployeeManagementService.Employee Employee {
+            get {
+                return this.EmployeeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmployeeField, value) != true)) {
+                    this.EmployeeField = value;
+                    this.RaisePropertyChanged("Employee");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Credentials", Namespace="http://schemas.datacontract.org/2004/07/Tavisca.EmployeeManagement.DataContract")]
     [System.SerializableAttribute()]
     public partial class Credentials : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -374,22 +528,22 @@ namespace Tavisca.Model.EmployeeManagementService {
     public interface IEmployeeManagementService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeManagementService/Create", ReplyAction="http://tempuri.org/IEmployeeManagementService/CreateResponse")]
-        Tavisca.Model.EmployeeManagementService.Employee Create(Tavisca.Model.EmployeeManagementService.Employee employee);
+        Tavisca.Model.EmployeeManagementService.EmployeeResponse Create(Tavisca.Model.EmployeeManagementService.Employee employee);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeManagementService/Create", ReplyAction="http://tempuri.org/IEmployeeManagementService/CreateResponse")]
-        System.Threading.Tasks.Task<Tavisca.Model.EmployeeManagementService.Employee> CreateAsync(Tavisca.Model.EmployeeManagementService.Employee employee);
+        System.Threading.Tasks.Task<Tavisca.Model.EmployeeManagementService.EmployeeResponse> CreateAsync(Tavisca.Model.EmployeeManagementService.Employee employee);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeManagementService/AddRemark", ReplyAction="http://tempuri.org/IEmployeeManagementService/AddRemarkResponse")]
-        Tavisca.Model.EmployeeManagementService.Remark AddRemark(string employeeId, Tavisca.Model.EmployeeManagementService.Remark remark);
+        Tavisca.Model.EmployeeManagementService.RemarkResponse AddRemark(string employeeId, Tavisca.Model.EmployeeManagementService.Remark remark);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeManagementService/AddRemark", ReplyAction="http://tempuri.org/IEmployeeManagementService/AddRemarkResponse")]
-        System.Threading.Tasks.Task<Tavisca.Model.EmployeeManagementService.Remark> AddRemarkAsync(string employeeId, Tavisca.Model.EmployeeManagementService.Remark remark);
+        System.Threading.Tasks.Task<Tavisca.Model.EmployeeManagementService.RemarkResponse> AddRemarkAsync(string employeeId, Tavisca.Model.EmployeeManagementService.Remark remark);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeManagementService/CheckCredentials", ReplyAction="http://tempuri.org/IEmployeeManagementService/CheckCredentialsResponse")]
-        Tavisca.Model.EmployeeManagementService.Employee CheckCredentials(Tavisca.Model.EmployeeManagementService.Credentials credentials);
+        Tavisca.Model.EmployeeManagementService.EmployeeResponse CheckCredentials(Tavisca.Model.EmployeeManagementService.Credentials credentials);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeManagementService/CheckCredentials", ReplyAction="http://tempuri.org/IEmployeeManagementService/CheckCredentialsResponse")]
-        System.Threading.Tasks.Task<Tavisca.Model.EmployeeManagementService.Employee> CheckCredentialsAsync(Tavisca.Model.EmployeeManagementService.Credentials credentials);
+        System.Threading.Tasks.Task<Tavisca.Model.EmployeeManagementService.EmployeeResponse> CheckCredentialsAsync(Tavisca.Model.EmployeeManagementService.Credentials credentials);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmployeeManagementService/ModifyCredentials", ReplyAction="http://tempuri.org/IEmployeeManagementService/ModifyCredentialsResponse")]
         string ModifyCredentials(Tavisca.Model.EmployeeManagementService.CredentialModifier newCredentials);
@@ -425,27 +579,27 @@ namespace Tavisca.Model.EmployeeManagementService {
                 base(binding, remoteAddress) {
         }
         
-        public Tavisca.Model.EmployeeManagementService.Employee Create(Tavisca.Model.EmployeeManagementService.Employee employee) {
+        public Tavisca.Model.EmployeeManagementService.EmployeeResponse Create(Tavisca.Model.EmployeeManagementService.Employee employee) {
             return base.Channel.Create(employee);
         }
         
-        public System.Threading.Tasks.Task<Tavisca.Model.EmployeeManagementService.Employee> CreateAsync(Tavisca.Model.EmployeeManagementService.Employee employee) {
+        public System.Threading.Tasks.Task<Tavisca.Model.EmployeeManagementService.EmployeeResponse> CreateAsync(Tavisca.Model.EmployeeManagementService.Employee employee) {
             return base.Channel.CreateAsync(employee);
         }
         
-        public Tavisca.Model.EmployeeManagementService.Remark AddRemark(string employeeId, Tavisca.Model.EmployeeManagementService.Remark remark) {
+        public Tavisca.Model.EmployeeManagementService.RemarkResponse AddRemark(string employeeId, Tavisca.Model.EmployeeManagementService.Remark remark) {
             return base.Channel.AddRemark(employeeId, remark);
         }
         
-        public System.Threading.Tasks.Task<Tavisca.Model.EmployeeManagementService.Remark> AddRemarkAsync(string employeeId, Tavisca.Model.EmployeeManagementService.Remark remark) {
+        public System.Threading.Tasks.Task<Tavisca.Model.EmployeeManagementService.RemarkResponse> AddRemarkAsync(string employeeId, Tavisca.Model.EmployeeManagementService.Remark remark) {
             return base.Channel.AddRemarkAsync(employeeId, remark);
         }
         
-        public Tavisca.Model.EmployeeManagementService.Employee CheckCredentials(Tavisca.Model.EmployeeManagementService.Credentials credentials) {
+        public Tavisca.Model.EmployeeManagementService.EmployeeResponse CheckCredentials(Tavisca.Model.EmployeeManagementService.Credentials credentials) {
             return base.Channel.CheckCredentials(credentials);
         }
         
-        public System.Threading.Tasks.Task<Tavisca.Model.EmployeeManagementService.Employee> CheckCredentialsAsync(Tavisca.Model.EmployeeManagementService.Credentials credentials) {
+        public System.Threading.Tasks.Task<Tavisca.Model.EmployeeManagementService.EmployeeResponse> CheckCredentialsAsync(Tavisca.Model.EmployeeManagementService.Credentials credentials) {
             return base.Channel.CheckCredentialsAsync(credentials);
         }
         
