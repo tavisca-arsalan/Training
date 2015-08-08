@@ -6,21 +6,23 @@ using System.Threading.Tasks;
 using Tavisca.Model.EmployeeManagementService;
 using Tavisca.Model.Translators;
 using System.Configuration;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Tavisca.Model
 {
     public class ClientEmployee
     {
         public string Id { get; set; }
-
+        [Required]
         public string Title { get; set; }
-
+         [Required]
         public string FirstName { get; set; }
-
+         [Required]
         public string LastName { get; set; }
-
+         [Required]
         public string Email { get; set; }
-
+         [Required]
         public string Phone { get; set; }
 
         public DateTime JoiningDate { get; set; }
@@ -40,7 +42,7 @@ namespace Tavisca.Model
                 return EmployeeTranslator.ToClientModel(createdEmployee.Employee);
             }
             else
-                return null;
+                throw new Exception("Failed to add the employee remark due to: " + createdEmployee.Status.Message);
         }
     }
 }

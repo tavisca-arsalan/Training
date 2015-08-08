@@ -51,7 +51,7 @@ namespace Tavisca.EmployeeManagement.FileStorage
             {
                 var rethrow = ExceptionPolicy.HandleException("data.policy", ex);
                 if (rethrow) throw;
-                return null;
+                return new Model.Employee();
             }
         }
 

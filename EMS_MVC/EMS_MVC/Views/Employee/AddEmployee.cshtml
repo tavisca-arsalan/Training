@@ -1,0 +1,52 @@
+﻿@model Tavisca.Model.ClientEmployee
+
+@{
+    ViewBag.Title = "AddEmployee";
+}
+
+<h2>AddEmployee</h2>
+<section id="EmployeeDetailsForm">
+    @using (Html.BeginForm("SaveEmployee","Employee",FormMethod.Post)) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Employee Details</legend>
+        <ol>
+            <li>
+                @Html.Label(ViewData["Status"].ToString())
+            </li>
+            <li>
+                @Html.LabelFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName)
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </li>
+             <li>
+                @Html.LabelFor(m => m.LastName)
+                @Html.TextBoxFor(m => m.LastName)
+                @Html.ValidationMessageFor(m => m.LastName)
+            </li>
+             <li>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+                @Html.ValidationMessageFor(m => m.Email)
+            </li>
+            <li>
+                @Html.Label("Designation")
+                @Html.TextBoxFor(m => m.Title)
+                @Html.ValidationMessageFor(m => m.Title)
+            </li>
+           <li>
+                @Html.LabelFor(m => m.Phone)
+                @Html.TextBoxFor(m => m.Phone)
+                @Html.ValidationMessageFor(m => m.Phone)
+            </li>
+           
+        </ol>
+        <input type="submit" value="Log in" />
+    </fieldset>
+    }
+
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

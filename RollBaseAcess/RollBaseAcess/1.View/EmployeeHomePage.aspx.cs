@@ -42,7 +42,7 @@ namespace RollBaseAcess
         
         public PagenatedRemarkListResponse GetRemarks(string employeeId, int pageNumber)
         {
-            return Transporter.GetRemarksById(employeeId, pageNumber.ToString()); ;
+            return Transporter.GetRemarksById(employeeId, pageNumber.ToString()); 
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)

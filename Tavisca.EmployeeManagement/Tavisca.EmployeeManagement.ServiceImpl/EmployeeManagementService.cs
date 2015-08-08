@@ -24,9 +24,9 @@ namespace Tavisca.EmployeeManagement.ServiceImpl
 
         public DataContract.EmployeeResponse Create(DataContract.Employee employee)
         {
+            EmployeeResponse employeeResponse = new EmployeeResponse();
             try
-            {
-                EmployeeResponse employeeResponse = new EmployeeResponse();
+            {      
                 var result = _manager.Create(employee.ToDomainModel());
                 if (result == null)
                 {
@@ -41,9 +41,14 @@ namespace Tavisca.EmployeeManagement.ServiceImpl
             }
             catch (Exception ex)
             {
-                Exception newEx;
-                var rethrow = ExceptionPolicy.HandleException("service.policy", ex, out newEx);
-                throw newEx;
+                //Exception newEx;
+                //var rethrow = ExceptionPolicy.HandleException("service.policy", ex, out newEx);
+                //throw newEx;
+                //Dummy code:
+                employeeResponse.Employee = null;
+                employeeResponse.Status.StatusCode = "500";
+                employeeResponse.Status.Message = ex.Message;
+                return employeeResponse; 
             }
         }
 
