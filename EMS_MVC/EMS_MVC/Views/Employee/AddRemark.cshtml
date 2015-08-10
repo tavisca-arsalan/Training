@@ -1,0 +1,53 @@
+﻿@model Tavisca.Model.ClientRemark
+
+@{
+   ViewBag.Title = "AddRemarks";
+}
+
+ <h2>AddRemark</h2>
+  @using (Html.BeginForm("AddRemark","Employee",FormMethod.Post)) {
+    @Html.ValidationSummary(true)
+   <div>
+       <table>
+           <tr>
+               <th>
+                   <label>Select Employee:</label>
+               </th>
+           </tr>
+           <tr>
+               <th>
+                       @if (ViewData["Employee"] != null)
+                       {
+                           
+                           @Html.DropDownList("SelectedIndex" , ViewData["Employee"] as List<SelectListItem>);
+                       }        
+               </th>
+           </tr>
+           <tr>
+               <th>
+                   <label>Remark:</label>
+               </th>
+           </tr>
+           <tr>
+               <th>
+                   @Html.TextAreaFor(Model=>Model.Text, new { @class = "resizer" }) 
+                   @Html.ValidationMessageFor(Model=>Model.Text)
+               </th>
+           </tr>
+           <tr>
+               <th>
+                   <input id="AddRemarkButton" type="submit" value="Add" />
+               </th>
+           </tr>
+           <tr>
+               
+               <th>
+                  @Html.Label(ViewData["Label"].ToString())
+               </th>
+           </tr>
+       </table>
+   </div>
+  }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

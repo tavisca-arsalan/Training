@@ -20,6 +20,12 @@ namespace EMS_MVC
            );
 
             routes.MapRoute(
+              name: "Add Remark",
+              url: "remark/add",
+              defaults: new { controller = "Employee", action = "AddRemark" }
+          );
+
+            routes.MapRoute(
               name: "Employee HomePage",
               url: "employee/home",
               defaults: new { controller = "Employee", action = "ViewRemarks" }

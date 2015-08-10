@@ -45,13 +45,13 @@ namespace EMS_MVC.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult ViewRemarks(int pageNumber)
+        public ActionResult ViewRemarks(int page=1)
         {
             int pageSize = 2;
             int totalPages = 0;
             int totalRemarks = 0;
              //trial for id=1:
-            PagenatedRemarkListResponse remarkListResponse= Transporter.GetRemarksById("1", pageNumber.ToString());
+            PagenatedRemarkListResponse remarkListResponse= Transporter.GetRemarksById("1", page.ToString());
             totalRemarks = remarkListResponse.TotalCount;
             totalPages = (totalRemarks / pageSize) + ((totalRemarks % pageSize) > 0 ? 1 : 0);
             List<Remark> remarks = remarkListResponse.Remarks.ToList();
@@ -61,5 +61,35 @@ namespace EMS_MVC.Controllers
             return View(remarks);
         }
 
+        [AllowAnonymous]
+        public ActionResult AddRemark(ClientRemark remark)
+        {
+            Dictionary<string, string> employeeDictionary = new Dictionary<string, string>();
+            employeeDictionary = Transporter.GetAllEmployees();
+            List<SelectListItem> employeeDetails = new List<SelectListItem>();
+            foreach (var dictionary in employeeDictionary)
+            {
+                employeeDetails.Add(new SelectListItem { Text = dictionary.Value, Value = dictionary.Key});
+
+            }
+            ViewData["Employee"] = employeeDetails;
+            if (Request["SelectedIndex"] != null)
+            {
+                string Id = Request["SelectedIndex"].ToString();
+                remark.CreateTimeStamp = DateTime.UtcNow;
+                ClientRemark addedRemark = Transporter.AddRemark(Id,remark.Text);
+                if (addedRemark==null)
+                {
+                    ViewData["Label"] = "Error occurred while adding remark!!";
+                    return View("AddRemark");
+                }
+
+                ViewData["Label"] = "Success!!";
+                ModelState.Clear();
+                return View("AddRemark");
+            }
+            ViewData["Label"] = "";
+            return View("AddRemark");
+        }
     }
 }

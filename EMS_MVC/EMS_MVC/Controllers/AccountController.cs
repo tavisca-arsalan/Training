@@ -198,7 +198,15 @@ namespace EMS_MVC.Controllers
                     bool changePasswordSucceeded;
                     try
                     {
-                        changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
+                        ClientCredentialModifier credentialModifier = new ClientCredentialModifier();
+                        credentialModifier.EmailId = User.Identity.Name;
+                        credentialModifier.OldPassword = model.OldPassword;
+                        credentialModifier.NewPassword = model.NewPassword;
+                        int result = credentialModifier.ChangePassword();
+                        if (result==0)
+                            throw new Exception();
+                        else
+                            changePasswordSucceeded = true;
                     }
                     catch (Exception)
                     {
