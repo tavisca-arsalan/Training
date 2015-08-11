@@ -318,6 +318,10 @@
       <Project>{727ad4f9-4a24-420c-8429-bac7962c56b2}</Project>
       <Name>Tavisca.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tavisca.EMS.Security\Tavisca.EMS.Security.csproj">
+      <Project>{26316c6c-2969-49b6-b524-482dbddaf6cf}</Project>
+      <Name>Tavisca.EMS.Security</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

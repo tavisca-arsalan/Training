@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Tavisca.Model;
 using System.Runtime.Serialization;
 using Tavisca.Model.EmployeeService;
+using Tavisca.EMS.Security;
 
 namespace EMS_MVC.Controllers
 {
@@ -17,12 +18,20 @@ namespace EMS_MVC.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View();
+            if (HttpContext.User.IsInRole("HR") == true)
+                return RedirectToAction("AddRemark", "Employee");
+            else
+                return RedirectToAction("ViewRemarks", "Employee");
+            
         }
 
         [AllowAnonymous]
         public ActionResult AddEmployee()
         {
+            if (HttpContext.User.IsInRole("HR") == false)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             ViewData["Status"] = "";
             return View("AddEmployee");
         }
@@ -51,7 +60,7 @@ namespace EMS_MVC.Controllers
             int totalPages = 0;
             int totalRemarks = 0;
              //trial for id=1:
-            PagenatedRemarkListResponse remarkListResponse= Transporter.GetRemarksById("1", page.ToString());
+            PagenatedRemarkListResponse remarkListResponse= Transporter.GetRemarksById((HttpContext.User as CustomPrincipal).Id , page.ToString());
             totalRemarks = remarkListResponse.TotalCount;
             totalPages = (totalRemarks / pageSize) + ((totalRemarks % pageSize) > 0 ? 1 : 0);
             List<Remark> remarks = remarkListResponse.Remarks.ToList();
@@ -64,6 +73,10 @@ namespace EMS_MVC.Controllers
         [AllowAnonymous]
         public ActionResult AddRemark(ClientRemark remark)
         {
+            if (HttpContext.User.IsInRole("HR") == false)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             Dictionary<string, string> employeeDictionary = new Dictionary<string, string>();
             employeeDictionary = Transporter.GetAllEmployees();
             List<SelectListItem> employeeDetails = new List<SelectListItem>();

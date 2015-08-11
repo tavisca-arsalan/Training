@@ -11,6 +11,7 @@ using WebMatrix.WebData;
 using EMS_MVC.Filters;
 using EMS_MVC.Models;
 using Tavisca.Model;
+using Tavisca.EMS.Security;
 
 
 
@@ -43,11 +44,10 @@ namespace EMS_MVC.Controllers
             credentials.EmailId = model.UserName;
             credentials.Password = model.Password;
             ClientEmployee employee=credentials.Authenticate();
-
-            FormsAuthentication.SetAuthCookie(employee.Email.Trim(), false);
-            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, employee.Email.Trim(), DateTime.UtcNow, DateTime.UtcNow.AddMinutes(10), false, employee.Title.Trim().ToLower());
-            HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(ticket));
-            Response.Cookies.Add(cookie);
+            //FormsAuthentication.SetAuthCookie(employee.Email.Trim(), false);
+            //FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, employee.Email.Trim(), DateTime.UtcNow, DateTime.UtcNow.AddMinutes(10), false, employee.Title.Trim().ToLower());
+            //HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(ticket));
+            //Response.Cookies.Add(cookie);
             //Session["employeeId"] = employee.Id.Trim();
             //Session["userName"] = employee.Email.Trim();
             //Session["employeeRole"] = employee.Title.Trim();
@@ -60,6 +60,7 @@ namespace EMS_MVC.Controllers
 
             else
             {
+                CreateAuthenticationTicket(employee);
                 if (string.Equals(employee.Title, "HR", StringComparison.OrdinalIgnoreCase))
                     returnUrl = "employee/add";
                 return RedirectToLocal(returnUrl);            
@@ -379,6 +380,27 @@ namespace EMS_MVC.Controllers
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
         }
 
+        public void CreateAuthenticationTicket(ClientEmployee employee)
+        {
+
+           
+            CustomPrincipalSerializedModel serializeModel = new CustomPrincipalSerializedModel();
+
+            serializeModel.Id = employee.Id;          
+            serializeModel.FirstName = employee.FirstName;
+            serializeModel.LastName = employee.LastName;
+            serializeModel.Designation = employee.Title;
+            serializeModel.Email = employee.Email;
+            System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            string userData = serializer.Serialize(serializeModel);
+
+            FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
+              1, employee.Id, DateTime.Now, DateTime.Now.AddMinutes(10), false, userData);
+            string encTicket = FormsAuthentication.Encrypt(authTicket);
+            HttpCookie faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
+            Response.Cookies.Add(faCookie);
+        }
+
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)
         {
@@ -388,7 +410,7 @@ namespace EMS_MVC.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Employee");
+               return RedirectToAction("Index", "Employee");
             }
         }
 
