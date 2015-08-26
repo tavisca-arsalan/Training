@@ -103,8 +103,7 @@ namespace AspAutomationTesting
 
             driver.FindElement(By.Name("ctl00$MainContent$Button1")).Click();
 
-            string message = driver.FindElement(By.Id("MainContent_Message")).Text;
-
+            string message = driver.FindElement(By.Id("MainContent_Message")).Text; //
             Assert.AreEqual(message, "Success");
         }
         [TestMethod]
