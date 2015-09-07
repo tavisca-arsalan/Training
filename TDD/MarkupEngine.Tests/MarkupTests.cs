@@ -68,6 +68,7 @@ namespace MarkupEngine.Tests
             } 
         }
 
+
         [TestMethod]
         public void MarkupIsInverselyProportionalToNumberOfStopsTest()
         {
