@@ -61,7 +61,7 @@ namespace MarkupEngine
             var layoverTimeImpactCalculator = (IDiscountingFactorCalculator)Activator.CreateInstance(Type.GetType("TDD.FactorEvaluators.LayoverTimeFactorEvaluator,TDD.FactorEvaluators"), WeightOfTotalLayoverTime);
             markupDeductionAgainstLayoverTime = layoverTimeImpactCalculator.CalculateDiscountingFactor(netRate);
 
-            var flightTimeImpactCalculator = (IDiscountingFactorCalculator)Activator.CreateInstance(Type.GetType("TDD.FactorEvaluators.FlightTimeFactorEvaluator,TDD.FactorEvaluators"), WeightOfTotalLayoverTime);
+            var flightTimeImpactCalculator = (IDiscountingFactorCalculator)Activator.CreateInstance(Type.GetType("TDD.FactorEvaluators.FlightTimeFactorEvaluator,TDD.FactorEvaluators"), WeightOfFlightTime);
             markupDeductionAgainstFlightTime = flightTimeImpactCalculator.CalculateDiscountingFactor(netRate);
 
             totalDeductionFactor = markupDeductionAgainstNightFlight + markupDeductionAgainstStops + markupDeductionAgainstLayoverTime + markupDeductionAgainstFlightTime;
