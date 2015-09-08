@@ -58,6 +58,10 @@
       <Project>{ce26cdb5-134c-4878-b8bb-8eb7536c4b3f}</Project>
       <Name>MarkupEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TDD.FactorEvaluators\TDD.FactorEvaluators.csproj">
+      <Project>{a2041945-f7e1-425f-bddc-72d7f71fc2d8}</Project>
+      <Name>TDD.FactorEvaluators</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

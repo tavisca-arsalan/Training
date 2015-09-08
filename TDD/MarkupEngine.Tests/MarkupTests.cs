@@ -88,7 +88,7 @@ namespace MarkupEngine.Tests
         public void MaximumStopsImplyMinimumMarkupTest()
         {
             decimal stopFactorWeight = 0.25m;
-            var published = new Itinerary(20m);
+            var published = new Itinerary(30m);
             var netRate = new Itinerary(10, stops: Itinerary.MaxStops) 
             { 
                 FlightTime=Itinerary.MinFlightTime,
@@ -96,7 +96,7 @@ namespace MarkupEngine.Tests
             };
             var calculator = new MarkupCalculator(0, 0, weightOfStopsFactor: stopFactorWeight);
             var markup = calculator.GetMarkup(published, netRate);
-            Assert.AreEqual(7.5m, markup);        // I have modified Nikhil's code here.
+            Assert.AreEqual(15.0m, markup);        // I have modified Nikhil's code here.
         }
 
         [TestMethod]
@@ -159,7 +159,7 @@ namespace MarkupEngine.Tests
             };
             var calculator = new MarkupCalculator(0, 0, weightOfLayoverTimeFactor: layoverTimeFactorWeight);
             var markup = calculator.GetMarkup(published, netRate);
-            Assert.AreEqual(7.5, markup);
+            Assert.AreEqual(7.5m, markup);
         }
 
         [TestMethod]

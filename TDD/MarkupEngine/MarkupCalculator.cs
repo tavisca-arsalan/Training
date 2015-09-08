@@ -9,13 +9,12 @@ namespace MarkupEngine
     public class MarkupCalculator
     {
         public MarkupCalculator(decimal distributionCost = 0m, decimal minDiscount = 0m,
-                                decimal weightOfStopsFactor = 0.25m,decimal weightOfNightFlightFactor = 0.25m,
-                                decimal weightOfLayoverTimeFactor = 0.25m, decimal weightOfFlightTimeFactor = 0.25m
-                                )
+                                decimal weightOfStopsFactor = 0.25m, decimal weightOfNightFlightFactor = 0.25m,
+                                decimal weightOfLayoverTimeFactor = 0.25m, decimal weightOfFlightTimeFactor = 0.25m)
         {
             DistributionCost = distributionCost;
             MinimumDiscount = minDiscount;
-            WeightOfStops=weightOfStopsFactor;
+            WeightOfStops = weightOfStopsFactor;
             WeightOfNightFlight = weightOfNightFlightFactor;
             WeightOfTotalLayoverTime = weightOfLayoverTimeFactor;
             WeightOfFlightTime = weightOfFlightTimeFactor;
@@ -38,54 +37,36 @@ namespace MarkupEngine
         {
             throw new NotImplementedException();
         }
- 
+
         public decimal GetMarkup(Itinerary published, Itinerary netRate)
         {
-            decimal finalMarkup;
+
             decimal markupDeductionAgainstStops;
             decimal markupDeductionAgainstNightFlight;
             decimal markupDeductionAgainstLayoverTime;
             decimal markupDeductionAgainstFlightTime;
-
+            decimal totalDeductionFactor;
             var discountedRate = published.BaseFareInUSD - MinimumDiscount;
             var maxMargin = discountedRate - netRate.BaseFareInUSD;
             if (maxMargin < DistributionCost)
                 throw new FinanciallyUnviableRateException("This rate is not financially viable.");
             var maxMarkup = maxMargin - DistributionCost;       //Be Watchful here while updating final Markup into Itinerary.
 
-            markupDeductionAgainstStops = WeightOfStops * maxMarkup * GetDiscountingStopFactor(netRate);
-            markupDeductionAgainstNightFlight = WeightOfNightFlight * maxMarkup * IsNightFlight(netRate);
-            markupDeductionAgainstLayoverTime = WeightOfTotalLayoverTime * maxMarkup * GetDiscountingLayoverFactor(netRate);
-            markupDeductionAgainstFlightTime = WeightOfFlightTime * maxMarkup * GetDiscountingFlightTimeFactor(netRate);
-            finalMarkup = maxMarkup - markupDeductionAgainstNightFlight - markupDeductionAgainstStops - markupDeductionAgainstLayoverTime - markupDeductionAgainstFlightTime;
-            return finalMarkup;
-            // return WeightOfStopsFactor*(maxMarkup - (maxMarkup * GetDiscountingStopFactor(netRate)));
+            var stopsImpactCalculator = (IDiscountingFactorCalculator)Activator.CreateInstance(Type.GetType("TDD.FactorEvaluators.StopFactorEvaluator,TDD.FactorEvaluators"), WeightOfStops);
+            markupDeductionAgainstStops = stopsImpactCalculator.CalculateDiscountingFactor(netRate);
+
+            var nightflightImpactCalculator = (IDiscountingFactorCalculator)Activator.CreateInstance(Type.GetType("TDD.FactorEvaluators.NightFlightFactorEvaluator,TDD.FactorEvaluators"), WeightOfNightFlight);
+            markupDeductionAgainstNightFlight = nightflightImpactCalculator.CalculateDiscountingFactor(netRate);
+            
+            var layoverTimeImpactCalculator = (IDiscountingFactorCalculator)Activator.CreateInstance(Type.GetType("TDD.FactorEvaluators.LayoverTimeFactorEvaluator,TDD.FactorEvaluators"), WeightOfTotalLayoverTime);
+            markupDeductionAgainstLayoverTime = layoverTimeImpactCalculator.CalculateDiscountingFactor(netRate);
+
+            var flightTimeImpactCalculator = (IDiscountingFactorCalculator)Activator.CreateInstance(Type.GetType("TDD.FactorEvaluators.FlightTimeFactorEvaluator,TDD.FactorEvaluators"), WeightOfTotalLayoverTime);
+            markupDeductionAgainstFlightTime = flightTimeImpactCalculator.CalculateDiscountingFactor(netRate);
+
+            totalDeductionFactor = markupDeductionAgainstNightFlight + markupDeductionAgainstStops + markupDeductionAgainstLayoverTime + markupDeductionAgainstFlightTime;
+            return Math.Round(maxMarkup * (1 - totalDeductionFactor), 2);
         }
 
-        private decimal  GetDiscountingStopFactor(Itinerary netRate)
-        {
-            return 1.0m / (decimal)Itinerary.MaxStops * netRate.NumberOfStops;
-        }
-
-        private decimal GetDiscountingLayoverFactor(Itinerary netRate)
-        {
-            decimal layoverTimeInHours = netRate.TotalLayoverTime.Hours + netRate.TotalLayoverTime.Minutes / 60;
-            return 1.0m / (Itinerary.MaxLayoverTimeInHours) * (layoverTimeInHours);
-        }
-
-        private decimal GetDiscountingFlightTimeFactor(Itinerary netRate)
-        {
-            decimal flightTimeInHours = netRate.FlightTime.Hours + netRate.FlightTime.Minutes / 60;
-            decimal maxFlightTimeInHours = Itinerary.MaxFlightTime.Hours + Itinerary.MaxFlightTime.Minutes / 60;
-            decimal minFlightTimeInHours = Itinerary.MinFlightTime.Hours + Itinerary.MinFlightTime.Minutes / 60; 
-            return 1.0m / (maxFlightTimeInHours-minFlightTimeInHours) * (flightTimeInHours - minFlightTimeInHours);
-        }
-
-        private decimal IsNightFlight(Itinerary netRate)
-        {
-            if (netRate.UtcDepartureTime.Hour >= 20 || netRate.UtcDepartureTime.Hour <= 6)
-                return 1;
-            return 0;
-        }
     }
 }
