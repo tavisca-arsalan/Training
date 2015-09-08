@@ -39,6 +39,10 @@ namespace MarkupEngine
         public static readonly int MaxStops = 5;
 
         public static readonly decimal MaxLayoverTimeInHours = 15.0m;
+
+        public static readonly TimeSpan MinFlightTime = new TimeSpan(2, 0, 0);
+
+        public static readonly TimeSpan MaxFlightTime = new TimeSpan(4, 0, 0);
         
         //public int Stops { get; set; }
 

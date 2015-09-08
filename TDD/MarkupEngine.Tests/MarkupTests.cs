@@ -11,7 +11,7 @@ namespace MarkupEngine.Tests
         {
             var calculator = new MarkupCalculator();
             var published = new Itinerary(150m);
-            var netRate = new Itinerary(100) { UtcDepartureTime = new DateTime(2015, 3, 3, 8, 0, 0) };
+            var netRate = new Itinerary(100) { FlightTime=Itinerary.MinFlightTime, UtcDepartureTime = new DateTime(2015, 3, 3, 8, 0, 0) };
             var markup = calculator.GetMarkup(published, netRate);
             Assert.AreEqual(50.0m, markup);
         }
@@ -76,6 +76,7 @@ namespace MarkupEngine.Tests
             var published = new Itinerary(20m, stops: 0);
             var netRate = new Itinerary(10, stops: 0)
             {
+                FlightTime=Itinerary.MinFlightTime,
                 UtcDepartureTime = new DateTime(2015, 12, 12, 8, 30, 00)
             };
             var calculator = new MarkupCalculator(0,0, weightOfStopsFactor:stopFactorWeight);
@@ -90,6 +91,7 @@ namespace MarkupEngine.Tests
             var published = new Itinerary(20m);
             var netRate = new Itinerary(10, stops: Itinerary.MaxStops) 
             { 
+                FlightTime=Itinerary.MinFlightTime,
                 UtcDepartureTime = new DateTime(2015, 12, 12, 8, 30, 00)
             };
             var calculator = new MarkupCalculator(0, 0, weightOfStopsFactor: stopFactorWeight);
@@ -120,6 +122,7 @@ namespace MarkupEngine.Tests
             var published = new Itinerary(20m);
             var netRate = new Itinerary(10, stops: 0)
             {
+                FlightTime=Itinerary.MinFlightTime,
                 UtcDepartureTime = new DateTime(2015, 12, 12, 21, 30, 00)
             };
             var calculator = new MarkupCalculator(0, 0, weightOfStopsFactor: nightFlightFactorWeight);
@@ -134,6 +137,7 @@ namespace MarkupEngine.Tests
             var published = new Itinerary(20m, stops: 0);
             var netRate = new Itinerary(10, stops: 0)
             {
+                FlightTime=Itinerary.MinFlightTime,
                 TotalLayoverTime=new TimeSpan(0,0,0),
                 UtcDepartureTime = new DateTime(2015, 12, 12, 12, 00, 00)
             };
@@ -149,6 +153,7 @@ namespace MarkupEngine.Tests
             var published = new Itinerary(20m, stops: 0);
             var netRate = new Itinerary(10, stops: 0)
             {
+                FlightTime=Itinerary.MinFlightTime,
                 TotalLayoverTime = new TimeSpan(15, 0, 0),
                 UtcDepartureTime = new DateTime(2015, 12, 12, 12, 00, 00)
             };
@@ -157,5 +162,67 @@ namespace MarkupEngine.Tests
             Assert.AreEqual(7.5, markup);
         }
 
+        [TestMethod]
+        public void MarkupIsInverselyProportionalToFlightTimeTest()
+        {
+            decimal flightTimeFactorWeight = 0.25m;
+            var published = new Itinerary(20m, stops: 0);
+            var netRate = new Itinerary(10, stops: 0)
+            {
+                FlightTime= Itinerary.MinFlightTime,
+                TotalLayoverTime = new TimeSpan(0, 0, 0),
+                UtcDepartureTime = new DateTime(2015, 12, 12, 12, 00, 00)
+            };
+            var calculator = new MarkupCalculator(0, 0, weightOfFlightTimeFactor : flightTimeFactorWeight);
+            var markup = calculator.GetMarkup(published, netRate);
+            Assert.AreEqual(10, markup);
+        }
+
+        [TestMethod]
+        public void MaximumFlightTimeImpliesMinimumMarkupTest()
+        {
+            decimal flightTimeFactorWeight = 0.25m;
+            var published = new Itinerary(20m, stops: 0);
+            var netRate = new Itinerary(10, stops: 0)
+            {
+                FlightTime = Itinerary.MaxFlightTime,
+                TotalLayoverTime = new TimeSpan(0, 0, 0),
+                UtcDepartureTime = new DateTime(2015, 12, 12, 12, 00, 00)
+            };
+            var calculator = new MarkupCalculator(0, 0, weightOfFlightTimeFactor : flightTimeFactorWeight);
+            var markup = calculator.GetMarkup(published, netRate);
+            Assert.AreEqual(7.5m, markup);
+        }
+
+        [TestMethod]
+        public void WorstTicketShouldHaveMinimumMarkupTest()
+        {
+            var published = new Itinerary(150m);
+            var netRate = new Itinerary(100m)
+            {
+                NumberOfStops=Itinerary.MaxStops,
+                FlightTime = Itinerary.MaxFlightTime,
+                TotalLayoverTime = new TimeSpan((int)Itinerary.MaxLayoverTimeInHours, 0, 0),
+                UtcDepartureTime = new DateTime(2015, 12, 12, 22, 00, 00)
+            };
+            var calculator = new MarkupCalculator(10, 15);
+            var markup = calculator.GetMarkup(published, netRate);
+            Assert.AreEqual(0.0m, markup);
+        }
+
+        [TestMethod]
+        public void BestTicketShouldHaveMaxMarkupTest()
+        {
+            var published = new Itinerary(150m);
+            var netRate = new Itinerary(100m)
+            {
+                FlightTime = Itinerary.MinFlightTime,
+                TotalLayoverTime = new TimeSpan(0, 0, 0),
+                UtcDepartureTime = new DateTime(2015, 12, 12, 12, 00, 00)
+            };
+            var calculator = new MarkupCalculator(10, 15);
+            var markup = calculator.GetMarkup(published, netRate);
+            Assert.AreEqual(25.0m, markup);
+        }
     }
 }

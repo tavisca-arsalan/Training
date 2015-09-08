@@ -10,7 +10,7 @@ namespace MarkupEngine
     {
         public MarkupCalculator(decimal distributionCost = 0m, decimal minDiscount = 0m,
                                 decimal weightOfStopsFactor = 0.25m,decimal weightOfNightFlightFactor = 0.25m,
-                                decimal weightOfLayoverTimeFactor = 0.25m
+                                decimal weightOfLayoverTimeFactor = 0.25m, decimal weightOfFlightTimeFactor = 0.25m
                                 )
         {
             DistributionCost = distributionCost;
@@ -18,7 +18,7 @@ namespace MarkupEngine
             WeightOfStops=weightOfStopsFactor;
             WeightOfNightFlight = weightOfNightFlightFactor;
             WeightOfTotalLayoverTime = weightOfLayoverTimeFactor;
-           
+            WeightOfFlightTime = weightOfFlightTimeFactor;
         }
 
         public decimal DistributionCost { get; set; }
@@ -45,6 +45,7 @@ namespace MarkupEngine
             decimal markupDeductionAgainstStops;
             decimal markupDeductionAgainstNightFlight;
             decimal markupDeductionAgainstLayoverTime;
+            decimal markupDeductionAgainstFlightTime;
 
             var discountedRate = published.BaseFareInUSD - MinimumDiscount;
             var maxMargin = discountedRate - netRate.BaseFareInUSD;
@@ -55,8 +56,8 @@ namespace MarkupEngine
             markupDeductionAgainstStops = WeightOfStops * maxMarkup * GetDiscountingStopFactor(netRate);
             markupDeductionAgainstNightFlight = WeightOfNightFlight * maxMarkup * IsNightFlight(netRate);
             markupDeductionAgainstLayoverTime = WeightOfTotalLayoverTime * maxMarkup * GetDiscountingLayoverFactor(netRate);
-
-            finalMarkup = maxMarkup - markupDeductionAgainstNightFlight - markupDeductionAgainstStops - markupDeductionAgainstLayoverTime;
+            markupDeductionAgainstFlightTime = WeightOfFlightTime * maxMarkup * GetDiscountingFlightTimeFactor(netRate);
+            finalMarkup = maxMarkup - markupDeductionAgainstNightFlight - markupDeductionAgainstStops - markupDeductionAgainstLayoverTime - markupDeductionAgainstFlightTime;
             return finalMarkup;
             // return WeightOfStopsFactor*(maxMarkup - (maxMarkup * GetDiscountingStopFactor(netRate)));
         }
@@ -70,6 +71,14 @@ namespace MarkupEngine
         {
             decimal layoverTimeInHours = netRate.TotalLayoverTime.Hours + netRate.TotalLayoverTime.Minutes / 60;
             return 1.0m / (Itinerary.MaxLayoverTimeInHours) * (layoverTimeInHours);
+        }
+
+        private decimal GetDiscountingFlightTimeFactor(Itinerary netRate)
+        {
+            decimal flightTimeInHours = netRate.FlightTime.Hours + netRate.FlightTime.Minutes / 60;
+            decimal maxFlightTimeInHours = Itinerary.MaxFlightTime.Hours + Itinerary.MaxFlightTime.Minutes / 60;
+            decimal minFlightTimeInHours = Itinerary.MinFlightTime.Hours + Itinerary.MinFlightTime.Minutes / 60; 
+            return 1.0m / (maxFlightTimeInHours-minFlightTimeInHours) * (flightTimeInHours - minFlightTimeInHours);
         }
 
         private decimal IsNightFlight(Itinerary netRate)
