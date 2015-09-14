@@ -1,0 +1,2238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://tavisca.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Hotel.DataContracts" />
+  <xs:import schemaLocation="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:element name="HotelSearchView">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://tavisca.com" minOccurs="0" name="request" nillable="true" type="q1:HotelSearchViewRQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="HotelSearchViewRQ">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://tavisca.com" base="q2:WebServiceRQ">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Filters" nillable="true" type="q2:ArrayOfHotelFilter" />
+          <xs:element minOccurs="0" name="HotelSearchCriterion" nillable="true" type="q2:HotelSearchCriterion" />
+          <xs:element minOccurs="0" name="PagingInfo" nillable="true" type="q2:PagingInfo" />
+          <xs:element minOccurs="0" name="Transforms" nillable="true" type="q2:ArrayOfHotelTransform" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q3="http://tavisca.com" name="HotelSearchViewRQ" nillable="true" type="q3:HotelSearchViewRQ" />
+  <xs:complexType name="WebServiceRQ">
+    <xs:sequence>
+      <xs:element xmlns:q4="http://tavisca.com" minOccurs="0" name="AdditionalInfo" nillable="true" type="q4:ArrayOfStateBag" />
+      <xs:element xmlns:q5="http://tavisca.com" minOccurs="0" name="ResultRequested" type="q5:ResponseType" />
+      <xs:element minOccurs="0" name="SessionId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q6="http://tavisca.com" name="WebServiceRQ" nillable="true" type="q6:WebServiceRQ" />
+  <xs:complexType name="ArrayOfStateBag">
+    <xs:sequence>
+      <xs:element xmlns:q7="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="StateBag" nillable="true" type="q7:StateBag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q8="http://tavisca.com" name="ArrayOfStateBag" nillable="true" type="q8:ArrayOfStateBag" />
+  <xs:complexType name="StateBag">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q9="http://tavisca.com" name="StateBag" nillable="true" type="q9:StateBag" />
+  <xs:simpleType name="ResponseType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Complete" />
+      <xs:enumeration value="Incomplete" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q10="http://tavisca.com" name="ResponseType" nillable="true" type="q10:ResponseType" />
+  <xs:complexType name="HotelRoomAvailRQ">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://tavisca.com" base="q11:WebServiceRQ">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="HotelSearchCriterion" nillable="true" type="q11:HotelSearchCriterion" />
+          <xs:element minOccurs="0" name="Itinerary" nillable="true" type="q11:HotelItinerary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q12="http://tavisca.com" name="HotelRoomAvailRQ" nillable="true" type="q12:HotelRoomAvailRQ" />
+  <xs:complexType name="HotelSearchCriterion">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q13="http://tavisca.com" base="q13:TripSearchCriterion">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Guests" nillable="true" type="q13:ArrayOfPassengerTypeQuantity" />
+          <xs:element minOccurs="0" name="IsReturnRooms" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Location" nillable="true" type="q13:Location" />
+          <xs:element minOccurs="0" name="NoOfBedRooms" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NoOfRooms" type="xs:int" />
+          <xs:element minOccurs="0" name="ProcessingInfo" nillable="true" type="q13:HotelSearchProcessingInfo" />
+          <xs:element minOccurs="0" name="PropertiesToSearch" nillable="true" type="q13:ArrayOfHotelProperty" />
+          <xs:element minOccurs="0" name="RoomOccupancyTypes" nillable="true" type="q13:ArrayOfRoomOccupancyType" />
+          <xs:element minOccurs="0" name="SearchBehavior" nillable="true" type="xs:string" />
+          <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SearchCategories" nillable="true" type="q14:ArrayOfstring" />
+          <xs:element minOccurs="0" name="SearchType" type="q13:HotelSearchType" />
+          <xs:element minOccurs="0" name="StayPeriod" nillable="true" type="q13:DateTimeSpan" />
+          <xs:element minOccurs="0" name="Tags" nillable="true" type="q13:ArrayOfTag" />
+          <xs:element minOccurs="0" name="TravelPreference" nillable="true" type="q13:HotelSearchPreference" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q15="http://tavisca.com" name="HotelSearchCriterion" nillable="true" type="q15:HotelSearchCriterion" />
+  <xs:complexType name="TripSearchCriterion">
+    <xs:sequence>
+      <xs:element xmlns:q16="http://tavisca.com" minOccurs="0" name="Attributes" nillable="true" type="q16:ArrayOfStateBag" />
+      <xs:element minOccurs="0" name="MatrixResults" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaximumResults" type="xs:int" />
+      <xs:element xmlns:q17="http://tavisca.com" minOccurs="0" name="Pos" nillable="true" type="q17:PointOfSale" />
+      <xs:element minOccurs="0" name="PriceCurrencyCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q18="http://tavisca.com" name="TripSearchCriterion" nillable="true" type="q18:TripSearchCriterion" />
+  <xs:complexType name="PointOfSale">
+    <xs:sequence>
+      <xs:element xmlns:q19="http://tavisca.com" minOccurs="0" name="AdditionalInfo" nillable="true" type="q19:ArrayOfStateBag" />
+      <xs:element minOccurs="0" name="AgentSign" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PosId" type="xs:int" />
+      <xs:element xmlns:q20="http://tavisca.com" minOccurs="0" name="Requester" nillable="true" type="q20:Company" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q21="http://tavisca.com" name="PointOfSale" nillable="true" type="q21:PointOfSale" />
+  <xs:complexType name="Company">
+    <xs:sequence>
+      <xs:element xmlns:q22="http://tavisca.com" minOccurs="0" name="Agency" nillable="true" type="q22:Agency" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element xmlns:q23="http://tavisca.com" minOccurs="0" name="CodeContext" type="q23:CompanyCodeContext" />
+      <xs:element minOccurs="0" name="DK" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Department" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Division" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element xmlns:q24="http://tavisca.com" minOccurs="0" name="Logo" nillable="true" type="q24:Media" />
+      <xs:element minOccurs="0" name="ShortName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q25="http://tavisca.com" name="Company" nillable="true" type="q25:Company" />
+  <xs:complexType name="Agency">
+    <xs:sequence>
+      <xs:element xmlns:q26="http://tavisca.com" minOccurs="0" name="AgencyAddress" nillable="true" type="q26:Address" />
+      <xs:element minOccurs="0" name="AgencyId" type="xs:int" />
+      <xs:element minOccurs="0" name="AgencyName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q27="http://tavisca.com" name="Agency" nillable="true" type="q27:Agency" />
+  <xs:complexType name="Address">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q28="http://tavisca.com" base="q28:Location">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AddressLine1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AddressLine2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AddressScheme" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="City" nillable="true" type="q28:City" />
+          <xs:element minOccurs="0" name="CompleteAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q29="http://tavisca.com" name="Address" nillable="true" type="q29:Address" />
+  <xs:complexType name="Location">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element xmlns:q30="http://tavisca.com" minOccurs="0" name="CodeContext" type="q30:LocationCodeContext" />
+      <xs:element xmlns:q31="http://tavisca.com" minOccurs="0" name="GeoCode" nillable="true" type="q31:GeoCode" />
+      <xs:element minOccurs="0" name="GmtOffsetMinutes" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q32="http://tavisca.com" minOccurs="0" name="Radius" nillable="true" type="q32:Distance" />
+      <xs:element xmlns:q33="http://tavisca.com" minOccurs="0" name="SupplierSideData" nillable="true" type="q33:ArrayOfStateBag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q34="http://tavisca.com" name="Location" nillable="true" type="q34:Location" />
+  <xs:simpleType name="LocationCodeContext">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="City" />
+      <xs:enumeration value="Airport" />
+      <xs:enumeration value="Address" />
+      <xs:enumeration value="RentalLocation" />
+      <xs:enumeration value="GeoCode" />
+      <xs:enumeration value="ZipCode" />
+      <xs:enumeration value="PointOfInterest" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q35="http://tavisca.com" name="LocationCodeContext" nillable="true" type="q35:LocationCodeContext" />
+  <xs:complexType name="GeoCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Latitude" type="xs:float" />
+      <xs:element minOccurs="0" name="Longitude" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q36="http://tavisca.com" name="GeoCode" nillable="true" type="q36:GeoCode" />
+  <xs:complexType name="Distance">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:float" />
+      <xs:element xmlns:q37="http://tavisca.com" minOccurs="0" name="From" type="q37:LocationCodeContext" />
+      <xs:element xmlns:q38="http://tavisca.com" minOccurs="0" name="Unit" type="q38:DistanceUnit" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q39="http://tavisca.com" name="Distance" nillable="true" type="q39:Distance" />
+  <xs:simpleType name="DistanceUnit">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="km" />
+      <xs:enumeration value="mi" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q40="http://tavisca.com" name="DistanceUnit" nillable="true" type="q40:DistanceUnit" />
+  <xs:complexType name="Airport">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q41="http://tavisca.com" base="q41:Location">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AirportType" type="q41:AirportType" />
+          <xs:element minOccurs="0" name="City" nillable="true" type="q41:City" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q42="http://tavisca.com" name="Airport" nillable="true" type="q42:Airport" />
+  <xs:simpleType name="AirportType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Departure" />
+      <xs:enumeration value="Arrival" />
+      <xs:enumeration value="Connection" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q43="http://tavisca.com" name="AirportType" nillable="true" type="q43:AirportType" />
+  <xs:complexType name="City">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q44="http://tavisca.com" base="q44:Location">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CountryFullName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q45="http://tavisca.com" name="City" nillable="true" type="q45:City" />
+  <xs:simpleType name="CompanyCodeContext">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Airline" />
+      <xs:enumeration value="CarRentalCompany" />
+      <xs:enumeration value="HotelChain" />
+      <xs:enumeration value="CorporateTravelClient" />
+      <xs:enumeration value="PersonalTravelClient" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q46="http://tavisca.com" name="CompanyCodeContext" nillable="true" type="q46:CompanyCodeContext" />
+  <xs:complexType name="Media">
+    <xs:sequence>
+      <xs:element xmlns:q47="http://tavisca.com" minOccurs="0" name="Caption" type="q47:MediaCaptionType" />
+      <xs:element minOccurs="0" name="MimeType" nillable="true" type="xs:string" />
+      <xs:element xmlns:q48="http://tavisca.com" minOccurs="0" name="Type" type="q48:MediaType" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q49="http://tavisca.com" name="Media" nillable="true" type="q49:Media" />
+  <xs:simpleType name="MediaCaptionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NA" />
+      <xs:enumeration value="AerobicsCenter" />
+      <xs:enumeration value="Apartment" />
+      <xs:enumeration value="Atrium" />
+      <xs:enumeration value="Attraction" />
+      <xs:enumeration value="Ballroom" />
+      <xs:enumeration value="Banquet" />
+      <xs:enumeration value="BasketballCourt" />
+      <xs:enumeration value="Bathroom" />
+      <xs:enumeration value="BBQ" />
+      <xs:enumeration value="Beach" />
+      <xs:enumeration value="BeautySalon" />
+      <xs:enumeration value="Billiards_Pool" />
+      <xs:enumeration value="BreakfastArea" />
+      <xs:enumeration value="BusinessCenter" />
+      <xs:enumeration value="Casino" />
+      <xs:enumeration value="ChildrensActivities" />
+      <xs:enumeration value="ChildrensPlayArea" />
+      <xs:enumeration value="ChildrensPool" />
+      <xs:enumeration value="Clubhouse" />
+      <xs:enumeration value="CoffeeShop" />
+      <xs:enumeration value="CommonKitchen" />
+      <xs:enumeration value="CommonLibrary" />
+      <xs:enumeration value="CommunitySitting" />
+      <xs:enumeration value="Cottage" />
+      <xs:enumeration value="Courtyard" />
+      <xs:enumeration value="DaySpa" />
+      <xs:enumeration value="Delicatessen" />
+      <xs:enumeration value="DeluxeRoom" />
+      <xs:enumeration value="DiningArea" />
+      <xs:enumeration value="Efficiency" />
+      <xs:enumeration value="Entertainment" />
+      <xs:enumeration value="Exterior" />
+      <xs:enumeration value="FitnessFacility" />
+      <xs:enumeration value="Floorplan" />
+      <xs:enumeration value="FoodCourt" />
+      <xs:enumeration value="Fountain" />
+      <xs:enumeration value="FullServiceSpa" />
+      <xs:enumeration value="GameRoom" />
+      <xs:enumeration value="Gardens" />
+      <xs:enumeration value="Gazebo" />
+      <xs:enumeration value="GiftShop" />
+      <xs:enumeration value="GolfCourse" />
+      <xs:enumeration value="GuestRoom" />
+      <xs:enumeration value="HotTub" />
+      <xs:enumeration value="House" />
+      <xs:enumeration value="IndoorPool" />
+      <xs:enumeration value="Interior" />
+      <xs:enumeration value="Jacuzzi" />
+      <xs:enumeration value="Kitchen" />
+      <xs:enumeration value="LakeView" />
+      <xs:enumeration value="LivingArea" />
+      <xs:enumeration value="Lobby" />
+      <xs:enumeration value="Lounge_Bar" />
+      <xs:enumeration value="Map" />
+      <xs:enumeration value="Marina" />
+      <xs:enumeration value="MassageServices" />
+      <xs:enumeration value="MasterBedroom" />
+      <xs:enumeration value="MeetingFacility" />
+      <xs:enumeration value="NightClub" />
+      <xs:enumeration value="OutdoorPool" />
+      <xs:enumeration value="Parlor" />
+      <xs:enumeration value="Patio_Balcony" />
+      <xs:enumeration value="PianoBar" />
+      <xs:enumeration value="Picture" />
+      <xs:enumeration value="PoolsideBar" />
+      <xs:enumeration value="Porch" />
+      <xs:enumeration value="Premium" />
+      <xs:enumeration value="PrivatePool" />
+      <xs:enumeration value="PublicArea" />
+      <xs:enumeration value="PuttingGreen" />
+      <xs:enumeration value="ReceptionArea" />
+      <xs:enumeration value="Recreation" />
+      <xs:enumeration value="Restaurant" />
+      <xs:enumeration value="Room" />
+      <xs:enumeration value="Sauna" />
+      <xs:enumeration value="SkiActivity" />
+      <xs:enumeration value="SnackBar_VendingMc" />
+      <xs:enumeration value="SpecialtyShops" />
+      <xs:enumeration value="SportsBar" />
+      <xs:enumeration value="Studio" />
+      <xs:enumeration value="Suite" />
+      <xs:enumeration value="Sundeck" />
+      <xs:enumeration value="TennisCourt" />
+      <xs:enumeration value="Terrace" />
+      <xs:enumeration value="View" />
+      <xs:enumeration value="VollyballCourt" />
+      <xs:enumeration value="WeddingServices" />
+      <xs:enumeration value="WetBar" />
+      <xs:enumeration value="SmallThumbnail" />
+      <xs:enumeration value="MediumThumbnail" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q50="http://tavisca.com" name="MediaCaptionType" nillable="true" type="q50:MediaCaptionType" />
+  <xs:simpleType name="MediaType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NA" />
+      <xs:enumeration value="Logo" />
+      <xs:enumeration value="Photo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q51="http://tavisca.com" name="MediaType" nillable="true" type="q51:MediaType" />
+  <xs:complexType name="HotelChain">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q52="http://tavisca.com" base="q52:Company">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q53="http://tavisca.com" name="HotelChain" nillable="true" type="q53:HotelChain" />
+  <xs:complexType name="ArrayOfPassengerTypeQuantity">
+    <xs:sequence>
+      <xs:element xmlns:q54="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="PassengerTypeQuantity" nillable="true" type="q54:PassengerTypeQuantity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q55="http://tavisca.com" name="ArrayOfPassengerTypeQuantity" nillable="true" type="q55:ArrayOfPassengerTypeQuantity" />
+  <xs:complexType name="PassengerTypeQuantity">
+    <xs:sequence>
+      <xs:element xmlns:q56="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Ages" nillable="true" type="q56:ArrayOfint" />
+      <xs:element xmlns:q57="http://tavisca.com" minOccurs="0" name="PassengerType" type="q57:PassengerType" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q58="http://tavisca.com" name="PassengerTypeQuantity" nillable="true" type="q58:PassengerTypeQuantity" />
+  <xs:simpleType name="PassengerType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Adult" />
+      <xs:enumeration value="Child" />
+      <xs:enumeration value="Infant" />
+      <xs:enumeration value="Senior" />
+      <xs:enumeration value="AaaMember" />
+      <xs:enumeration value="MilitaryStaff" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q59="http://tavisca.com" name="PassengerType" nillable="true" type="q59:PassengerType" />
+  <xs:complexType name="HotelSearchProcessingInfo">
+    <xs:sequence>
+      <xs:element xmlns:q60="http://tavisca.com" minOccurs="0" name="DisplayOrder" type="q60:HotelDisplayOrder" />
+      <xs:element xmlns:q61="http://tavisca.com" minOccurs="0" name="FareSources" nillable="true" type="q61:ArrayOfHotelFareSource" />
+      <xs:element xmlns:q62="http://tavisca.com" minOccurs="0" name="FareTypes" nillable="true" type="q62:ArrayOfFareType" />
+      <xs:element xmlns:q63="http://tavisca.com" minOccurs="0" name="HotelContentPreferences" nillable="true" type="q63:ArrayOfHotelContentPreference" />
+      <xs:element xmlns:q64="http://tavisca.com" minOccurs="0" name="HotelSearchNearByDates" nillable="true" type="q64:HotelSearchNearByDates" />
+      <xs:element xmlns:q65="http://tavisca.com" minOccurs="0" name="POIGeoCode" nillable="true" type="q65:GeoCode" />
+      <xs:element xmlns:q66="http://tavisca.com" minOccurs="0" name="PreferenceSortInfoList" nillable="true" type="q66:ArrayOfPreferenceSortInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q67="http://tavisca.com" name="HotelSearchProcessingInfo" nillable="true" type="q67:HotelSearchProcessingInfo" />
+  <xs:simpleType name="HotelDisplayOrder">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ByHotelNameAscending" />
+      <xs:enumeration value="ByHotelNameDescending" />
+      <xs:enumeration value="ByStarRatingAscending" />
+      <xs:enumeration value="ByStarRatingDescending" />
+      <xs:enumeration value="ByPriceHighToLow" />
+      <xs:enumeration value="ByPriceLowToHigh" />
+      <xs:enumeration value="BestMatch" />
+      <xs:enumeration value="DistanceAscending" />
+      <xs:enumeration value="DistanceDescending" />
+      <xs:enumeration value="ByHotelBrandNameAscending" />
+      <xs:enumeration value="ByHotelBrandNameDescending" />
+      <xs:enumeration value="ByPreference" />
+      <xs:enumeration value="DistanceFromPOIAscending" />
+      <xs:enumeration value="DistanceFromPOIDescending" />
+      <xs:enumeration value="ByNumberOfBedRoomsAscending" />
+      <xs:enumeration value="ByNumberOfBedRoomsDescending" />
+      <xs:enumeration value="ByMaxOccupancyAscending" />
+      <xs:enumeration value="ByMaxOccupancyDescending" />
+      <xs:enumeration value="ByDealPriceAscending" />
+      <xs:enumeration value="ByRelevanceScoreAscending" />
+      <xs:enumeration value="ByRelevanceScoreDescending" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q68="http://tavisca.com" name="HotelDisplayOrder" nillable="true" type="q68:HotelDisplayOrder" />
+  <xs:complexType name="ArrayOfHotelFareSource">
+    <xs:sequence>
+      <xs:element xmlns:q69="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="HotelFareSource" nillable="true" type="q69:HotelFareSource" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q70="http://tavisca.com" name="ArrayOfHotelFareSource" nillable="true" type="q70:ArrayOfHotelFareSource" />
+  <xs:complexType name="HotelFareSource">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q71="http://tavisca.com" base="q71:FareSource">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q72="http://tavisca.com" name="HotelFareSource" nillable="true" type="q72:HotelFareSource" />
+  <xs:complexType name="FareSource">
+    <xs:sequence>
+      <xs:element xmlns:q73="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AccountCodes" nillable="true" type="q73:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q74="http://tavisca.com" name="FareSource" nillable="true" type="q74:FareSource" />
+  <xs:complexType name="ArrayOfFareType">
+    <xs:sequence>
+      <xs:element xmlns:q75="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="FareType" type="q75:FareType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q76="http://tavisca.com" name="ArrayOfFareType" nillable="true" type="q76:ArrayOfFareType" />
+  <xs:simpleType name="FareType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Published" />
+      <xs:enumeration value="Negotiated" />
+      <xs:enumeration value="Corporate" />
+      <xs:enumeration value="Promotional" />
+      <xs:enumeration value="Web" />
+      <xs:enumeration value="Opaque" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q77="http://tavisca.com" name="FareType" nillable="true" type="q77:FareType" />
+  <xs:complexType name="ArrayOfHotelContentPreference">
+    <xs:sequence>
+      <xs:element xmlns:q78="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="HotelContentPreference" type="q78:HotelContentPreference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q79="http://tavisca.com" name="ArrayOfHotelContentPreference" nillable="true" type="q79:ArrayOfHotelContentPreference" />
+  <xs:simpleType name="HotelContentPreference">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="All" />
+      <xs:enumeration value="Activities" />
+      <xs:enumeration value="Amenities" />
+      <xs:enumeration value="AreaAttractions" />
+      <xs:enumeration value="CheckinCheckout" />
+      <xs:enumeration value="Descriptions" />
+      <xs:enumeration value="Images" />
+      <xs:enumeration value="Tags" />
+      <xs:enumeration value="None" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q80="http://tavisca.com" name="HotelContentPreference" nillable="true" type="q80:HotelContentPreference" />
+  <xs:complexType name="HotelSearchNearByDates">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DurationForNearByDate" type="xs:float" />
+      <xs:element minOccurs="0" name="IsSearchNearByDate" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q81="http://tavisca.com" name="HotelSearchNearByDates" nillable="true" type="q81:HotelSearchNearByDates" />
+  <xs:complexType name="ArrayOfPreferenceSortInfo">
+    <xs:sequence>
+      <xs:element xmlns:q82="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="PreferenceSortInfo" nillable="true" type="q82:PreferenceSortInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q83="http://tavisca.com" name="ArrayOfPreferenceSortInfo" nillable="true" type="q83:ArrayOfPreferenceSortInfo" />
+  <xs:complexType name="PreferenceSortInfo">
+    <xs:sequence>
+      <xs:element xmlns:q84="http://tavisca.com" minOccurs="0" name="FareType" type="q84:FareType" />
+      <xs:element minOccurs="0" name="FareTypeSpecified" type="xs:boolean" />
+      <xs:element minOccurs="0" name="VendorCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q85="http://tavisca.com" name="PreferenceSortInfo" nillable="true" type="q85:PreferenceSortInfo" />
+  <xs:complexType name="ArrayOfHotelProperty">
+    <xs:sequence>
+      <xs:element xmlns:q86="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="HotelProperty" nillable="true" type="q86:HotelProperty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q87="http://tavisca.com" name="ArrayOfHotelProperty" nillable="true" type="q87:ArrayOfHotelProperty" />
+  <xs:complexType name="HotelProperty">
+    <xs:sequence>
+      <xs:element xmlns:q88="http://tavisca.com" minOccurs="0" name="ActivityOptions" nillable="true" type="q88:ArrayOfActivity" />
+      <xs:element xmlns:q89="http://tavisca.com" minOccurs="0" name="Address" nillable="true" type="q89:Address" />
+      <xs:element xmlns:q90="http://tavisca.com" minOccurs="0" name="Amenities" nillable="true" type="q90:ArrayOfAmenity" />
+      <xs:element xmlns:q91="http://tavisca.com" minOccurs="0" name="AreaAttractions" nillable="true" type="q91:ArrayOfAreaAttraction" />
+      <xs:element xmlns:q92="http://tavisca.com" minOccurs="0" name="AvailabilityCalender" nillable="true" type="q92:AvailabilityCalender" />
+      <xs:element xmlns:q93="http://tavisca.com" minOccurs="0" name="CheckInOptions" nillable="true" type="q93:ArrayOfTimeDetail" />
+      <xs:element xmlns:q94="http://tavisca.com" minOccurs="0" name="CheckOutOptions" nillable="true" type="q94:ArrayOfTimeDetail" />
+      <xs:element xmlns:q95="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Hotel.DataContracts" minOccurs="0" name="Descriptions" nillable="true" type="q95:ArrayOfHotelDescription" />
+      <xs:element xmlns:q96="http://tavisca.com" minOccurs="0" name="Distance" nillable="true" type="q96:Distance" />
+      <xs:element minOccurs="0" name="FaxNumber" nillable="true" type="xs:string" />
+      <xs:element xmlns:q97="http://tavisca.com" minOccurs="0" name="GeoCode" nillable="true" type="q97:GeoCode" />
+      <xs:element xmlns:q98="http://tavisca.com" minOccurs="0" name="HotelChain" nillable="true" type="q98:HotelChain" />
+      <xs:element xmlns:q99="http://tavisca.com" minOccurs="0" name="HotelMultiMedia" nillable="true" type="q99:HotelMultimedia" />
+      <xs:element xmlns:q100="http://tavisca.com" minOccurs="0" name="HotelRating" nillable="true" type="q100:HotelRating" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element xmlns:q101="http://tavisca.com" minOccurs="0" name="MediaContent" nillable="true" type="q101:ArrayOfMedia" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NativeCurrencyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element xmlns:q102="http://tavisca.com" minOccurs="0" name="Reviews" nillable="true" type="q102:ArrayOfReview" />
+      <xs:element xmlns:q103="http://tavisca.com" minOccurs="0" name="StateBag" nillable="true" type="q103:ArrayOfStateBag" />
+      <xs:element minOccurs="0" name="SupplierHotelId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q104="http://tavisca.com" minOccurs="0" name="Tags" nillable="true" type="q104:ArrayOfTag" />
+      <xs:element xmlns:q105="http://tavisca.com" minOccurs="0" name="Thumbnail" nillable="true" type="q105:Media" />
+      <xs:element minOccurs="0" name="WebsiteUrl" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q106="http://tavisca.com" name="HotelProperty" nillable="true" type="q106:HotelProperty" />
+  <xs:complexType name="ArrayOfActivity">
+    <xs:sequence>
+      <xs:element xmlns:q107="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Activity" nillable="true" type="q107:Activity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q108="http://tavisca.com" name="ArrayOfActivity" nillable="true" type="q108:ArrayOfActivity" />
+  <xs:complexType name="Activity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element xmlns:q109="http://tavisca.com" minOccurs="0" name="Distance" nillable="true" type="q109:Distance" />
+      <xs:element xmlns:q110="http://tavisca.com" minOccurs="0" name="GeoCode" nillable="true" type="q110:GeoCode" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q111="http://tavisca.com" minOccurs="0" name="Tags" nillable="true" type="q111:ArrayOfTag" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q112="http://tavisca.com" name="Activity" nillable="true" type="q112:Activity" />
+  <xs:complexType name="ArrayOfTag">
+    <xs:sequence>
+      <xs:element xmlns:q113="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Tag" nillable="true" type="q113:Tag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q114="http://tavisca.com" name="ArrayOfTag" nillable="true" type="q114:ArrayOfTag" />
+  <xs:complexType name="Tag">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Group" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q115="http://tavisca.com" name="Tag" nillable="true" type="q115:Tag" />
+  <xs:complexType name="ArrayOfAmenity">
+    <xs:sequence>
+      <xs:element xmlns:q116="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Amenity" nillable="true" type="q116:Amenity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q117="http://tavisca.com" name="ArrayOfAmenity" nillable="true" type="q117:ArrayOfAmenity" />
+  <xs:complexType name="Amenity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AmenityType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ImageUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MasterAmenityId" type="xs:int" />
+      <xs:element minOccurs="0" name="MasterAmenityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sequence" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q118="http://tavisca.com" name="Amenity" nillable="true" type="q118:Amenity" />
+  <xs:complexType name="ArrayOfAreaAttraction">
+    <xs:sequence>
+      <xs:element xmlns:q119="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="AreaAttraction" nillable="true" type="q119:AreaAttraction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q120="http://tavisca.com" name="ArrayOfAreaAttraction" nillable="true" type="q120:ArrayOfAreaAttraction" />
+  <xs:complexType name="AreaAttraction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element xmlns:q121="http://tavisca.com" minOccurs="0" name="GeoCode" nillable="true" type="q121:GeoCode" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q122="http://tavisca.com" minOccurs="0" name="Tags" nillable="true" type="q122:ArrayOfTag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q123="http://tavisca.com" name="AreaAttraction" nillable="true" type="q123:AreaAttraction" />
+  <xs:complexType name="AvailabilityCalender">
+    <xs:sequence>
+      <xs:element xmlns:q124="http://tavisca.com" minOccurs="0" name="AvailabilityStatus" type="q124:AvailabilityStatus" />
+      <xs:element xmlns:q125="http://tavisca.com" minOccurs="0" name="TimeSpans" nillable="true" type="q125:ArrayOfDateRange" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q126="http://tavisca.com" name="AvailabilityCalender" nillable="true" type="q126:AvailabilityCalender" />
+  <xs:simpleType name="AvailabilityStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotAvailable" />
+      <xs:enumeration value="Available" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q127="http://tavisca.com" name="AvailabilityStatus" nillable="true" type="q127:AvailabilityStatus" />
+  <xs:complexType name="ArrayOfDateRange">
+    <xs:sequence>
+      <xs:element xmlns:q128="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="DateRange" nillable="true" type="q128:DateRange" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q129="http://tavisca.com" name="ArrayOfDateRange" nillable="true" type="q129:ArrayOfDateRange" />
+  <xs:complexType name="DateRange">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q130="http://tavisca.com" name="DateRange" nillable="true" type="q130:DateRange" />
+  <xs:complexType name="ArrayOfTimeDetail">
+    <xs:sequence>
+      <xs:element xmlns:q131="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="TimeDetail" nillable="true" type="q131:TimeDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q132="http://tavisca.com" name="ArrayOfTimeDetail" nillable="true" type="q132:ArrayOfTimeDetail" />
+  <xs:complexType name="TimeDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BeginDate" type="xs:dateTime" />
+      <xs:element xmlns:q133="http://tavisca.com" minOccurs="0" name="Day" type="q133:Day" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Time" type="ser:duration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q134="http://tavisca.com" name="TimeDetail" nillable="true" type="q134:TimeDetail" />
+  <xs:simpleType name="Day">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MON" />
+      <xs:enumeration value="TUE" />
+      <xs:enumeration value="WED" />
+      <xs:enumeration value="THU" />
+      <xs:enumeration value="FRI" />
+      <xs:enumeration value="SAT" />
+      <xs:enumeration value="SUN" />
+      <xs:enumeration value="ANY" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q135="http://tavisca.com" name="Day" nillable="true" type="q135:Day" />
+  <xs:complexType name="HotelMultimedia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HotelId" type="xs:int" />
+      <xs:element minOccurs="0" name="IsAudioExists" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPhotoExists" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsVideoExists" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsVirtualTourExists" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ShowAudio" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ShowPhoto" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ShowVideo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ShowVirtualTour" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SupplierFamily" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierHotelId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q136="http://tavisca.com" name="HotelMultimedia" nillable="true" type="q136:HotelMultimedia" />
+  <xs:complexType name="HotelRating">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Rating" type="xs:float" />
+      <xs:element xmlns:q137="http://tavisca.com" minOccurs="0" name="RatingType" type="q137:RatingType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q138="http://tavisca.com" name="HotelRating" nillable="true" type="q138:HotelRating" />
+  <xs:simpleType name="RatingType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UnSpecified" />
+      <xs:enumeration value="NTM" />
+      <xs:enumeration value="AAA" />
+      <xs:enumeration value="Mobil" />
+      <xs:enumeration value="Star" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q139="http://tavisca.com" name="RatingType" nillable="true" type="q139:RatingType" />
+  <xs:complexType name="ArrayOfMedia">
+    <xs:sequence>
+      <xs:element xmlns:q140="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Media" nillable="true" type="q140:Media" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q141="http://tavisca.com" name="ArrayOfMedia" nillable="true" type="q141:ArrayOfMedia" />
+  <xs:complexType name="ArrayOfReview">
+    <xs:sequence>
+      <xs:element xmlns:q142="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Review" nillable="true" type="q142:Review" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q143="http://tavisca.com" name="ArrayOfReview" nillable="true" type="q143:ArrayOfReview" />
+  <xs:complexType name="Review">
+    <xs:sequence>
+      <xs:element xmlns:q144="http://tavisca.com" minOccurs="0" name="HelpfulVotes" nillable="true" type="q144:HelpfulVotes" />
+      <xs:element minOccurs="0" name="Rating" type="xs:decimal" />
+      <xs:element xmlns:q145="http://tavisca.com" minOccurs="0" name="Ratings" nillable="true" type="q145:ArrayOfReviewRating" />
+      <xs:element xmlns:q146="http://tavisca.com" minOccurs="0" name="Reviewer" nillable="true" type="q146:Reviewer" />
+      <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q147="http://tavisca.com" name="Review" nillable="true" type="q147:Review" />
+  <xs:complexType name="HelpfulVotes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NoCount" type="xs:int" />
+      <xs:element minOccurs="0" name="YesCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q148="http://tavisca.com" name="HelpfulVotes" nillable="true" type="q148:HelpfulVotes" />
+  <xs:complexType name="ArrayOfReviewRating">
+    <xs:sequence>
+      <xs:element xmlns:q149="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="ReviewRating" nillable="true" type="q149:ReviewRating" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q150="http://tavisca.com" name="ArrayOfReviewRating" nillable="true" type="q150:ArrayOfReviewRating" />
+  <xs:complexType name="ReviewRating">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q151="http://tavisca.com" name="ReviewRating" nillable="true" type="q151:ReviewRating" />
+  <xs:complexType name="Reviewer">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q152="http://tavisca.com" base="q152:Person">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="StayDate" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q153="http://tavisca.com" name="Reviewer" nillable="true" type="q153:Reviewer" />
+  <xs:complexType name="Person">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q154="http://tavisca.com" name="Person" nillable="true" type="q154:Person" />
+  <xs:complexType name="PropertyOwner">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q155="http://tavisca.com" base="q155:Person">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q156="http://tavisca.com" name="PropertyOwner" nillable="true" type="q156:PropertyOwner" />
+  <xs:complexType name="VacationRentalProperty">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q157="http://tavisca.com" base="q157:HotelProperty">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Bathrooms" type="xs:int" />
+          <xs:element minOccurs="0" name="BedRooms" type="xs:int" />
+          <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MaxOccupancy" type="xs:int" />
+          <xs:element minOccurs="0" name="Owner" nillable="true" type="q157:PropertyOwner" />
+          <xs:element minOccurs="0" name="PropertyArea" nillable="true" type="q157:Area" />
+          <xs:element minOccurs="0" name="SeasonalRates" nillable="true" type="q157:ArrayOfSeasonalRate" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q158="http://tavisca.com" name="VacationRentalProperty" nillable="true" type="q158:VacationRentalProperty" />
+  <xs:complexType name="Area">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q159="http://tavisca.com" name="Area" nillable="true" type="q159:Area" />
+  <xs:complexType name="ArrayOfSeasonalRate">
+    <xs:sequence>
+      <xs:element xmlns:q160="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="SeasonalRate" nillable="true" type="q160:SeasonalRate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q161="http://tavisca.com" name="ArrayOfSeasonalRate" nillable="true" type="q161:ArrayOfSeasonalRate" />
+  <xs:complexType name="SeasonalRate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BeginDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element xmlns:q162="http://tavisca.com" minOccurs="0" name="MinimumStay" nillable="true" type="q162:StayDuration" />
+      <xs:element minOccurs="0" name="PeriodName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q163="http://tavisca.com" minOccurs="0" name="Rate" nillable="true" type="q163:Money" />
+      <xs:element minOccurs="0" name="RateType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q164="http://tavisca.com" name="SeasonalRate" nillable="true" type="q164:SeasonalRate" />
+  <xs:complexType name="StayDuration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Duration" type="xs:int" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q165="http://tavisca.com" name="StayDuration" nillable="true" type="q165:StayDuration" />
+  <xs:complexType name="Money">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BaseEquivAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BaseEquivCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DisplayCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UsdEquivAmount" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q166="http://tavisca.com" name="Money" nillable="true" type="q166:Money" />
+  <xs:complexType name="DailyRate">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q167="http://tavisca.com" base="q167:Money">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q168="http://tavisca.com" name="DailyRate" nillable="true" type="q168:DailyRate" />
+  <xs:complexType name="ArrayOfRoomOccupancyType">
+    <xs:sequence>
+      <xs:element xmlns:q169="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="RoomOccupancyType" nillable="true" type="q169:RoomOccupancyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q170="http://tavisca.com" name="ArrayOfRoomOccupancyType" nillable="true" type="q170:ArrayOfRoomOccupancyType" />
+  <xs:complexType name="RoomOccupancyType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OccupancyCode" nillable="true" type="xs:string" />
+      <xs:element xmlns:q171="http://tavisca.com" minOccurs="0" name="PaxQuantities" nillable="true" type="q171:ArrayOfPassengerTypeQuantity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q172="http://tavisca.com" name="RoomOccupancyType" nillable="true" type="q172:RoomOccupancyType" />
+  <xs:simpleType name="HotelSearchType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="City" />
+      <xs:enumeration value="Airport" />
+      <xs:enumeration value="Address" />
+      <xs:enumeration value="GeoCode" />
+      <xs:enumeration value="IdList" />
+      <xs:enumeration value="ZipCode" />
+      <xs:enumeration value="PointOfInterest" />
+      <xs:enumeration value="Tags" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q173="http://tavisca.com" name="HotelSearchType" nillable="true" type="q173:HotelSearchType" />
+  <xs:complexType name="DateTimeSpan">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Duration" type="xs:int" />
+      <xs:element minOccurs="0" name="End" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Start" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q174="http://tavisca.com" name="DateTimeSpan" nillable="true" type="q174:DateTimeSpan" />
+  <xs:complexType name="HotelSearchPreference">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q175="http://tavisca.com" base="q175:TravelPreference">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Amenities" nillable="true" type="q175:ArrayOfAmenityPreference" />
+          <xs:element xmlns:q176="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CityNamePreferenceList" nillable="true" type="q176:ArrayOfstring" />
+          <xs:element minOccurs="0" name="FareTypeList" nillable="true" type="q175:ArrayOfFareType" />
+          <xs:element minOccurs="0" name="HotelChains" nillable="true" type="q175:ArrayOfCompanyPreference" />
+          <xs:element minOccurs="0" name="HotelNamePreference" nillable="true" type="q175:HotelNamePreference" />
+          <xs:element xmlns:q177="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ItineraryRphListToFilter" nillable="true" type="q177:ArrayOfstring" />
+          <xs:element minOccurs="0" name="MaxDistance" nillable="true" type="q175:Distance" />
+          <xs:element minOccurs="0" name="MaxNumberOfBedRooms" type="xs:int" />
+          <xs:element minOccurs="0" name="MaxOccupancy" type="xs:int" />
+          <xs:element minOccurs="0" name="MinDistance" nillable="true" type="q175:Distance" />
+          <xs:element minOccurs="0" name="MinNumberOfBedRooms" type="xs:int" />
+          <xs:element minOccurs="0" name="MinOccupancy" type="xs:int" />
+          <xs:element minOccurs="0" name="PaymentTypes" nillable="true" type="q175:ArrayOfHotelPaymentType" />
+          <xs:element minOccurs="0" name="RateRangePreference" nillable="true" type="q175:RateRangePreference" />
+          <xs:element minOccurs="0" name="RatingList" nillable="true" type="q175:ArrayOfHotelRating" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q178="http://tavisca.com" name="HotelSearchPreference" nillable="true" type="q178:HotelSearchPreference" />
+  <xs:complexType name="TravelPreference">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SpecialRequest" nillable="true" type="xs:string" />
+      <xs:element xmlns:q179="http://tavisca.com" minOccurs="0" name="VendorPreferences" nillable="true" type="q179:ArrayOfCompanyPreference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q180="http://tavisca.com" name="TravelPreference" nillable="true" type="q180:TravelPreference" />
+  <xs:complexType name="ArrayOfCompanyPreference">
+    <xs:sequence>
+      <xs:element xmlns:q181="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="CompanyPreference" nillable="true" type="q181:CompanyPreference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q182="http://tavisca.com" name="ArrayOfCompanyPreference" nillable="true" type="q182:ArrayOfCompanyPreference" />
+  <xs:complexType name="CompanyPreference">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q183="http://tavisca.com" base="q183:Company">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PreferLevel" type="q183:PreferLevel" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q184="http://tavisca.com" name="CompanyPreference" nillable="true" type="q184:CompanyPreference" />
+  <xs:simpleType name="PreferLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Only" />
+      <xs:enumeration value="Unacceptable" />
+      <xs:enumeration value="Preferred" />
+      <xs:enumeration value="Required" />
+      <xs:enumeration value="NoPreference" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q185="http://tavisca.com" name="PreferLevel" nillable="true" type="q185:PreferLevel" />
+  <xs:complexType name="ArrayOfAmenityPreference">
+    <xs:sequence>
+      <xs:element xmlns:q186="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="AmenityPreference" nillable="true" type="q186:AmenityPreference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q187="http://tavisca.com" name="ArrayOfAmenityPreference" nillable="true" type="q187:ArrayOfAmenityPreference" />
+  <xs:complexType name="AmenityPreference">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q188="http://tavisca.com" base="q188:Amenity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PreferLevel" type="q188:PreferLevel" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q189="http://tavisca.com" name="AmenityPreference" nillable="true" type="q189:AmenityPreference" />
+  <xs:complexType name="HotelNamePreference">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q190="http://tavisca.com" minOccurs="0" name="PreferLevel" type="q190:PreferLevel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q191="http://tavisca.com" name="HotelNamePreference" nillable="true" type="q191:HotelNamePreference" />
+  <xs:complexType name="ArrayOfHotelPaymentType">
+    <xs:sequence>
+      <xs:element xmlns:q192="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="HotelPaymentType" type="q192:HotelPaymentType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q193="http://tavisca.com" name="ArrayOfHotelPaymentType" nillable="true" type="q193:ArrayOfHotelPaymentType" />
+  <xs:simpleType name="HotelPaymentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Prepaid" />
+      <xs:enumeration value="Postpaid" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q194="http://tavisca.com" name="HotelPaymentType" nillable="true" type="q194:HotelPaymentType" />
+  <xs:complexType name="RateRangePreference">
+    <xs:sequence>
+      <xs:element xmlns:q195="http://tavisca.com" minOccurs="0" name="MaxRate" nillable="true" type="q195:Money" />
+      <xs:element xmlns:q196="http://tavisca.com" minOccurs="0" name="MinRate" nillable="true" type="q196:Money" />
+      <xs:element xmlns:q197="http://tavisca.com" minOccurs="0" name="PreferLevel" type="q197:PreferLevel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q198="http://tavisca.com" name="RateRangePreference" nillable="true" type="q198:RateRangePreference" />
+  <xs:complexType name="ArrayOfHotelRating">
+    <xs:sequence>
+      <xs:element xmlns:q199="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="HotelRating" nillable="true" type="q199:HotelRating" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q200="http://tavisca.com" name="ArrayOfHotelRating" nillable="true" type="q200:ArrayOfHotelRating" />
+  <xs:complexType name="HotelItinerary">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q201="http://tavisca.com" base="q201:TripItinerary">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AcceptableDeposits" nillable="true" type="q201:ArrayOfDeposit" />
+          <xs:element minOccurs="0" name="AcceptableGuarantees" nillable="true" type="q201:ArrayOfGuarantee" />
+          <xs:element minOccurs="0" name="AllPaxDetailsRequired" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AllowedCountries" nillable="true" type="q201:ArrayOfAllowedCountry" />
+          <xs:element minOccurs="0" name="Contract" nillable="true" type="q201:HotelContract" />
+          <xs:element minOccurs="0" name="Deals" nillable="true" type="q201:ArrayOfDeal" />
+          <xs:element minOccurs="0" name="DepositRequired" type="xs:boolean" />
+          <xs:element xmlns:q202="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DepositText" nillable="true" type="q202:ArrayOfstring" />
+          <xs:element minOccurs="0" name="DiscountCode" nillable="true" type="q201:HotelDiscountCode" />
+          <xs:element minOccurs="0" name="Fare" nillable="true" type="q201:HotelFare" />
+          <xs:element minOccurs="0" name="GuaranteeRequired" type="xs:boolean" />
+          <xs:element xmlns:q203="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GuaranteeText" nillable="true" type="q203:ArrayOfstring" />
+          <xs:element minOccurs="0" name="HotelCancellationPolicy" nillable="true" type="q201:HotelCancellationPolicy" />
+          <xs:element minOccurs="0" name="HotelDeals" nillable="true" type="q201:ArrayOfPromotionalHotelDeal" />
+          <xs:element minOccurs="0" name="HotelFareSource" nillable="true" type="q201:HotelFareSource" />
+          <xs:element minOccurs="0" name="HotelProperty" nillable="true" type="q201:HotelProperty" />
+          <xs:element minOccurs="0" name="ItineraryType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MarkupPlan" nillable="true" type="q201:MarkupPlan" />
+          <xs:element minOccurs="0" name="Policies" nillable="true" type="q201:ArrayOfHotelPolicy" />
+          <xs:element minOccurs="0" name="Rooms" nillable="true" type="q201:ArrayOfRoom" />
+          <xs:element minOccurs="0" name="Seasons" nillable="true" type="q201:ArrayOfSeason" />
+          <xs:element minOccurs="0" name="SegmentRef" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShippingAddressRequired" type="xs:boolean" />
+          <xs:element minOccurs="0" name="StayPeriod" nillable="true" type="q201:DateTimeSpan" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q204="http://tavisca.com" name="HotelItinerary" nillable="true" type="q204:HotelItinerary" />
+  <xs:complexType name="TripItinerary">
+    <xs:sequence>
+      <xs:element xmlns:q205="http://tavisca.com" minOccurs="0" name="AdditionalInformation" nillable="true" type="q205:ArrayOfStateBag" />
+      <xs:element xmlns:q206="http://tavisca.com" minOccurs="0" name="AvailableAddons" nillable="true" type="q206:ArrayOfTripAddOn" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element xmlns:q207="http://tavisca.com" minOccurs="0" name="ItineraryStatus" type="q207:ItineraryStatusType" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rph" type="xs:int" />
+      <xs:element xmlns:q208="http://tavisca.com" minOccurs="0" name="SelectedAddons" nillable="true" type="q208:ArrayOfTripAddOn" />
+      <xs:element xmlns:q209="http://tavisca.com" minOccurs="0" name="Tags" nillable="true" type="q209:ArrayOfTag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q210="http://tavisca.com" name="TripItinerary" nillable="true" type="q210:TripItinerary" />
+  <xs:complexType name="ArrayOfTripAddOn">
+    <xs:sequence>
+      <xs:element xmlns:q211="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="TripAddOn" nillable="true" type="q211:TripAddOn" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q212="http://tavisca.com" name="ArrayOfTripAddOn" nillable="true" type="q212:ArrayOfTripAddOn" />
+  <xs:complexType name="TripAddOn">
+    <xs:sequence>
+      <xs:element xmlns:q213="http://tavisca.com" minOccurs="0" name="AdditionalInformation" nillable="true" type="q213:ArrayOfStateBag" />
+      <xs:element xmlns:q214="http://tavisca.com" minOccurs="0" name="BookingInformation" nillable="true" type="q214:AddOnBookingInfo" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element xmlns:q215="http://tavisca.com" minOccurs="0" name="Fare" nillable="true" type="q215:TripAddOnFare" />
+      <xs:element xmlns:q216="http://tavisca.com" minOccurs="0" name="FareSource" nillable="true" type="q216:FareSource" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Rph" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q217="http://tavisca.com" name="TripAddOn" nillable="true" type="q217:TripAddOn" />
+  <xs:complexType name="AddOnBookingInfo">
+    <xs:sequence>
+      <xs:element xmlns:q218="http://tavisca.com" minOccurs="0" name="BookingStatus" type="q218:AddOnBookingStatusType" />
+      <xs:element minOccurs="0" name="PassengerRph" type="xs:int" />
+      <xs:element minOccurs="0" name="SupplierConfirmationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VendorConfirmationNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q219="http://tavisca.com" name="AddOnBookingInfo" nillable="true" type="q219:AddOnBookingInfo" />
+  <xs:simpleType name="AddOnBookingStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unbooked" />
+      <xs:enumeration value="Booked" />
+      <xs:enumeration value="Canceled" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q220="http://tavisca.com" name="AddOnBookingStatusType" nillable="true" type="q220:AddOnBookingStatusType" />
+  <xs:complexType name="TripAddOnFare">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q221="http://tavisca.com" base="q221:Fare">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BaseTotalFare" nillable="true" type="q221:Money" />
+          <xs:element minOccurs="0" name="IsAlreadyIncluded" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q222="http://tavisca.com" name="TripAddOnFare" nillable="true" type="q222:TripAddOnFare" />
+  <xs:complexType name="Fare">
+    <xs:sequence>
+      <xs:element xmlns:q223="http://tavisca.com" minOccurs="0" name="BaseFare" nillable="true" type="q223:BaseFare" />
+      <xs:element xmlns:q224="http://tavisca.com" minOccurs="0" name="Commissions" nillable="true" type="q224:ArrayOfCommission" />
+      <xs:element xmlns:q225="http://tavisca.com" minOccurs="0" name="ConsolidatorFee" nillable="true" type="q225:Fee" />
+      <xs:element xmlns:q226="http://tavisca.com" minOccurs="0" name="Discounts" nillable="true" type="q226:ArrayOfDiscount" />
+      <xs:element xmlns:q227="http://tavisca.com" minOccurs="0" name="EstimatedCommission" nillable="true" type="q227:Money" />
+      <xs:element minOccurs="0" name="FareCode" nillable="true" type="xs:string" />
+      <xs:element xmlns:q228="http://tavisca.com" minOccurs="0" name="FareRestrictionTypes" nillable="true" type="q228:ArrayOfFareRestrictionType" />
+      <xs:element xmlns:q229="http://tavisca.com" minOccurs="0" name="FareType" type="q229:FareType" />
+      <xs:element xmlns:q230="http://tavisca.com" minOccurs="0" name="Fees" nillable="true" type="q230:ArrayOfFee" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element xmlns:q231="http://tavisca.com" minOccurs="0" name="Markup" nillable="true" type="q231:Money" />
+      <xs:element xmlns:q232="http://tavisca.com" minOccurs="0" name="Markups" nillable="true" type="q232:ArrayOfMarkup" />
+      <xs:element xmlns:q233="http://tavisca.com" minOccurs="0" name="PartnerFee" nillable="true" type="q233:Fee" />
+      <xs:element xmlns:q234="http://tavisca.com" minOccurs="0" name="PartnerMarkup" nillable="true" type="q234:Money" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rph" type="xs:int" />
+      <xs:element xmlns:q235="http://tavisca.com" minOccurs="0" name="SavingsIncluded" nillable="true" type="q235:Money" />
+      <xs:element xmlns:q236="http://tavisca.com" minOccurs="0" name="ServiceFee" nillable="true" type="q236:Fee" />
+      <xs:element xmlns:q237="http://tavisca.com" minOccurs="0" name="SupplierSideData" nillable="true" type="q237:ArrayOfStateBag" />
+      <xs:element xmlns:q238="http://tavisca.com" minOccurs="0" name="Taxes" nillable="true" type="q238:ArrayOfTax" />
+      <xs:element xmlns:q239="http://tavisca.com" minOccurs="0" name="TotalCommission" nillable="true" type="q239:Commission" />
+      <xs:element xmlns:q240="http://tavisca.com" minOccurs="0" name="TotalDiscount" nillable="true" type="q240:Discount" />
+      <xs:element xmlns:q241="http://tavisca.com" minOccurs="0" name="TotalFare" nillable="true" type="q241:Money" />
+      <xs:element xmlns:q242="http://tavisca.com" minOccurs="0" name="TotalFee" nillable="true" type="q242:Fee" />
+      <xs:element xmlns:q243="http://tavisca.com" minOccurs="0" name="TotalTax" nillable="true" type="q243:Money" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q244="http://tavisca.com" name="Fare" nillable="true" type="q244:Fare" />
+  <xs:complexType name="BaseFare">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q245="http://tavisca.com" base="q245:Money">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q246="http://tavisca.com" name="BaseFare" nillable="true" type="q246:BaseFare" />
+  <xs:complexType name="ArrayOfCommission">
+    <xs:sequence>
+      <xs:element xmlns:q247="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Commission" nillable="true" type="q247:Commission" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q248="http://tavisca.com" name="ArrayOfCommission" nillable="true" type="q248:ArrayOfCommission" />
+  <xs:complexType name="Commission">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q249="http://tavisca.com" base="q249:Money">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:long" />
+          <xs:element minOccurs="0" name="OwnerId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q250="http://tavisca.com" name="Commission" nillable="true" type="q250:Commission" />
+  <xs:complexType name="Fee">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q251="http://tavisca.com" base="q251:Money">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:long" />
+          <xs:element minOccurs="0" name="IsRefundable" type="xs:boolean" />
+          <xs:element minOccurs="0" name="OwnerId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q252="http://tavisca.com" name="Fee" nillable="true" type="q252:Fee" />
+  <xs:complexType name="ArrayOfDiscount">
+    <xs:sequence>
+      <xs:element xmlns:q253="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Discount" nillable="true" type="q253:Discount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q254="http://tavisca.com" name="ArrayOfDiscount" nillable="true" type="q254:ArrayOfDiscount" />
+  <xs:complexType name="Discount">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q255="http://tavisca.com" base="q255:Money">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:long" />
+          <xs:element minOccurs="0" name="OwnerId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q256="http://tavisca.com" name="Discount" nillable="true" type="q256:Discount" />
+  <xs:complexType name="ArrayOfFareRestrictionType">
+    <xs:sequence>
+      <xs:element xmlns:q257="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="FareRestrictionType" type="q257:FareRestrictionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q258="http://tavisca.com" name="ArrayOfFareRestrictionType" nillable="true" type="q258:ArrayOfFareRestrictionType" />
+  <xs:simpleType name="FareRestrictionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EconomyUnrestricted" />
+      <xs:enumeration value="NoAdvancePurchase" />
+      <xs:enumeration value="NoDayTimeRestriction" />
+      <xs:enumeration value="NoMaximumStayRestriction" />
+      <xs:enumeration value="NoMinimumStayRestriction" />
+      <xs:enumeration value="NoPenalty" />
+      <xs:enumeration value="WithPenalty" />
+      <xs:enumeration value="NoRestriction" />
+      <xs:enumeration value="NoMinMaxFare" />
+      <xs:enumeration value="NonRefundableFares" />
+      <xs:enumeration value="RefundableFares" />
+      <xs:enumeration value="IncludeBookingClasses" />
+      <xs:enumeration value="ExcludeBookingClasses" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q259="http://tavisca.com" name="FareRestrictionType" nillable="true" type="q259:FareRestrictionType" />
+  <xs:complexType name="ArrayOfFee">
+    <xs:sequence>
+      <xs:element xmlns:q260="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Fee" nillable="true" type="q260:Fee" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q261="http://tavisca.com" name="ArrayOfFee" nillable="true" type="q261:ArrayOfFee" />
+  <xs:complexType name="ArrayOfMarkup">
+    <xs:sequence>
+      <xs:element xmlns:q262="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Markup" nillable="true" type="q262:Markup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q263="http://tavisca.com" name="ArrayOfMarkup" nillable="true" type="q263:ArrayOfMarkup" />
+  <xs:complexType name="Markup">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q264="http://tavisca.com" base="q264:Money">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:long" />
+          <xs:element minOccurs="0" name="OwnerId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q265="http://tavisca.com" name="Markup" nillable="true" type="q265:Markup" />
+  <xs:complexType name="ArrayOfTax">
+    <xs:sequence>
+      <xs:element xmlns:q266="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Tax" nillable="true" type="q266:Tax" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q267="http://tavisca.com" name="ArrayOfTax" nillable="true" type="q267:ArrayOfTax" />
+  <xs:complexType name="Tax">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q268="http://tavisca.com" base="q268:Money">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q269="http://tavisca.com" name="Tax" nillable="true" type="q269:Tax" />
+  <xs:complexType name="RoomRate">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q270="http://tavisca.com" base="q270:Fare">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BookingCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DailyRates" nillable="true" type="q270:ArrayOfDailyRate" />
+          <xs:element minOccurs="0" name="RateIndicatorType" type="q270:RateIndicatorType" />
+          <xs:element minOccurs="0" name="RatePlanCategory" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RatePlanCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RatePlanID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RatePlanName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RatePlanType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TaxIncludedInBase" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q271="http://tavisca.com" name="RoomRate" nillable="true" type="q271:RoomRate" />
+  <xs:complexType name="ArrayOfDailyRate">
+    <xs:sequence>
+      <xs:element xmlns:q272="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="DailyRate" nillable="true" type="q272:DailyRate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q273="http://tavisca.com" name="ArrayOfDailyRate" nillable="true" type="q273:ArrayOfDailyRate" />
+  <xs:simpleType name="RateIndicatorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="ChangeDuringStay" />
+      <xs:enumeration value="MultipleNights" />
+      <xs:enumeration value="Exclusive" />
+      <xs:enumeration value="OnRequest" />
+      <xs:enumeration value="LimitedAvailability" />
+      <xs:enumeration value="AvailableForSale" />
+      <xs:enumeration value="ClosedOut" />
+      <xs:enumeration value="OtherAvailable" />
+      <xs:enumeration value="UnableToProcess" />
+      <xs:enumeration value="NoAvailability" />
+      <xs:enumeration value="RoomTypeClosed" />
+      <xs:enumeration value="RatePlanClosed" />
+      <xs:enumeration value="LOS_Restricted" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q274="http://tavisca.com" name="RateIndicatorType" nillable="true" type="q274:RateIndicatorType" />
+  <xs:complexType name="HotelFare">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q275="http://tavisca.com" base="q275:Fare">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AvgDailyRate" nillable="true" type="q275:Money" />
+          <xs:element minOccurs="0" name="MaxDailyRate" nillable="true" type="q275:Money" />
+          <xs:element minOccurs="0" name="MinDailyRate" nillable="true" type="q275:Money" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q276="http://tavisca.com" name="HotelFare" nillable="true" type="q276:HotelFare" />
+  <xs:complexType name="HotelAddOn">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q277="http://tavisca.com" base="q277:TripAddOn">
+        <xs:sequence>
+          <xs:element xmlns:q278="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RoomRphs" nillable="true" type="q278:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q279="http://tavisca.com" name="HotelAddOn" nillable="true" type="q279:HotelAddOn" />
+  <xs:complexType name="TransferAddOn">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q280="http://tavisca.com" base="q280:HotelAddOn">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Destination" nillable="true" type="q280:Location" />
+          <xs:element minOccurs="0" name="DropOff" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Origin" nillable="true" type="q280:Location" />
+          <xs:element minOccurs="0" name="Passengers" nillable="true" type="q280:ArrayOfPassengerTypeQuantity" />
+          <xs:element minOccurs="0" name="PickUp" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q281="http://tavisca.com" name="TransferAddOn" nillable="true" type="q281:TransferAddOn" />
+  <xs:simpleType name="ItineraryStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unbooked" />
+      <xs:enumeration value="Booked" />
+      <xs:enumeration value="Canceled" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q282="http://tavisca.com" name="ItineraryStatusType" nillable="true" type="q282:ItineraryStatusType" />
+  <xs:complexType name="ArrayOfDeposit">
+    <xs:sequence>
+      <xs:element xmlns:q283="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Deposit" nillable="true" type="q283:Deposit" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q284="http://tavisca.com" name="ArrayOfDeposit" nillable="true" type="q284:ArrayOfDeposit" />
+  <xs:complexType name="Deposit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q285="http://tavisca.com" minOccurs="0" name="Type" type="q285:DepositType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q286="http://tavisca.com" name="Deposit" nillable="true" type="q286:Deposit" />
+  <xs:simpleType name="DepositType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Agency" />
+      <xs:enumeration value="Check" />
+      <xs:enumeration value="Corporate" />
+      <xs:enumeration value="CreditCard" />
+      <xs:enumeration value="Customer" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q287="http://tavisca.com" name="DepositType" nillable="true" type="q287:DepositType" />
+  <xs:complexType name="ArrayOfGuarantee">
+    <xs:sequence>
+      <xs:element xmlns:q288="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Guarantee" nillable="true" type="q288:Guarantee" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q289="http://tavisca.com" name="ArrayOfGuarantee" nillable="true" type="q289:ArrayOfGuarantee" />
+  <xs:complexType name="Guarantee">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q290="http://tavisca.com" minOccurs="0" name="Type" type="q290:GuaranteeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q291="http://tavisca.com" name="Guarantee" nillable="true" type="q291:Guarantee" />
+  <xs:simpleType name="GuaranteeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Agency" />
+      <xs:enumeration value="AgencyIATA_ARC" />
+      <xs:enumeration value="Company" />
+      <xs:enumeration value="Corporate" />
+      <xs:enumeration value="CreditCard" />
+      <xs:enumeration value="Customer" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q292="http://tavisca.com" name="GuaranteeType" nillable="true" type="q292:GuaranteeType" />
+  <xs:complexType name="ArrayOfAllowedCountry">
+    <xs:sequence>
+      <xs:element xmlns:q293="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="AllowedCountry" nillable="true" type="q293:AllowedCountry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q294="http://tavisca.com" name="ArrayOfAllowedCountry" nillable="true" type="q294:ArrayOfAllowedCountry" />
+  <xs:complexType name="AllowedCountry">
+    <xs:sequence>
+      <xs:element xmlns:q295="http://tavisca.com" minOccurs="0" name="AllowedStates" nillable="true" type="q295:ArrayOfAllowedState" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q296="http://tavisca.com" name="AllowedCountry" nillable="true" type="q296:AllowedCountry" />
+  <xs:complexType name="ArrayOfAllowedState">
+    <xs:sequence>
+      <xs:element xmlns:q297="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="AllowedState" nillable="true" type="q297:AllowedState" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q298="http://tavisca.com" name="ArrayOfAllowedState" nillable="true" type="q298:ArrayOfAllowedState" />
+  <xs:complexType name="AllowedState">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q299="http://tavisca.com" name="AllowedState" nillable="true" type="q299:AllowedState" />
+  <xs:complexType name="HotelContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AgencyId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContractId" type="xs:long" />
+      <xs:element minOccurs="0" name="ContractName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContractRateCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContractRateCodeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FareType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HotelChainCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HotelFareSourceId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HotelProprtyId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Preference" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q300="http://tavisca.com" name="HotelContract" nillable="true" type="q300:HotelContract" />
+  <xs:complexType name="ArrayOfDeal">
+    <xs:sequence>
+      <xs:element xmlns:q301="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Deal" nillable="true" type="q301:Deal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q302="http://tavisca.com" name="ArrayOfDeal" nillable="true" type="q302:ArrayOfDeal" />
+  <xs:complexType name="Deal">
+    <xs:sequence>
+      <xs:element xmlns:q303="http://tavisca.com" minOccurs="0" name="DealStatus" type="q303:DealStatus" />
+      <xs:element minOccurs="0" name="DealType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element xmlns:q304="http://tavisca.com" minOccurs="0" name="Image" nillable="true" type="q304:Media" />
+      <xs:element minOccurs="0" name="IsPackageOnly" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LongDescription" nillable="true" type="xs:string" />
+      <xs:element xmlns:q305="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RoomIds" nillable="true" type="q305:ArrayOfguid" />
+      <xs:element minOccurs="0" name="Rph" type="xs:int" />
+      <xs:element minOccurs="0" name="ShortDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element xmlns:q306="http://tavisca.com" minOccurs="0" name="Tags" nillable="true" type="q306:ArrayOfTag" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UsageEndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UsageStartDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q307="http://tavisca.com" name="Deal" nillable="true" type="q307:Deal" />
+  <xs:simpleType name="DealStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Any" />
+      <xs:enumeration value="Active" />
+      <xs:enumeration value="InActive" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q308="http://tavisca.com" name="DealStatus" nillable="true" type="q308:DealStatus" />
+  <xs:complexType name="PaystayDeal">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q309="http://tavisca.com" base="q309:Deal">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FreeNights" type="xs:int" />
+          <xs:element minOccurs="0" name="StayNights" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q310="http://tavisca.com" name="PaystayDeal" nillable="true" type="q310:PaystayDeal" />
+  <xs:complexType name="PercentageDiscountDeal">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q311="http://tavisca.com" base="q311:Deal">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ApplyOn" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Percent" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q312="http://tavisca.com" name="PercentageDiscountDeal" nillable="true" type="q312:PercentageDiscountDeal" />
+  <xs:complexType name="OpaqueDeal">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q313="http://tavisca.com" base="q313:Deal">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q314="http://tavisca.com" name="OpaqueDeal" nillable="true" type="q314:OpaqueDeal" />
+  <xs:complexType name="DiscountDeal">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q315="http://tavisca.com" base="q315:Deal">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Amount" nillable="true" type="q315:Money" />
+          <xs:element minOccurs="0" name="ApplyOn" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q316="http://tavisca.com" name="DiscountDeal" nillable="true" type="q316:DiscountDeal" />
+  <xs:complexType name="HotelDiscountCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChainCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PropertyNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RateCode" nillable="true" type="xs:string" />
+      <xs:element xmlns:q317="http://tavisca.com" minOccurs="0" name="SupplierSideData" nillable="true" type="q317:ArrayOfStateBag" />
+      <xs:element xmlns:q318="http://tavisca.com" minOccurs="0" name="Type" type="q318:HotelDiscountType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q319="http://tavisca.com" name="HotelDiscountCode" nillable="true" type="q319:HotelDiscountCode" />
+  <xs:simpleType name="HotelDiscountType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CorporateChainID" />
+      <xs:enumeration value="IDNumber" />
+      <xs:enumeration value="VendorRate" />
+      <xs:enumeration value="NegotiatedRate" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q320="http://tavisca.com" name="HotelDiscountType" nillable="true" type="q320:HotelDiscountType" />
+  <xs:complexType name="HotelCancellationPolicy">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q321="http://tavisca.com" base="q321:CancellationPolicy">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q322="http://tavisca.com" name="HotelCancellationPolicy" nillable="true" type="q322:HotelCancellationPolicy" />
+  <xs:complexType name="CancellationPolicy">
+    <xs:sequence>
+      <xs:element xmlns:q323="http://tavisca.com" minOccurs="0" name="CancellationRules" nillable="true" type="q323:ArrayOfCancellationRule" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q324="http://tavisca.com" name="CancellationPolicy" nillable="true" type="q324:CancellationPolicy" />
+  <xs:complexType name="ArrayOfCancellationRule">
+    <xs:sequence>
+      <xs:element xmlns:q325="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="CancellationRule" nillable="true" type="q325:CancellationRule" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q326="http://tavisca.com" name="ArrayOfCancellationRule" nillable="true" type="q326:ArrayOfCancellationRule" />
+  <xs:complexType name="CancellationRule">
+    <xs:sequence>
+      <xs:element xmlns:q327="http://tavisca.com" minOccurs="0" name="AdditionalInfo" nillable="true" type="q327:ArrayOfStateBag" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element xmlns:q328="http://tavisca.com" minOccurs="0" name="Penalty" nillable="true" type="q328:Penalty" />
+      <xs:element minOccurs="0" name="Rph" type="xs:int" />
+      <xs:element xmlns:q329="http://tavisca.com" minOccurs="0" name="Type" type="q329:ProviderCancellationRuleType" />
+      <xs:element xmlns:q330="http://tavisca.com" minOccurs="0" name="Window" nillable="true" type="q330:DateTimeSpan" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q331="http://tavisca.com" name="CancellationRule" nillable="true" type="q331:CancellationRule" />
+  <xs:complexType name="Penalty">
+    <xs:sequence>
+      <xs:element xmlns:q332="http://tavisca.com" minOccurs="0" name="BasePenalty" nillable="true" type="q332:Money" />
+      <xs:element xmlns:q333="http://tavisca.com" minOccurs="0" name="Fees" nillable="true" type="q333:ArrayOfFee" />
+      <xs:element xmlns:q334="http://tavisca.com" minOccurs="0" name="Markups" nillable="true" type="q334:ArrayOfMarkup" />
+      <xs:element xmlns:q335="http://tavisca.com" minOccurs="0" name="TotalPenalty" nillable="true" type="q335:Money" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q336="http://tavisca.com" name="Penalty" nillable="true" type="q336:Penalty" />
+  <xs:complexType name="HotelCancellationPenalty">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q337="http://tavisca.com" base="q337:Penalty">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q338="http://tavisca.com" name="HotelCancellationPenalty" nillable="true" type="q338:HotelCancellationPenalty" />
+  <xs:simpleType name="ProviderCancellationRuleType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Text" />
+      <xs:enumeration value="Quantifiable" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q339="http://tavisca.com" name="ProviderCancellationRuleType" nillable="true" type="q339:ProviderCancellationRuleType" />
+  <xs:complexType name="HotelCancellationRule">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q340="http://tavisca.com" base="q340:CancellationRule">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="HotelCancellationPenalty" nillable="true" type="q340:HotelCancellationPenalty" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q341="http://tavisca.com" name="HotelCancellationRule" nillable="true" type="q341:HotelCancellationRule" />
+  <xs:complexType name="ArrayOfPromotionalHotelDeal">
+    <xs:sequence>
+      <xs:element xmlns:q342="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="PromotionalHotelDeal" nillable="true" type="q342:PromotionalHotelDeal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q343="http://tavisca.com" name="ArrayOfPromotionalHotelDeal" nillable="true" type="q343:ArrayOfPromotionalHotelDeal" />
+  <xs:complexType name="PromotionalHotelDeal">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddDate" type="xs:dateTime" />
+      <xs:element xmlns:q344="http://tavisca.com" minOccurs="0" name="DealStatus" type="q344:DealStatus" />
+      <xs:element minOccurs="0" name="DealTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element xmlns:q345="http://tavisca.com" minOccurs="0" name="FareSource" nillable="true" type="q345:FareSource" />
+      <xs:element minOccurs="0" name="FreeNights" type="xs:int" />
+      <xs:element xmlns:q346="http://tavisca.com" minOccurs="0" name="HotelProperty" nillable="true" type="q346:HotelProperty" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element xmlns:q347="http://tavisca.com" minOccurs="0" name="MinFare" nillable="true" type="q347:Money" />
+      <xs:element minOccurs="0" name="PromotionalText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StayNights" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q348="http://tavisca.com" name="PromotionalHotelDeal" nillable="true" type="q348:PromotionalHotelDeal" />
+  <xs:complexType name="MarkupPlan">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AllowDynamic" type="xs:boolean" />
+      <xs:element xmlns:q349="http://tavisca.com" minOccurs="0" name="ApplyOnAmount" type="q349:MarkupApplicationAmount" />
+      <xs:element minOccurs="0" name="FareType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsEnabled" type="xs:boolean" />
+      <xs:element xmlns:q350="http://tavisca.com" minOccurs="0" name="MarkupApplicationType" type="q350:MarkupApplicationType" />
+      <xs:element minOccurs="0" name="MarkupPlanId" type="xs:long" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RateCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q351="http://tavisca.com" name="MarkupPlan" nillable="true" type="q351:MarkupPlan" />
+  <xs:simpleType name="MarkupApplicationAmount">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BaseFare" />
+      <xs:enumeration value="TotalWithoutTaxes" />
+      <xs:enumeration value="TotalWithTaxes" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q352="http://tavisca.com" name="MarkupApplicationAmount" nillable="true" type="q352:MarkupApplicationAmount" />
+  <xs:simpleType name="MarkupApplicationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PerSegment_Air" />
+      <xs:enumeration value="PerLeg_Air" />
+      <xs:enumeration value="PerPerson" />
+      <xs:enumeration value="PerItinerary" />
+      <xs:enumeration value="PerNight" />
+      <xs:enumeration value="PerDay" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q353="http://tavisca.com" name="MarkupApplicationType" nillable="true" type="q353:MarkupApplicationType" />
+  <xs:complexType name="ArrayOfHotelPolicy">
+    <xs:sequence>
+      <xs:element xmlns:q354="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="HotelPolicy" nillable="true" type="q354:HotelPolicy" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q355="http://tavisca.com" name="ArrayOfHotelPolicy" nillable="true" type="q355:ArrayOfHotelPolicy" />
+  <xs:complexType name="HotelPolicy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q356="http://tavisca.com" name="HotelPolicy" nillable="true" type="q356:HotelPolicy" />
+  <xs:complexType name="ArrayOfRoom">
+    <xs:sequence>
+      <xs:element xmlns:q357="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Room" nillable="true" type="q357:Room" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q358="http://tavisca.com" name="ArrayOfRoom" nillable="true" type="q358:ArrayOfRoom" />
+  <xs:complexType name="Room">
+    <xs:sequence>
+      <xs:element xmlns:q359="http://tavisca.com" minOccurs="0" name="AdditionalInformation" nillable="true" type="q359:ArrayOfStateBag" />
+      <xs:element xmlns:q360="http://tavisca.com" minOccurs="0" name="AgeRestriction" nillable="true" type="q360:AgeRestriction" />
+      <xs:element xmlns:q361="http://tavisca.com" minOccurs="0" name="AllowedCreditCards" nillable="true" type="q361:ArrayOfAllowedCreditCard" />
+      <xs:element minOccurs="0" name="BaseOccupancy" type="xs:int" />
+      <xs:element minOccurs="0" name="BedType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepositRequired" type="xs:boolean" />
+      <xs:element xmlns:q362="http://tavisca.com" minOccurs="0" name="DisplayRoomRate" nillable="true" type="q362:RoomRate" />
+      <xs:element minOccurs="0" name="GuaranteeRequired" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GuaranteeTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GuestCount" type="xs:int" />
+      <xs:element xmlns:q363="http://tavisca.com" minOccurs="0" name="HotelFareSource" nillable="true" type="q363:HotelFareSource" />
+      <xs:element minOccurs="0" name="IsRoomWithNearByDate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="KitchenType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumOccupancy" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfBathRooms" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfBedRooms" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfBeds" type="xs:int" />
+      <xs:element xmlns:q364="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PassengerRphs" nillable="true" type="q364:ArrayOfint" />
+      <xs:element xmlns:q365="http://tavisca.com" minOccurs="0" name="Policies" nillable="true" type="q365:ArrayOfHotelPolicy" />
+      <xs:element minOccurs="0" name="Prepaid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+      <xs:element minOccurs="0" name="RoomDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoomId" type="ser:guid" />
+      <xs:element minOccurs="0" name="RoomName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q366="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RoomOccupancyTypes" nillable="true" type="q366:ArrayOfstring" />
+      <xs:element minOccurs="0" name="RoomType" nillable="true" type="xs:string" />
+      <xs:element xmlns:q367="http://tavisca.com" minOccurs="0" name="StayPeriod" nillable="true" type="q367:DateTimeSpan" />
+      <xs:element xmlns:q368="http://tavisca.com" minOccurs="0" name="StdRoomRate" nillable="true" type="q368:RoomRate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q369="http://tavisca.com" name="Room" nillable="true" type="q369:Room" />
+  <xs:complexType name="AgeRestriction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MaxChildAge" type="xs:int" />
+      <xs:element minOccurs="0" name="MaxJuniorAge" type="xs:int" />
+      <xs:element minOccurs="0" name="MinChildAge" type="xs:int" />
+      <xs:element minOccurs="0" name="MinJuniorAge" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q370="http://tavisca.com" name="AgeRestriction" nillable="true" type="q370:AgeRestriction" />
+  <xs:complexType name="ArrayOfAllowedCreditCard">
+    <xs:sequence>
+      <xs:element xmlns:q371="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="AllowedCreditCard" nillable="true" type="q371:AllowedCreditCard" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q372="http://tavisca.com" name="ArrayOfAllowedCreditCard" nillable="true" type="q372:ArrayOfAllowedCreditCard" />
+  <xs:complexType name="AllowedCreditCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CardType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCardName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCardType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q373="http://tavisca.com" name="AllowedCreditCard" nillable="true" type="q373:AllowedCreditCard" />
+  <xs:complexType name="ArrayOfSeason">
+    <xs:sequence>
+      <xs:element xmlns:q374="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="Season" nillable="true" type="q374:Season" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q375="http://tavisca.com" name="ArrayOfSeason" nillable="true" type="q375:ArrayOfSeason" />
+  <xs:complexType name="Season">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="End" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Start" nillable="true" type="xs:string" />
+      <xs:element xmlns:q376="http://tavisca.com" minOccurs="0" name="Type" type="q376:SeasonType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q377="http://tavisca.com" name="Season" nillable="true" type="q377:Season" />
+  <xs:simpleType name="SeasonType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="High" />
+      <xs:enumeration value="Medium" />
+      <xs:enumeration value="Low" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q378="http://tavisca.com" name="SeasonType" nillable="true" type="q378:SeasonType" />
+  <xs:complexType name="HotelRoomPriceRQ">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q379="http://tavisca.com" base="q379:WebServiceRQ">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="HotelSearchCriterion" nillable="true" type="q379:HotelSearchCriterion" />
+          <xs:element minOccurs="0" name="Itinerary" nillable="true" type="q379:HotelItinerary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q380="http://tavisca.com" name="HotelRoomPriceRQ" nillable="true" type="q380:HotelRoomPriceRQ" />
+  <xs:complexType name="HotelSearchRQ">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q381="http://tavisca.com" base="q381:WebServiceRQ">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Filters" nillable="true" type="q381:ArrayOfHotelFilter" />
+          <xs:element minOccurs="0" name="HotelSearchCriterion" nillable="true" type="q381:HotelSearchCriterion" />
+          <xs:element minOccurs="0" name="PagingInfo" nillable="true" type="q381:PagingInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q382="http://tavisca.com" name="HotelSearchRQ" nillable="true" type="q382:HotelSearchRQ" />
+  <xs:complexType name="ArrayOfHotelFilter">
+    <xs:sequence>
+      <xs:element xmlns:q383="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="HotelFilter" nillable="true" type="q383:HotelFilter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q384="http://tavisca.com" name="ArrayOfHotelFilter" nillable="true" type="q384:ArrayOfHotelFilter" />
+  <xs:complexType name="HotelFilter">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element xmlns:q385="http://tavisca.com" name="HotelFilter" nillable="true" type="q385:HotelFilter" />
+  <xs:complexType name="AvailabilityFilter">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q386="http://tavisca.com" base="q386:HotelFilter">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ReturnOnlyAvailableItineraries" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q387="http://tavisca.com" name="AvailabilityFilter" nillable="true" type="q387:AvailabilityFilter" />
+  <xs:complexType name="ViewPortFilter">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q388="http://tavisca.com" base="q388:HotelFilter">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BottomRightCorner" nillable="true" type="q388:GeoCode" />
+          <xs:element minOccurs="0" name="TopLeftCorner" nillable="true" type="q388:GeoCode" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q389="http://tavisca.com" name="ViewPortFilter" nillable="true" type="q389:ViewPortFilter" />
+  <xs:complexType name="PagingInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Enabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EndNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="StartNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecordsBeforeFiltering" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalResults" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q390="http://tavisca.com" name="PagingInfo" nillable="true" type="q390:PagingInfo" />
+  <xs:complexType name="HotelItinerarySearchRQ">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q391="http://tavisca.com" base="q391:WebServiceRQ">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ItineraryId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q392="http://tavisca.com" name="HotelItinerarySearchRQ" nillable="true" type="q392:HotelItinerarySearchRQ" />
+  <xs:complexType name="ArrayOfHotelTransform">
+    <xs:sequence>
+      <xs:element xmlns:q393="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="HotelTransform" nillable="true" type="q393:HotelTransform" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q394="http://tavisca.com" name="ArrayOfHotelTransform" nillable="true" type="q394:ArrayOfHotelTransform" />
+  <xs:complexType name="HotelTransform">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element xmlns:q395="http://tavisca.com" name="HotelTransform" nillable="true" type="q395:HotelTransform" />
+  <xs:complexType name="HotelFilterTransform">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q396="http://tavisca.com" base="q396:HotelTransform">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q397="http://tavisca.com" name="HotelFilterTransform" nillable="true" type="q397:HotelFilterTransform" />
+  <xs:complexType name="HotelMatrixTransform">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q398="http://tavisca.com" base="q398:HotelTransform">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q399="http://tavisca.com" name="HotelMatrixTransform" nillable="true" type="q399:HotelMatrixTransform" />
+  <xs:complexType name="HotelItineraryTransform">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q400="http://tavisca.com" base="q400:HotelTransform">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetPricelessHotelItineraries" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HotelId" type="xs:int" />
+          <xs:element minOccurs="0" name="IsHotelIdSpecified" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q401="http://tavisca.com" name="HotelItineraryTransform" nillable="true" type="q401:HotelItineraryTransform" />
+  <xs:complexType name="HotelComparisonMatrixTransform">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q402="http://tavisca.com" base="q402:HotelTransform">
+        <xs:sequence>
+          <xs:element xmlns:q403="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="HotelComparisonAttributes" nillable="true" type="q403:ArrayOfstring" />
+          <xs:element minOccurs="0" name="IsItineraryRPHSpecified" type="xs:boolean" />
+          <xs:element xmlns:q404="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ItineraryRPH" nillable="true" type="q404:ArrayOfint" />
+          <xs:element minOccurs="0" name="ResultCount" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q405="http://tavisca.com" name="HotelComparisonMatrixTransform" nillable="true" type="q405:HotelComparisonMatrixTransform" />
+  <xs:element name="HotelSearchViewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q406="http://tavisca.com" minOccurs="0" name="HotelSearchViewResult" nillable="true" type="q406:HotelSearchViewRS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="HotelSearchViewRS">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q407="http://tavisca.com" base="q407:WebServiceRS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PagingInfo" nillable="true" type="q407:PagingInfo" />
+          <xs:element minOccurs="0" name="RoomOccupancyTypes" nillable="true" type="q407:ArrayOfRoomOccupancyType" />
+          <xs:element minOccurs="0" name="Views" nillable="true" type="q407:ArrayOfHotelView" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q408="http://tavisca.com" name="HotelSearchViewRS" nillable="true" type="q408:HotelSearchViewRS" />
+  <xs:complexType name="WebServiceRS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CallId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q409="http://tavisca.com" minOccurs="0" name="ResponseRecieved" type="q409:ResponseType" />
+      <xs:element xmlns:q410="http://tavisca.com" minOccurs="0" name="ServiceStatus" nillable="true" type="q410:ServiceStatus" />
+      <xs:element minOccurs="0" name="SessionId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q411="http://tavisca.com" name="WebServiceRS" nillable="true" type="q411:WebServiceRS" />
+  <xs:complexType name="ServiceStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element xmlns:q412="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="InvalidItems" nillable="true" type="q412:ArrayOfstring" />
+      <xs:element xmlns:q413="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="MissingItems" nillable="true" type="q413:ArrayOfstring" />
+      <xs:element xmlns:q414="http://tavisca.com" minOccurs="0" name="Status" type="q414:ServiceStatusType" />
+      <xs:element minOccurs="0" name="StatusCode" type="xs:int" />
+      <xs:element minOccurs="0" name="WarningMessage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q415="http://tavisca.com" name="ServiceStatus" nillable="true" type="q415:ServiceStatus" />
+  <xs:simpleType name="ServiceStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Success" />
+      <xs:enumeration value="Warning" />
+      <xs:enumeration value="Failure" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q416="http://tavisca.com" name="ServiceStatusType" nillable="true" type="q416:ServiceStatusType" />
+  <xs:complexType name="HotelRoomAvailRS">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q417="http://tavisca.com" base="q417:WebServiceRS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Itinerary" nillable="true" type="q417:HotelItinerary" />
+          <xs:element minOccurs="0" name="RoomOccupancyTypes" nillable="true" type="q417:ArrayOfRoomOccupancyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q418="http://tavisca.com" name="HotelRoomAvailRS" nillable="true" type="q418:HotelRoomAvailRS" />
+  <xs:complexType name="HotelRoomPriceRS">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q419="http://tavisca.com" base="q419:WebServiceRS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Itinerary" nillable="true" type="q419:HotelItinerary" />
+          <xs:element minOccurs="0" name="RoomOccupancyTypes" nillable="true" type="q419:ArrayOfRoomOccupancyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q420="http://tavisca.com" name="HotelRoomPriceRS" nillable="true" type="q420:HotelRoomPriceRS" />
+  <xs:complexType name="HotelSearchRS">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q421="http://tavisca.com" base="q421:WebServiceRS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Itineraries" nillable="true" type="q421:ArrayOfHotelItinerary" />
+          <xs:element minOccurs="0" name="PagingInfo" nillable="true" type="q421:PagingInfo" />
+          <xs:element minOccurs="0" name="RoomOccupancyTypes" nillable="true" type="q421:ArrayOfRoomOccupancyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q422="http://tavisca.com" name="HotelSearchRS" nillable="true" type="q422:HotelSearchRS" />
+  <xs:complexType name="ArrayOfHotelItinerary">
+    <xs:sequence>
+      <xs:element xmlns:q423="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="HotelItinerary" nillable="true" type="q423:HotelItinerary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q424="http://tavisca.com" name="ArrayOfHotelItinerary" nillable="true" type="q424:ArrayOfHotelItinerary" />
+  <xs:complexType name="HotelItinerarySearchRS">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q425="http://tavisca.com" base="q425:WebServiceRS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Itinerary" nillable="true" type="q425:HotelItinerary" />
+          <xs:element minOccurs="0" name="RoomOccupancyTypes" nillable="true" type="q425:ArrayOfRoomOccupancyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q426="http://tavisca.com" name="HotelItinerarySearchRS" nillable="true" type="q426:HotelItinerarySearchRS" />
+  <xs:complexType name="ArrayOfHotelView">
+    <xs:sequence>
+      <xs:element xmlns:q427="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="HotelView" nillable="true" type="q427:HotelView" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q428="http://tavisca.com" name="ArrayOfHotelView" nillable="true" type="q428:ArrayOfHotelView" />
+  <xs:complexType name="HotelView">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q429="http://tavisca.com" base="q429:BaseEntity">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q430="http://tavisca.com" name="HotelView" nillable="true" type="q430:HotelView" />
+  <xs:complexType name="BaseEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TypeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q431="http://tavisca.com" name="BaseEntity" nillable="true" type="q431:BaseEntity" />
+  <xs:complexType name="HotelFilterView">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q432="http://tavisca.com" base="q432:HotelView">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="HotelFilterDisplayData" nillable="true" type="q432:HotelFilterDisplayData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q433="http://tavisca.com" name="HotelFilterView" nillable="true" type="q433:HotelFilterView" />
+  <xs:complexType name="HotelFilterDisplayData">
+    <xs:sequence>
+      <xs:element xmlns:q434="http://tavisca.com" minOccurs="0" name="BrandMinFareList" nillable="true" type="q434:ArrayOfBrandMinFare" />
+      <xs:element minOccurs="0" name="CheckFiveStar" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CheckFourStar" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CheckNoStar" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CheckOneStar" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CheckThreeStar" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CheckTwoStar" type="xs:boolean" />
+      <xs:element xmlns:q435="http://tavisca.com" minOccurs="0" name="CityPropertyCountList" nillable="true" type="q435:ArrayOfCityPropertyCount" />
+      <xs:element minOccurs="0" name="EnableFiveStar" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EnableFourStar" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EnableNoStar" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EnableOneStar" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EnablePostpaid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EnablePrepaid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EnableThreeStar" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EnableTwoStar" type="xs:boolean" />
+      <xs:element xmlns:q436="http://tavisca.com" minOccurs="0" name="MaxDistance" nillable="true" type="q436:Distance" />
+      <xs:element xmlns:q437="http://tavisca.com" minOccurs="0" name="MaxFare" nillable="true" type="q437:Money" />
+      <xs:element minOccurs="0" name="MaxNumberOfBedRooms" type="xs:int" />
+      <xs:element minOccurs="0" name="MaxOccupancy" type="xs:int" />
+      <xs:element xmlns:q438="http://tavisca.com" minOccurs="0" name="MinDistance" nillable="true" type="q438:Distance" />
+      <xs:element xmlns:q439="http://tavisca.com" minOccurs="0" name="MinFare" nillable="true" type="q439:Money" />
+      <xs:element minOccurs="0" name="MinNumberOfBedRooms" type="xs:int" />
+      <xs:element minOccurs="0" name="MinOccupancy" type="xs:int" />
+      <xs:element xmlns:q440="http://tavisca.com" minOccurs="0" name="RatingMinFareList" nillable="true" type="q440:ArrayOfRatingMinFare" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q441="http://tavisca.com" name="HotelFilterDisplayData" nillable="true" type="q441:HotelFilterDisplayData" />
+  <xs:complexType name="ArrayOfBrandMinFare">
+    <xs:sequence>
+      <xs:element xmlns:q442="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="BrandMinFare" nillable="true" type="q442:BrandMinFare" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q443="http://tavisca.com" name="ArrayOfBrandMinFare" nillable="true" type="q443:ArrayOfBrandMinFare" />
+  <xs:complexType name="BrandMinFare">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BrandName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q444="http://tavisca.com" minOccurs="0" name="MinFare" nillable="true" type="q444:Money" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q445="http://tavisca.com" name="BrandMinFare" nillable="true" type="q445:BrandMinFare" />
+  <xs:complexType name="ArrayOfCityPropertyCount">
+    <xs:sequence>
+      <xs:element xmlns:q446="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="CityPropertyCount" nillable="true" type="q446:CityPropertyCount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q447="http://tavisca.com" name="ArrayOfCityPropertyCount" nillable="true" type="q447:ArrayOfCityPropertyCount" />
+  <xs:complexType name="CityPropertyCount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PropertiesCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q448="http://tavisca.com" name="CityPropertyCount" nillable="true" type="q448:CityPropertyCount" />
+  <xs:complexType name="ArrayOfRatingMinFare">
+    <xs:sequence>
+      <xs:element xmlns:q449="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="RatingMinFare" nillable="true" type="q449:RatingMinFare" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q450="http://tavisca.com" name="ArrayOfRatingMinFare" nillable="true" type="q450:ArrayOfRatingMinFare" />
+  <xs:complexType name="RatingMinFare">
+    <xs:sequence>
+      <xs:element xmlns:q451="http://tavisca.com" minOccurs="0" name="MinFare" nillable="true" type="q451:Money" />
+      <xs:element xmlns:q452="http://tavisca.com" minOccurs="0" name="Rating" nillable="true" type="q452:HotelRating" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q453="http://tavisca.com" name="RatingMinFare" nillable="true" type="q453:RatingMinFare" />
+  <xs:complexType name="HotelMatrixView">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q454="http://tavisca.com" base="q454:HotelView">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SummaryMatrixList" nillable="true" type="q454:ArrayOfResultMatrix" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q455="http://tavisca.com" name="HotelMatrixView" nillable="true" type="q455:HotelMatrixView" />
+  <xs:complexType name="ArrayOfResultMatrix">
+    <xs:sequence>
+      <xs:element xmlns:q456="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="ResultMatrix" nillable="true" type="q456:ResultMatrix" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q457="http://tavisca.com" name="ArrayOfResultMatrix" nillable="true" type="q457:ArrayOfResultMatrix" />
+  <xs:complexType name="ResultMatrix">
+    <xs:sequence>
+      <xs:element xmlns:q458="http://tavisca.com" minOccurs="0" name="Columns" nillable="true" type="q458:ArrayOfMatrixColumnInfo" />
+      <xs:element xmlns:q459="http://tavisca.com" minOccurs="0" name="Rows" nillable="true" type="q459:ArrayOfMatrixRowInfo" />
+      <xs:element xmlns:q460="http://tavisca.com" minOccurs="0" name="Values" nillable="true" type="q460:ArrayOfMatrixCell" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q461="http://tavisca.com" name="ResultMatrix" nillable="true" type="q461:ResultMatrix" />
+  <xs:complexType name="ArrayOfMatrixColumnInfo">
+    <xs:sequence>
+      <xs:element xmlns:q462="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="MatrixColumnInfo" nillable="true" type="q462:MatrixColumnInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q463="http://tavisca.com" name="ArrayOfMatrixColumnInfo" nillable="true" type="q463:ArrayOfMatrixColumnInfo" />
+  <xs:complexType name="MatrixColumnInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q464="http://tavisca.com" base="q464:MatrixRowColumnInfo">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q465="http://tavisca.com" name="MatrixColumnInfo" nillable="true" type="q465:MatrixColumnInfo" />
+  <xs:complexType name="MatrixRowColumnInfo">
+    <xs:sequence>
+      <xs:element xmlns:q466="http://tavisca.com" minOccurs="0" name="AdditionalInfo" nillable="true" type="q466:ArrayOfStateBag" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rph" type="xs:int" />
+      <xs:element xmlns:q467="http://tavisca.com" minOccurs="0" name="Type" type="q467:MatrixInfoType" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q468="http://tavisca.com" name="MatrixRowColumnInfo" nillable="true" type="q468:MatrixRowColumnInfo" />
+  <xs:simpleType name="MatrixInfoType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Airline" />
+      <xs:enumeration value="CarCompany" />
+      <xs:enumeration value="Stops" />
+      <xs:enumeration value="CarType" />
+      <xs:enumeration value="StarRating" />
+      <xs:enumeration value="Distance" />
+      <xs:enumeration value="HotelChain" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q469="http://tavisca.com" name="MatrixInfoType" nillable="true" type="q469:MatrixInfoType" />
+  <xs:complexType name="ArrayOfMatrixRowInfo">
+    <xs:sequence>
+      <xs:element xmlns:q470="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="MatrixRowInfo" nillable="true" type="q470:MatrixRowInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q471="http://tavisca.com" name="ArrayOfMatrixRowInfo" nillable="true" type="q471:ArrayOfMatrixRowInfo" />
+  <xs:complexType name="MatrixRowInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q472="http://tavisca.com" base="q472:MatrixRowColumnInfo">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q473="http://tavisca.com" name="MatrixRowInfo" nillable="true" type="q473:MatrixRowInfo" />
+  <xs:complexType name="ArrayOfMatrixCell">
+    <xs:sequence>
+      <xs:element xmlns:q474="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="MatrixCell" nillable="true" type="q474:MatrixCell" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q475="http://tavisca.com" name="ArrayOfMatrixCell" nillable="true" type="q475:ArrayOfMatrixCell" />
+  <xs:complexType name="MatrixCell">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ColumnRph" type="xs:int" />
+      <xs:element minOccurs="0" name="RowRph" type="xs:int" />
+      <xs:element xmlns:q476="http://tavisca.com" minOccurs="0" name="Values" nillable="true" type="q476:ArrayOfMatrixCellData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q477="http://tavisca.com" name="MatrixCell" nillable="true" type="q477:MatrixCell" />
+  <xs:complexType name="ArrayOfMatrixCellData">
+    <xs:sequence>
+      <xs:element xmlns:q478="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="MatrixCellData" nillable="true" type="q478:MatrixCellData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q479="http://tavisca.com" name="ArrayOfMatrixCellData" nillable="true" type="q479:ArrayOfMatrixCellData" />
+  <xs:complexType name="MatrixCellData">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q480="http://tavisca.com" base="q480:Money">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q481="http://tavisca.com" name="MatrixCellData" nillable="true" type="q481:MatrixCellData" />
+  <xs:complexType name="HotelItineraryView">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q482="http://tavisca.com" base="q482:HotelView">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Itineraries" nillable="true" type="q482:ArrayOfHotelItinerary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q483="http://tavisca.com" name="HotelItineraryView" nillable="true" type="q483:HotelItineraryView" />
+  <xs:complexType name="ComparisonMatrix">
+    <xs:sequence>
+      <xs:element xmlns:q484="http://tavisca.com" minOccurs="0" name="Cells" nillable="true" type="q484:ArrayOfComparisonMatrixCell" />
+      <xs:element xmlns:q485="http://tavisca.com" minOccurs="0" name="Columns" nillable="true" type="q485:ArrayOfComparisonMatrixDimension" />
+      <xs:element minOccurs="0" name="TotalColumns" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q486="http://tavisca.com" name="ComparisonMatrix" nillable="true" type="q486:ComparisonMatrix" />
+  <xs:complexType name="ArrayOfComparisonMatrixCell">
+    <xs:sequence>
+      <xs:element xmlns:q487="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="ComparisonMatrixCell" nillable="true" type="q487:ComparisonMatrixCell" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q488="http://tavisca.com" name="ArrayOfComparisonMatrixCell" nillable="true" type="q488:ArrayOfComparisonMatrixCell" />
+  <xs:complexType name="ComparisonMatrixCell">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ColumnId" type="xs:int" />
+      <xs:element minOccurs="0" name="RowId" type="xs:int" />
+      <xs:element minOccurs="0" name="SortingIndex" type="xs:int" />
+      <xs:element xmlns:q489="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Value" nillable="true" type="q489:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q490="http://tavisca.com" name="ComparisonMatrixCell" nillable="true" type="q490:ComparisonMatrixCell" />
+  <xs:complexType name="ArrayOfComparisonMatrixDimension">
+    <xs:sequence>
+      <xs:element xmlns:q491="http://tavisca.com" minOccurs="0" maxOccurs="unbounded" name="ComparisonMatrixDimension" nillable="true" type="q491:ComparisonMatrixDimension" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q492="http://tavisca.com" name="ArrayOfComparisonMatrixDimension" nillable="true" type="q492:ArrayOfComparisonMatrixDimension" />
+  <xs:complexType name="ComparisonMatrixDimension">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttributeName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q493="http://tavisca.com" minOccurs="0" name="BusinessType" type="q493:BusinessType" />
+      <xs:element xmlns:q494="http://tavisca.com" minOccurs="0" name="Code" type="q494:TypeCode" />
+      <xs:element minOccurs="0" name="ColumnId" type="xs:int" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSortable" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q495="http://tavisca.com" name="ComparisonMatrixDimension" nillable="true" type="q495:ComparisonMatrixDimension" />
+  <xs:simpleType name="BusinessType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="StarRating" />
+      <xs:enumeration value="Distance" />
+      <xs:enumeration value="Time" />
+      <xs:enumeration value="Currency" />
+      <xs:enumeration value="Price" />
+      <xs:enumeration value="Text" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q496="http://tavisca.com" name="BusinessType" nillable="true" type="q496:BusinessType" />
+  <xs:simpleType name="TypeCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="String" />
+      <xs:enumeration value="Integer" />
+      <xs:enumeration value="Double" />
+      <xs:enumeration value="Boolean" />
+      <xs:enumeration value="Money" />
+      <xs:enumeration value="Distance" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q497="http://tavisca.com" name="TypeCode" nillable="true" type="q497:TypeCode" />
+  <xs:element name="HotelRoomAvailByItineraryId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q498="http://tavisca.com" minOccurs="0" name="request" nillable="true" type="q498:HotelRoomAvailRQ" />
+        <xs:element minOccurs="0" name="itineraryId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HotelRoomAvailByItineraryIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q499="http://tavisca.com" minOccurs="0" name="HotelRoomAvailByItineraryIdResult" nillable="true" type="q499:HotelRoomAvailRS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHotelItineraryWithRooms">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q500="http://tavisca.com" minOccurs="0" name="request" nillable="true" type="q500:HotelItinerarySearchRQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHotelItineraryWithRoomsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q501="http://tavisca.com" minOccurs="0" name="GetHotelItineraryWithRoomsResult" nillable="true" type="q501:HotelItinerarySearchRS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

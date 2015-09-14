@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Shared.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Shared.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Money">
+    <xs:sequence>
+      <xs:element name="_amount" type="xs:decimal" />
+      <xs:element name="_currencyConverter" nillable="true" type="xs:anyType" />
+      <xs:element name="_x003C_BaseEquivalent_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_Currency_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_DisplayAmount_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_DisplayCurrency_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_OverrideBaseEquivAmount_x003E_k__BackingField" type="xs:decimal" />
+      <xs:element name="_x003C_OverrideBaseEquivCurrency_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Money" nillable="true" type="tns:Money" />
+</xs:schema>

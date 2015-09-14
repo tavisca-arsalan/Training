@@ -29,7 +29,7 @@ namespace MarkupEngine
         public decimal WeightOfNightFlight { get; set; }
 
         public decimal WeightOfTotalLayoverTime { get; set; }
-
+         
         public decimal WeightOfFlightTime { get; set; }
 
 

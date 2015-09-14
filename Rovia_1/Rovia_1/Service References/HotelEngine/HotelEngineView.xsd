@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Contracts.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Contracts.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Shared.Entities" />
+  <xs:complexType name="Markup">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Shared.Entities" base="q1:Money">
+        <xs:sequence>
+          <xs:element name="_markupType" type="tns:MarkupType" />
+          <xs:element name="_percentValue" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Markup" nillable="true" type="tns:Markup" />
+  <xs:simpleType name="MarkupType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Absolute" />
+      <xs:enumeration value="Percent" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MarkupType" nillable="true" type="tns:MarkupType" />
+  <xs:complexType name="ServiceFee">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Shared.Entities" base="q2:Money">
+        <xs:sequence>
+          <xs:element name="_percentValue" type="xs:decimal" />
+          <xs:element name="_serviceFeeType" type="tns:ServiceFeeType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ServiceFee" nillable="true" type="tns:ServiceFee" />
+  <xs:simpleType name="ServiceFeeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Absolute" />
+      <xs:enumeration value="Percent" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ServiceFeeType" nillable="true" type="tns:ServiceFeeType" />
+</xs:schema>
