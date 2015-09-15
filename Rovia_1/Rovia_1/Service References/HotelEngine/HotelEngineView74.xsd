@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://tavisca.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Hotel.DataContracts" />
-  <xs:import schemaLocation="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Hotel.DataContracts" />
+  <xs:import schemaLocation="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:element name="HotelSearchView">
     <xs:complexType>
       <xs:sequence>

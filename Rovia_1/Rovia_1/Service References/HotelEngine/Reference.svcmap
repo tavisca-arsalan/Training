@@ -21,19 +21,19 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="HotelEngineView.disco" MetadataType="Disco" ID="8392314d-2e1c-4ef6-a7ae-21c60113324d" SourceId="1" SourceUrl="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?disco" />
-    <MetadataFile FileName="HotelEngineView.wsdl" MetadataType="Wsdl" ID="6501ef29-5ec1-486d-bf27-0ba84ebdccc5" SourceId="1" SourceUrl="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?wsdl=wsdl0" />
-    <MetadataFile FileName="HotelEngineView1.wsdl" MetadataType="Wsdl" ID="690c85b9-31a6-4898-bd4f-db663ada4bdf" SourceId="1" SourceUrl="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?wsdl" />
-    <MetadataFile FileName="HotelEngineView.xsd" MetadataType="Schema" ID="4cc4c6ed-859a-41b7-8faf-bd8bb8b1e1b7" SourceId="1" SourceUrl="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd4" />
-    <MetadataFile FileName="HotelEngineView1.xsd" MetadataType="Schema" ID="9881e335-5f2c-4e3b-b038-66c3e6e8b8eb" SourceId="1" SourceUrl="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd5" />
-    <MetadataFile FileName="HotelEngineView2.xsd" MetadataType="Schema" ID="d0e776ce-b8dd-47f0-b6e6-6a37206cc1ed" SourceId="1" SourceUrl="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd1" />
-    <MetadataFile FileName="HotelEngineView3.xsd" MetadataType="Schema" ID="a88e171a-4c47-4948-b81f-6e7df57d4380" SourceId="1" SourceUrl="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd6" />
-    <MetadataFile FileName="HotelEngineView4.xsd" MetadataType="Schema" ID="1abe058a-a9f6-4d95-8cb0-618b613078bb" SourceId="1" SourceUrl="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd0" />
-    <MetadataFile FileName="HotelEngineView5.xsd" MetadataType="Schema" ID="8056a664-b44f-4fb4-bdea-5fcc3882beac" SourceId="1" SourceUrl="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd3" />
-    <MetadataFile FileName="HotelEngineView6.xsd" MetadataType="Schema" ID="7425e5ce-0aaa-4193-8dba-4a63bed1c288" SourceId="1" SourceUrl="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd2" />
+    <MetadataFile FileName="HotelEngineView7.xsd" MetadataType="Schema" ID="91eb361a-cee1-45ac-8ea0-b8093ee0664c" SourceId="1" SourceUrl="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd6" />
+    <MetadataFile FileName="HotelEngineView1.disco" MetadataType="Disco" ID="aee69332-aa83-441e-ac63-ce91ebbd8390" SourceId="1" SourceUrl="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?disco" />
+    <MetadataFile FileName="HotelEngineView2.wsdl" MetadataType="Wsdl" ID="a5d9fc6d-cb7e-4ffc-a5ff-5536d8a7752b" SourceId="1" SourceUrl="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="HotelEngineView21.wsdl" MetadataType="Wsdl" ID="3d93e327-d74c-4849-a27d-f6659adb6849" SourceId="1" SourceUrl="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?wsdl" />
+    <MetadataFile FileName="HotelEngineView71.xsd" MetadataType="Schema" ID="05b15170-e02f-4866-980b-4b3bea679476" SourceId="1" SourceUrl="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd5" />
+    <MetadataFile FileName="HotelEngineView72.xsd" MetadataType="Schema" ID="e894f301-0634-46c7-b73a-a13525c90e6d" SourceId="1" SourceUrl="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd2" />
+    <MetadataFile FileName="HotelEngineView73.xsd" MetadataType="Schema" ID="4588a2eb-9111-4d0c-83e5-8981372b10ff" SourceId="1" SourceUrl="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd3" />
+    <MetadataFile FileName="HotelEngineView74.xsd" MetadataType="Schema" ID="269619bc-757e-4132-9896-95772f021de8" SourceId="1" SourceUrl="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd0" />
+    <MetadataFile FileName="HotelEngineView75.xsd" MetadataType="Schema" ID="93043cd7-4a55-403b-a9af-0a2e2a6be02f" SourceId="1" SourceUrl="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd1" />
+    <MetadataFile FileName="HotelEngineView76.xsd" MetadataType="Schema" ID="5f624393-7aa3-4f49-8c0a-2cf87e536770" SourceId="1" SourceUrl="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Contracts.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Contracts.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Shared.Entities" />
+  <xs:import schemaLocation="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Shared.Entities" />
   <xs:complexType name="Markup">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Tavisca.TravelNxt.Shared.Entities" base="q1:Money">

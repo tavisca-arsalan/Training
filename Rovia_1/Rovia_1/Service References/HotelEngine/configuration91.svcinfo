@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="L0NakYSRLCnXROspM2I+p1iQ/9Y=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="TiSQqU6Acljo8GIU8fP08SWJ4MY=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="HotelViewBasicHttpEndpoint">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="HotelViewBasicHttpEndpoint" contract="HotelEngine.HotelEngineView" bindingType="basicHttpBinding" address="http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc" bindingConfiguration="HotelViewBasicHttpEndpoint">
+    <endpoint name="HotelViewBasicHttpEndpoint" contract="HotelEngine.HotelEngineView" bindingType="basicHttpBinding" address="http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc" bindingConfiguration="HotelViewBasicHttpEndpoint">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://apis.rovia.com/Engines/HotelEngine/v1.0/HotelEngineView.svc</serializedValue>
+          <serializedValue>http://apis.qa-worldventures.com/Engines/HotelEngine/v1.0/HotelEngineView.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
